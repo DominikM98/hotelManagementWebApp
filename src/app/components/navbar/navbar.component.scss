@@ -1,0 +1,32 @@
+.logoAndNameApp{
+
+  span{
+    margin: 0.5em;
+    color:white;
+  }
+
+  .nameApp{
+    display:inline;
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    margin-left: 1em;
+  }
+}
+
+.dateAndLogin{
+  margin-right: 0;
+
+  .dateWithTime{
+    color:white;
+    display: inline;
+    margin-right: 5em;
+  }
+
+  select{
+    border-style:none;
+    color: white;
+    font-size: 15px;
+    display: inline;
+  }
+}

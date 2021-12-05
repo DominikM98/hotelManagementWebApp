@@ -1,0 +1,22 @@
+.menuContext{
+  background-color:  #292e33;
+  height:100vw;
+  width: 15%;
+
+
+  .list-group{
+    border-radius: 0;
+
+    .active{
+      font-weight: bold;
+    }
+  }
+
+  .list-group-item{
+    color:white;
+    background:transparent;
+    border-color:black;
+    border-width: 0 0 2px 0;
+  }
+
+}
