@@ -1,20 +1,23 @@
 <div class="menuContext col-2">
   <div class="list-group">
-    <a href="/home" class="list-group-item list-group-item-action active">Dashboard</a>
-    <a href="/reservation" class="list-group-item list-group-item-action">Reservation</a>
 
-    <li>
-      <ul class="collapsible collapsible-accordion">
-        <li class>
-          <a href="/reservation" class="collapsible-header waves-effect arrow-r">Reservation</a>
-          <div class="collapsible-header">
-            <ul>
-              <li><a href="/home" class="list-group-item list-group-item-action">Dashboard</a></li>
-              <li><a href="/home" class="list-group-item list-group-item-action">Dashboard</a></li>
-            </ul>
-          </div>
-        </li>
-      </ul>
-    </li>
+    <ul class="list-group">
+      <li class="list-group-item"><a href="/home" class="list-group-item list-group-item-action active">Dashboard</a></li>
+      <li class="list-group-item"><a href="/reservation" class="list-group-item list-group-item-action">Reservations</a></li>
+        <ul>
+          <li class="list-group-item" ><a href="/addReservation" class="list-group-item list-group-item-action">Add reservation</a></li>
+          <li class="list-group-item" ><a href="/modifyReservation" class="list-group-item list-group-item-action">Modify reservation</a></li>
+          <li class="list-group-item" ><a href="/viewReservation" class="list-group-item list-group-item-action">View reservations</a></li>
+          <li class="list-group-item" ><a href="/deleteReservation" class="list-group-item list-group-item-action">Delete reservation</a></li>
+        </ul>
+      <li class="list-group-item"><a href="/employees" class="list-group-item list-group-item-action">Employees</a></li>
+        <ul>
+          <li class="list-group-item"><a href="/addEmployees" class="list-group-item list-group-item-action">Add employee</a></li>
+          <li class="list-group-item"><a href="/modifyEmployees" class="list-group-item list-group-item-action">Modify employee</a></li>
+          <li class="list-group-item"><a href="/viewEmployees" class="list-group-item list-group-item-action">View employees</a></li>
+          <li class="list-group-item"><a href="/deleteEmployees" class="list-group-item list-group-item-action">Delete employee</a></li>
+        </ul>
+    </ul>
+
   </div>
 </div>
