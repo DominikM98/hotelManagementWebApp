@@ -1,0 +1,122 @@
+<div class="employeePage col-10">
+    <div class="information">
+        <div class="masonry" >
+
+            <div class="cardDashboard col-6">
+                <div class="titleCard">
+                    <h5 class="card-header">Employees available today</h5>
+                </div>
+                <div class="bodyCard" style="margin-left:1em;">
+                    <div class="firstShift">
+                        <h5 class="titleTable">First shift</h5>
+                        <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='200' [bordered]='true' class="tableContent">
+                            <thead>
+                            <tr>
+                                <th class="titleTable" *ngFor="let head of headElementsFirstShift; let i = index" scope="col">{{head}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let el of elementsFirstShift; let i = index">
+                                <th scope="row" class="elementsTable">{{el.firstName}}</th>
+                                <td class="elementsTable">{{el.lastName}}</td>
+                                <td class="elementsTable">{{el.position}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="secondShift">
+                        <h5 class="titleTable">Second shift</h5>
+                        <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='200' [bordered]='true' class="tableContent">
+                            <thead>
+                            <tr>
+                                <th class="titleTable" *ngFor="let head of headElementsSecondShift; let i = index" scope="col">{{head}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let el of elementsSecondShift; let i = index">
+                                <th scope="row" class="elementsTable">{{el.firstName}}</th>
+                                <td class="elementsTable">{{el.lastName}}</td>
+                                <td class="elementsTable">{{el.position}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cardDashboard col-6">
+                <div class="titleCard ">
+                    <h5 class="card-header">Top services</h5>
+                </div>
+                <div class="bodyCard "style="margin-left:1em;">
+                    <table mdbTable  mdbTableScroll [scrollY]='true' maxHeight='200' [bordered]='true' class="tableContent">
+                        <thead>
+                        <tr>
+                            <th class="titleTable" *ngFor="let head of headElementsTopServices" scope="col">{{head}} </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr mdbTableCol *ngFor="let el of elementsTopServices">
+                            <th scope="row" class="elementsTable">{{el.loginName}}</th>
+                            <td class="elementsTable">{{el.serviceOrders}}</td>
+                            <td class="elementsTable">{{el.amount}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="cardDashboard col-6">
+                <div class="titleCard ">
+                    <h5 class="card-header">Annual Leave</h5>
+                </div>
+                <div class="bodyCard "style="margin-left:1em;">
+                    <table mdbTable  mdbTableScroll [scrollY]='true' maxHeight='200' [bordered]='true' class="tableContent">
+                        <thead>
+                        <tr>
+                            <th class="titleTable" *ngFor="let head of headElementsAnnualLeave" scope="col">{{head}} </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr mdbTableCol *ngFor="let el of elementsAnnualLeave">
+                            <th scope="row" class="elementsTable">{{el.firstName}}</th>
+                            <td class="elementsTable">{{el.lastName}}</td>
+                            <td class="elementsTable">{{el.position}}</td>
+                            <td class="elementsTable">{{el.fromData}}</td>
+                            <td class="elementsTable">{{el.toData}}</td>
+                            <td class="elementsTable">{{el.lengthDays}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="cardDashboard col-6">
+                <div class="titleCard ">
+                    <h5 class="card-header">View employees</h5>
+                </div>
+                <div class="bodyCard "style="margin-left:1em;">
+                    <table mdbTable  mdbTableScroll [scrollY]='true' maxHeight='200' [bordered]='true' class="tableContent">
+                        <thead>
+                        <tr>
+                            <th class="titleTable" *ngFor="let head of headElementsViewEmployees" scope="col">{{head}} </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr mdbTableCol *ngFor="let el of elementsViewEmployees">
+                            <th scope="row" class="elementsTable">{{el.firstName}}</th>
+                            <td class="elementsTable">{{el.lastName}}</td>
+                            <td class="elementsTable">{{el.position}}</td>
+                            <td class="elementsTable">{{el.phoneNumber}}</td>
+                            <td class="elementsTable">{{el.loginName}}</td>
+
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

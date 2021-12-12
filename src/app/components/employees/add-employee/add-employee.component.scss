@@ -1,0 +1,33 @@
+.addEmployeePage{
+  background-color: #B4CAE0;
+  height: 100vw;
+  position: absolute;
+  right: 0;
+
+  form{
+    margin:1em;
+
+    label{
+      font-weight: bold;
+    }
+
+    .personalData, .addressData, .paymentData, .otherData, .loginData{
+      margin-top:1em;
+      border-style:solid;
+      padding:1em;
+    }
+
+    .loginData, .paymentData{
+      margin:1em auto;
+    }
+
+    .titleData{
+      font-weight: bold;
+    }
+
+    button{
+      margin:1em auto;
+    }
+  }
+
+}

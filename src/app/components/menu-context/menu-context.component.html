@@ -2,20 +2,12 @@
   <div class="list-group">
 
     <ul class="list-group">
-      <li class="list-group-item"><a href="/home" class="list-group-item list-group-item-action active">Dashboard</a></li>
-      <li class="list-group-item"><a href="/reservation" class="list-group-item list-group-item-action">Reservations</a></li>
+      <li class="list-group-item"><a routerLink="/home" routerLinkActive="active-link" class="list-group-item list-group-item-action ">Dashboard</a></li>
+      <li class="list-group-item"><a routerLink="/reservation" routerLinkActive="active-link" class="list-group-item list-group-item-action">Reservations</a></li>
+      <li class="list-group-item"><a routerLink="/employees" routerLinkActive="active-link" class="list-group-item list-group-item-action">Employees</a></li>
         <ul>
-          <li class="list-group-item" ><a href="/addReservation" class="list-group-item list-group-item-action">Add reservation</a></li>
-          <li class="list-group-item" ><a href="/modifyReservation" class="list-group-item list-group-item-action">Modify reservation</a></li>
-          <li class="list-group-item" ><a href="/viewReservation" class="list-group-item list-group-item-action">View reservations</a></li>
-          <li class="list-group-item" ><a href="/deleteReservation" class="list-group-item list-group-item-action">Delete reservation</a></li>
-        </ul>
-      <li class="list-group-item"><a href="/employees" class="list-group-item list-group-item-action">Employees</a></li>
-        <ul>
-          <li class="list-group-item"><a href="/addEmployees" class="list-group-item list-group-item-action">Add employee</a></li>
-          <li class="list-group-item"><a href="/modifyEmployees" class="list-group-item list-group-item-action">Modify employee</a></li>
-          <li class="list-group-item"><a href="/viewEmployees" class="list-group-item list-group-item-action">View employees</a></li>
-          <li class="list-group-item"><a href="/deleteEmployees" class="list-group-item list-group-item-action">Delete employee</a></li>
+          <li class="list-group-item"><a routerLink="/addEmployee" routerLinkActive="active-link" class="list-group-item list-group-item-action">Add employee</a></li>
+          <li class="list-group-item"><a routerLink="/modifyEmployee" routerLinkActive="active-link" class="list-group-item list-group-item-action">Modify employee</a></li>
         </ul>
     </ul>
 

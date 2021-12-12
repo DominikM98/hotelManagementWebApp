@@ -1,13 +1,9 @@
-.homePage{
+.employeePage{
   background-color: #B4CAE0;
   height: 100vw;
- // width: 80%;
+  // width: 80%;
   position: absolute;
   right: 0;
-
-  .welcomeEmployee{
-    margin: 1em;
-  }
 
   .information{
     margin:1em;
@@ -21,14 +17,14 @@
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-   }
+  }
 
   .masonry div {
-   // height: 150px;
+    // height: 150px;
     //line-height: 150px;
     background: #EB8F36 ;
-     color: black;
-     margin: 0 1rem 1rem 0;
+    color: black;
+    margin: 0 1rem 1rem 0;
     //text-align: center;
     //font-weight: 900;
     //font-size: 2rem;
@@ -36,7 +32,7 @@
     -webkit-flex: 1 0 auto;
     -ms-flex: 1 0 auto;
     flex: 1 0 auto;
-    }
+  }
 
   .cardDashboard{
     width: auto;
@@ -55,5 +51,11 @@
     border-color: black;
   }
 
+  thead{
+    background-color:grey;
+  }
 
+  .elementsTable{
+    background-color: lightgrey;
+  }
 }

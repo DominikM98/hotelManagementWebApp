@@ -9,7 +9,13 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MenuContextComponent } from './components/menu-context/menu-context.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ChartsModule, ChartSimpleModule, WavesModule } from 'ng-uikit-pro-standard'
+import { ChartsModule, ChartSimpleModule, WavesModule } from 'ng-uikit-pro-standard';
+import {TableModule } from 'ng-uikit-pro-standard';
+import { EmployeesComponent } from './components/employees/employees.component';
+import { AddEmployeeComponent } from './components/employees/add-employee/add-employee.component';
+import { ModifyEmployeeComponent } from './components/employees/modify-employee/modify-employee.component';
+import {SchedulerModule} from "./components/reservation/scheduler/scheduler.module";
+
 
 
 @NgModule({
@@ -18,15 +24,19 @@ import { ChartsModule, ChartSimpleModule, WavesModule } from 'ng-uikit-pro-stand
     ReservationComponent,
     HomeComponent,
     NavbarComponent,
-    MenuContextComponent
+    MenuContextComponent,
+    EmployeesComponent,
+    AddEmployeeComponent,
+    ModifyEmployeeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-      FormsModule,
+    FormsModule,
     ChartsModule, ChartSimpleModule, WavesModule,
-
+    TableModule,
+    SchedulerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

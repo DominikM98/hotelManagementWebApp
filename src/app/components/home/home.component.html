@@ -31,7 +31,44 @@
           <h5 class="card-header">Check-in</h5>
         </div>
         <div class="bodyCard "style="margin-left:1em;">
-          <p class="text">Check-in.Check-in.Check-in.Check-in.Check-in.Check-in.Check-in.</p>
+
+          <div class="individualPeople">
+            <h6>Individuals</h6>
+            <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='200' [bordered]='true' class="tableContent">
+              <thead>
+              <tr>
+                <th class="titleTable" *ngFor="let head of headElementsCheckIn; let i = index" scope="col">{{head}}</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let el of elementsCheckIn; let i = index">
+                <th scope="row">{{el.firstName}}</th>
+                <td>{{el.lastName}}</td>
+                <td>{{el.roomNumber}}</td>
+                <td>{{el.numberOfPeople}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="groupPeople">
+            <h6 class="nameGroup">Groups</h6>
+            <table mdbTable maxHeight='200' [bordered]='true' class="tableContent">
+              <thead>
+              <tr>
+                <th class="titleTable" *ngFor="let headGroup of headElementsCheckInGroup" scope="col">{{headGroup}} </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr mdbTableCol *ngFor="let elGroup of elementsCheckInGroup">
+                <th scope="row">{{elGroup.name}}</th>
+                <td>{{elGroup.numberOfRoom}}</td>
+                <td>{{elGroup.numberOfPeople}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
         </div>
       </div>
 
@@ -40,25 +77,44 @@
           <h5 class="card-header">Check-out</h5>
         </div>
         <div class="bodyCard "style="margin-left:1em;">
-          <p class="text">Check-in.Check-in.Check-in.Check-in.Check-in.Check-in.Check-in.</p>
-        </div>
-      </div>
 
-      <div class="cardDashboard col-6">
-        <div class="titleCard">
-          <h5 class="card-header">Guests</h5>
-        </div>
-        <div class="bodyCard" style="margin-left:1em;">
-          <p class="text">Reservation.Reservation.Reservation.Reservation.Reservation</p>
-        </div>
-      </div>
+          <div class="individualPeople">
+            <h6>Individuals</h6>
+            <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='200' [bordered]='true' class="tableContent">
+              <thead>
+              <tr>
+                <th class="titleTable" *ngFor="let head of headElementsCheckOut; let i = index" scope="col">{{head}}</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let el of elementsCheckOut; let i = index">
+                <th scope="row">{{el.firstName}}</th>
+                <td>{{el.lastName}}</td>
+                <td>{{el.roomNumber}}</td>
+                <td>{{el.numberOfPeople}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
 
-      <div class="cardDashboard col-6">
-        <div class="titleCard ">
-          <h5 class="card-header">Rooms</h5>
-        </div>
-        <div class="bodyCard "style="margin-left:1em;">
-          <p class="text">Check-in.Check-in.Check-in.Check-in.Check-in.Check-in.Check-in.</p>
+          <div class="groupPeople">
+            <h6 class="nameGroup">Groups</h6>
+            <table mdbTable maxHeight='200' [bordered]='true' class="tableContent">
+              <thead>
+              <tr>
+                <th class="titleTable" *ngFor="let headGroup of headElementsCheckOutGroup" scope="col">{{headGroup}} </th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr mdbTableCol *ngFor="let elGroup of elementsCheckOutGroup">
+                <th scope="row">{{elGroup.name}}</th>
+                <td>{{elGroup.numberOfRoom}}</td>
+                <td>{{elGroup.numberOfPeople}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+
         </div>
       </div>
 
