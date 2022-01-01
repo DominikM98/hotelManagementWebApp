@@ -18,11 +18,11 @@ export class SchedulerComponent implements AfterViewInit {
     timeHeaders: [{"groupBy":"Month"},{"groupBy":"Day","format":"d"}],
     scale: "Day",
     days: DayPilot.Date.today().daysInYear(),
-    startDate: DayPilot.Date.today().firstDayOfYear(),
+    startDate:DayPilot.Date.today().firstDayOfYear(),
     timeRangeSelectedHandling: "Enabled",
     onTimeRangeSelected: async (args) => {
       const dp = args.control;
-      const modal = await DayPilot.Modal.prompt("Create a new event:", "Event 1");
+      const modal = await DayPilot.Modal.prompt("Fill first and last name:", "");
       dp.clearSelection();
       if (modal.canceled) { return; }
       dp.events.add({

@@ -9,7 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MenuContextComponent } from './components/menu-context/menu-context.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ChartsModule, ChartSimpleModule, WavesModule } from 'ng-uikit-pro-standard';
+import {ChartsModule, ChartSimpleModule, WavesModule, ButtonsModule, IconsModule} from 'ng-uikit-pro-standard';
 import {TableModule } from 'ng-uikit-pro-standard';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { AddEmployeeComponent } from './components/employees/add-employee/add-employee.component';
@@ -34,9 +34,9 @@ import {SchedulerModule} from "./components/reservation/scheduler/scheduler.modu
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    ChartsModule, ChartSimpleModule, WavesModule,
+    ChartsModule, ChartSimpleModule, WavesModule, ButtonsModule,
     TableModule,
-    SchedulerModule
+    SchedulerModule, IconsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -7,40 +7,27 @@ import {Observable} from 'rxjs';
 export class DataService {
 
   resources: any[] = [
-    { name: 'Group A', id: 'GA', expanded: true, children: [
-      { name: 'Resource 1', id: 'R1' },
-      { name: 'Resource 2', id: 'R2' }
+    { name: 'I floor', id: 'firstFloor', expanded: true, children: [
+      { name: '101', id: 'R101' },
+      { name: '102', id: 'R102' },
+      { name: '103', id: 'R103' },
+      { name: '104', id: 'R104' }
     ]},
-    { name: 'Group B', id: 'GB', expanded: true, children: [
-      { name: 'Resource 3', id: 'R3', unavailable: true},
-      { name: 'Resource 4', id: 'R4'}
+    { name: 'II floor', id: 'secondFloor', expanded: true, children: [
+      { name: '201', id: 'R201', unavailable: true},
+      { name: '202', id: 'R202'},
+      { name: '203', id: 'R203'}
     ]}
   ];
 
   events: any[] = [
     {
       id: '1',
-      resource: 'R1',
-      start: '2018-05-03',
-      end: '2018-05-08',
-      text: 'Scheduler Event 1',
+      resource: 'R101',
+      start: '2021-12-30',
+      end: '2022-01-05',
+      text: 'Jonathan Avenger',
       color: '#e69138'
-    },
-    {
-      id: '2',
-      resource: 'R2',
-      start: '2018-05-02',
-      end: '2018-05-05',
-      text: 'Scheduler Event 2',
-      color: '#6aa84f'
-    },
-    {
-      id: '3',
-      resource: 'R2',
-      start: '2018-05-06',
-      end: '2018-05-09',
-      text: 'Scheduler Event 3',
-      color: '#3c78d8'
     }
   ];
 

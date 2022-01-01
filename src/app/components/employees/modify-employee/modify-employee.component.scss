@@ -1,8 +1,30 @@
 .modifyEmployeePage{
-  background-color: #B4CAE0;
+  background-color: #c8c6c5;
   height: 100vw;
   // width: 80%;
   position: absolute;
   right: 0;
 
+  card{
+    margin: 1em;
+  }
+
+  .table-remove{
+    border:none;
+    color:red;
+    font-weight: bold;
+  }
+
+  @media all and (min-width: 768px) {
+    tr  {
+      td {
+        vertical-align: middle !important;
+      }
+      span {
+        &:not([class]) {
+          padding: 1rem 1rem;
+        }
+      }
+    }
+  }
 }
