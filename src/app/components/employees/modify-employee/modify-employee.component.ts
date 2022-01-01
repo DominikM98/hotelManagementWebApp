@@ -16,7 +16,7 @@ export class ModifyEmployeeComponent {
   ];
 
   awaitingPersonList: Array<any> = [
-    
+
   ];
 
   updateList(id: number, property: string, event: any) {

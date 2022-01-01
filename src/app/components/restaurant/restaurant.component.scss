@@ -1,0 +1,32 @@
+.restaurantPage{
+  background-color: #c8c6c5;
+  height: 100vw;
+  position: absolute;
+  right: 0;
+
+  .restaurantRoom{
+    margin:1em;
+    //border-style:solid;
+    //border-width: thin;
+    height: 90vh;
+
+    .restaurantSection{
+      border-style: dashed;
+      border-width:thin;
+      border-top: none;
+      border-bottom: none;
+      background-color: white;
+      height:100%;
+
+      .table{
+        border-radius: 50%;
+        width: 50%;
+        height: 25%;
+        border-style: solid;
+      }
+    }
+
+
+  }
+
+}

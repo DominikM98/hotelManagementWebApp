@@ -15,6 +15,10 @@ import { EmployeesComponent } from './components/employees/employees.component';
 import { AddEmployeeComponent } from './components/employees/add-employee/add-employee.component';
 import { ModifyEmployeeComponent } from './components/employees/modify-employee/modify-employee.component';
 import {SchedulerModule} from "./components/reservation/scheduler/scheduler.module";
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
+import { RoomCleaningComponent } from './components/room-cleaning/room-cleaning.component';
+import { RoomsComponent } from './components/rooms/rooms.component';
+import { ModifyRoomsComponent } from './components/rooms/modify-rooms/modify-rooms.component';
 
 
 
@@ -27,7 +31,11 @@ import {SchedulerModule} from "./components/reservation/scheduler/scheduler.modu
     MenuContextComponent,
     EmployeesComponent,
     AddEmployeeComponent,
-    ModifyEmployeeComponent
+    ModifyEmployeeComponent,
+    RestaurantComponent,
+    RoomCleaningComponent,
+    RoomsComponent,
+    ModifyRoomsComponent
   ],
   imports: [
     BrowserModule,
