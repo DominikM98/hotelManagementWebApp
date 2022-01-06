@@ -1,0 +1,21 @@
+<div class="orderPage col-10">
+    <div class="orderPanel">
+        <div class="row">
+            <div class="menu col-2">
+                <button class="btn-primary btn-lg appetizer" (click)="showMenuAppetizer()">Appetizer</button>
+                <button class="btn-primary btn-lg" (click)="showMenuSoup()">Soup</button>
+                <button class="btn-primary btn-lg">Main dishes</button>
+                <button class="btn-primary btn-lg">Dessert</button>
+                <button class="btn-primary btn-lg">Other</button>
+                <button class="btn-primary btn-lg">Drinks</button>
+                <button class="btn-primary btn-lg">Alcohol</button>
+            </div>
+            <div class="dishes col-7">
+                <div class="moreAppetizer" [hidden]="isShow == false">{{isShow}}</div>
+                <div class="moreSoup" [hidden]="isShow == false">soup</div>
+            </div>
+            <div class="payment col-3"></div>
+        </div>
+
+    </div>
+</div>

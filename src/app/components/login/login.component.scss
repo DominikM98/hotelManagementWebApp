@@ -1,0 +1,30 @@
+.loginPage{
+  background-color: #292e33;
+  height: 100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  .loginPanel{
+    border-style:solid;
+    width: 25%;
+    height: 35%;
+
+    form{
+      margin-top:5em;
+    }
+
+    label{
+      color:white;
+    }
+
+    .form-group{
+      margin-top: 0.5em;
+    }
+
+    button{
+      margin-top: 1em;
+      width: 100%;
+    }
+  }
+}

@@ -9,6 +9,7 @@ import {RestaurantComponent} from "./components/restaurant/restaurant.component"
 import {RoomCleaningComponent} from "./components/room-cleaning/room-cleaning.component";
 import {RoomsComponent} from "./components/rooms/rooms.component";
 import {ModifyRoomsComponent} from "./components/rooms/modify-rooms/modify-rooms.component";
+import {OrderComponent} from "./components/restaurant/order/order.component";
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'restaurant',
     component: RestaurantComponent
+  },
+  {
+    path: 'order',
+    component: OrderComponent
   },
   {
     path: 'roomCleaning',
@@ -47,6 +52,7 @@ const routes: Routes = [
     path: 'modifyEmployee',
     component: ModifyEmployeeComponent
   },
+
 ];
 
 @NgModule({
