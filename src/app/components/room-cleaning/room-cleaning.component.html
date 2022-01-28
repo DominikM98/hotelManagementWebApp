@@ -1,3 +1,26 @@
 <div class="roomCleaningPage col-10">
-
+    <div class="shedulerDiv">
+        <scheduler-component></scheduler-component>
+    </div>
+    <div class="checkRoom">
+            <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent">
+                <thead>
+                <tr>
+                    <th class="titleTable" *ngFor="let head of headElementsCheckIn; let i = index" scope="col">{{head}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let el of elementsCheckIn; let i = index">
+                    <th scope="row">{{el.noOfRoom}}</th>
+                    <td>{{el.date}}</td>
+                    <td><div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+                        <label class="form-check-label" for="flexCheckChecked">
+                            Cleaning
+                        </label>
+                    </div></td>
+                </tr>
+                </tbody>
+            </table>
+    </div>
 </div>

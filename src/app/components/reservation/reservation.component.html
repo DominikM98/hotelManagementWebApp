@@ -1,6 +1,130 @@
 <div class="reservationPage col-10">
-    <div class="scheduler">
+   <!-- <div class="scheduler">
         <scheduler-component></scheduler-component>
-    </div>
+    </div>-->
+    <div class="masonry" >
+        <div class="cardDashboard col-6">
+            <div class="titleCard ">
+                <h5 class="card-header">Reservations</h5>
+            </div>
+            <div class="bodyCard "style="margin-left:1em;">
 
+                <div class="individualPeople">
+                    <h6>Individuals</h6>
+                    <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent">
+                        <thead>
+                        <tr>
+                            <th class="titleTable" *ngFor="let head of headElementsCheckIn; let i = index" scope="col">{{head}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let el of elementsCheckIn; let i = index">
+                            <th scope="row">{{el.firstName}}</th>
+                            <td>{{el.lastName}}</td>
+                            <td>{{el.checkIn}}</td>
+                            <td>{{el.checkOut}}</td>
+                            <td>{{el.breakfast}}</td>
+                            <td>{{el.parking}}</td>
+                            <td>{{el.carRegistration}}</td>
+                            <td>{{el.roomNumber}}</td>
+                            <td>{{el.bookingPrice}}</td>
+                            <td>
+                                <button type="submit" class="btn btn-secondary" (click)="delete(el)">Remove</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+<p>
+    
+</p>
+            </div>
+        </div>
+
+        <div class="cardDashboard col-6">
+            <div class="titleCard ">
+                <h5 class="card-header">New reservation</h5>
+            </div>
+            <div class="formReservation">
+                <form >
+                    <div class="row">
+                        <div class="form-group col-md-5" >
+                            <label for="inputFirstName">First Name</label>
+                            <input type="text" class="form-control" id="inputFirstName" placeholder="First name" required="true" [(ngModel)]="personFirstName" name="firstName">
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="inputLastName">Last Name</label>
+                            <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" required="true" [(ngModel)]="personLastName" name="lastName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <label for="inputCheckIn">Check-in</label>
+                            <input type="text" class="form-control" id="inputCheckIn" placeholder="Year-month-day" required="true" [(ngModel)]="checkInDate" name="checkIn">
+                            <small id="checkInHelpBlock" class="form-text text-muted">
+                                Template input: 2022-01-01
+                            </small>
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="inputCheckOut">Check-out</label>
+                            <input type="text" class="form-control" id="inputCheckOut" placeholder="Year-month-day" required="true" [(ngModel)]="checkOutDate" name="checkOut">
+                            <small id="checkOutHelpBlock" class="form-text text-muted">
+                                Template input: 2022-01-01
+                            </small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <input class="form-check-input" type="checkbox" value="false" id="checkParking" [(ngModel)]="checkParkingInput" name="checkPk">
+                            <label class="form-check-label" for="checkParking">
+                                Parking
+                            </label>
+                        </div>
+
+                        <div class="form-group col-md-5">
+                            <input class="form-check-input" type="checkbox" value="false" id="checkBreakfast" [(ngModel)]="checkBreakfastInput" name="checkBf">
+                            <label class="form-check-label" for="checkBreakfast">
+                                 Breakfast
+                            </label>
+                        </div>
+                    </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label for="inputCarRegistration">Car registration</label>
+                                <input type="text" class="form-control" id="inputCarRegistration" placeholder="Car registration" required="true" [(ngModel)]="carRegist" name="carRs">
+                                <small id="carRegistrationHelpBlock" class="form-text text-muted">
+                                    Template input: WA98451
+                                </small>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label for="inputNumberRoom">Number Room</label>
+                                <select id="inputNumberRoom" class="form-control" required="true" [(ngModel)]="roomNumberSelect" name="numberOfRoom">
+                                    <option selected>Choose...</option>
+                                    <option>101</option>
+                                    <option>102</option>
+                                    <option>103</option>
+                                    <option>104</option>
+                                    <option>201</option>
+                                    <option>202</option>
+                                    <option>203</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label for="inputBookingPrice">Booking price</label>
+                                <input type="text" class="form-control" id="inputBookingPrice" placeholder="Price" required="true" [(ngModel)]="priceBookingInput" name="priceBooking">
+                                <small id="bookingHelpBlock" class="form-text text-muted">
+                                    Template input: 120.00$
+                                </small>
+                            </div>
+
+                        </div>
+
+                    <button type="submit" class="btn btn-lg btn-primary" (click)="add()">Add new reservation</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

@@ -57,7 +57,6 @@ export class SchedulerComponent implements AfterViewInit {
     treeEnabled: true,
   };
 
-
   constructor(private ds: DataService) {
   }
 

@@ -13,7 +13,7 @@
     border-style: solid;
     height: 90vh;
 
-    button{
+    input{
       width: 100%;
       border-radius: 0.5em;
       margin-top: 0.5em;
@@ -23,10 +23,113 @@
   .dishes{
     border-style: solid;
     height: 90vh;
+
+    .row{
+      height: 18em;
+      width: 103%;
+    }
+
+    .col{
+      height: 100%;
+      width: 15em;
+    }
+
+    img{
+      width: 6em;
+      height: 6em;
+      border-radius: 50%;
+      margin-left: 30%;
+      margin-top: 15%;
+    }
+
+    .titleFood{
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .quantityDiv{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -0.5em;
+
+      .plusButton, .minusButton{
+        border-color: black;
+        width: 2em;
+        font-weight: bold;
+        box-shadow: none;
+      }
+      .minusButton{
+        border-radius: 20% 0 0 20%;
+      }
+
+      .plusButton{
+        border-radius: 0 20% 20% 0;
+      }
+
+      .quantityLabel{
+        border-style:solid;
+        border-left: none;
+        border-right: none;
+        width: 2em;
+        text-align: center;
+        background-color: white;
+      }
+    }
+
+    .priceFood{
+      font-weight: bold;
+      text-align: center;
+      margin-top: 0.5em;
+      font-size: large;
+    }
+
   }
 
   .payment{
     border-style: solid;
     height: 90vh;
+
+    .billOrder{
+      height: 50%;
+
+      .nameBill, .quantityBill {
+        border-right: 3px solid black;
+        border-bottom: 3px solid black;
+        font-weight: bold;
+      }
+
+      .valueBill{
+        border-bottom: 3px solid black;
+        font-weight: bold;
+      }
+
+      .titleFood, .quantityFood{
+        border-bottom: 2px dotted black;
+        border-right: 3px solid black;
+      }
+
+      .valueOrder{
+        border-bottom: 2px dotted black;
+      }
+    }
+
+    .amountOrder{
+      border-style: solid;
+      height: 50%;
+
+      .totalLabel{
+        font-weight: bold;
+        font-size: large;
+      }
+
+      .totalPrice{
+        position: fixed;
+        justify-content: right;
+        text-align: right;
+      }
+    }
   }
+
+
 }

@@ -10,8 +10,14 @@
     width: 25%;
     height: 35%;
 
+    span{
+      margin: 1em 9em 0;
+      color:white;
+      transform: scale(2);
+    }
+
     form{
-      margin-top:5em;
+      margin-top:2em;
     }
 
     label{

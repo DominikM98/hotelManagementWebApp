@@ -4,5 +4,16 @@
   position: absolute;
   right: 0;
 
+  .checkRoom{
+    margin:1em;
+
+    th,td{
+      border: solid 0.2em black;
+    }
+
+    .titleTable{
+      font-weight: bold;
+    }
+  }
 
 }

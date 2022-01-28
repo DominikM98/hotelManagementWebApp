@@ -6,8 +6,7 @@ import {Observable} from 'rxjs';
 @Injectable()
 export class DataService {
 
-  constructor(private http: HttpClient) {
-  }
+
   resources: any[] = [
     { name: 'I floor', id: 'firstFloor', expanded: true, children: [
       { name: '101', id: 'R101' },
@@ -65,7 +64,8 @@ export class DataService {
     }
   ];
 
-
+  constructor(private http: HttpClient) {
+  }
 
   getEvents(from: DayPilot.Date, to: DayPilot.Date): Observable<any[]> {
 
