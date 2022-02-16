@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ReservationService} from "./reservation.service";
 
-
-
 @Component({
   selector: 'reservation',
   templateUrl: './reservation.component.html',

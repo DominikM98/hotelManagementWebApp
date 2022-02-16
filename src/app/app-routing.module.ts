@@ -10,6 +10,7 @@ import {RoomCleaningComponent} from "./components/room-cleaning/room-cleaning.co
 import {RoomsComponent} from "./components/rooms/rooms.component";
 import {ModifyRoomsComponent} from "./components/rooms/modify-rooms/modify-rooms.component";
 import {OrderComponent} from "./components/restaurant/order/order.component";
+import {AddMenuItemComponent} from "./components/restaurant/add-menu-item/add-menu-item.component";
 
 const routes: Routes = [
   {
@@ -51,6 +52,10 @@ const routes: Routes = [
   {
     path: 'modifyEmployee',
     component: ModifyEmployeeComponent
+  },
+  {
+    path: 'addMenuItem',
+    component: AddMenuItemComponent
   },
 
 ];

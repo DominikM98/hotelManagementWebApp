@@ -1,15 +1,11 @@
-.homePage{
+.addMenuPage {
   background-color: #c8c6c5;
   height: 100vw;
   position: absolute;
   right: 0;
 
-  .welcomeEmployee{
+  .viewMenu{
     margin: 1em;
-  }
-
-  .information{
-    margin:1em;
   }
 
   .masonry {
@@ -20,22 +16,17 @@
     -webkit-flex-wrap: wrap;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-   }
+  }
 
   .masonry div {
-   // height: 150px;
-    //line-height: 150px;
     background: white ;
-     color: black;
-     margin: 0 1rem 1rem 0;
-    //text-align: center;
-    //font-weight: 900;
-    //font-size: 2rem;
+    color: black;
+    margin: 0 1rem 1rem 0;
     -webkit-box-flex: 1;
     -webkit-flex: 1 0 auto;
     -ms-flex: 1 0 auto;
     flex: 1 0 auto;
-    }
+  }
 
   .cardDashboard{
     width: auto;
@@ -52,6 +43,26 @@
 
   .tableContent{
     border-color: black;
+  }
+
+  .addNewItem{
+    margin: 1em;
+    background-color: white;
+
+    .formItemMenu {
+      margin: 1em ;
+      width: auto;
+
+      label {
+        font-weight: bold;
+      }
+
+      button {
+       margin: 1em 0 1em 0;
+        width: 100%;
+      }
+
+    }
   }
 
 
