@@ -7,13 +7,51 @@
   .checkRoom{
     margin:1em;
 
+
     th,td{
       border: solid 0.2em black;
     }
 
-    .titleTable{
-      font-weight: bold;
+    .cardDashboard{
+      width: auto;
+      height: auto;
+
     }
   }
+
+  .masonry {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+
+  .masonry div {
+    background: white ;
+    color: black;
+    margin: 1em 1rem 1rem 1em;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+  }
+
+
+  .titleCard{
+    width: 98%;
+  }
+
+  .titleTable{
+    font-weight: bold;
+  }
+
+  .tableContent{
+    border-color: black;
+  }
+
+
 
 }

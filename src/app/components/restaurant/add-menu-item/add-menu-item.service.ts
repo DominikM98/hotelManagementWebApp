@@ -1,13 +1,11 @@
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
-import {map} from 'rxjs/operators';
-
 @Injectable()
 export class ItemMenuService {
     itemMenuUrl = 'http://localhost:3000/restauration/showItems';
     createItemMenuUrl = 'http://localhost:3000/restauration/createItemMenu';
-    deleteItemMenuUrl = 'http://localhost:3000/restauration/deleteItemMenu';
+    deleteItemMenuUrl = 'http://localhost:3000/restauration/deleteItemMenu?id=';
 
     constructor(private http: HttpClient) {
 
@@ -18,12 +16,12 @@ export class ItemMenuService {
     }
 
 
-    addItemMenu(reser: any): Observable<any> {
-        return this.http.post(this.createItemMenuUrl, reser);
+    addItemMenu(newData: any): Observable<any> {
+        return this.http.post(this.createItemMenuUrl, newData);
     }
 
-    deleteItemMenu(): Observable<any>{
-        return this.http.delete(this.deleteItemMenuUrl);
+    deleteItemMenu(id: any): Observable<any>{
+        return this.http.delete(this.deleteItemMenuUrl+id);
     }
 
 }

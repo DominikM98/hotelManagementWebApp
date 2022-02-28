@@ -2,7 +2,7 @@
     <div class="orderPanel">
         <div class="row">
             <div class="menu col-2">
-                <input type="button" class="btn-primary btn-lg" (click)="showMenuAppetizer()"value="Appetizer">
+                <input type="button" class="btn-primary btn-lg" (click)="showMenuAppetizer()" value="Appetizer">
                 <input type="button" class="btn-primary btn-lg soup" (click)="showMenuSoup()" id="soup" value="Soup">
                 <input type="button" class="btn-primary btn-lg mainDishes" (click)="showMenuMainDishes()" id="mainDishes" value="Main dishes">
                 <input type="button" class="btn-primary btn-lg dessert" (click)="showMenuDessert()" id="dessert" value="Dessert">
@@ -10,337 +10,158 @@
                 <input type="button" class="btn-primary btn-lg drinks" (click)="showMenuDrinks()" id="drinks" value="Drinks">
                 <input type="button" class="btn-primary btn-lg alcohol" (click)="showMenuAlcohol()" id="alcohol" value="Alcohol">
             </div>
+
             <div class="dishes col-7">
-                <div class="moreAppetizer" [hidden]="isAppetizer == false">
+
+                <div class="allMenu" [hidden]="(isAr || isSp || isMD || isDt || isOr || isDs || isAl) == true ">
                     <div class="row">
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
+                        <div *ngFor="let el of ItemMenu">
+                            <div class="col">
+                                <p class="titleFood">{{el.product_name}}</p>
+
+                                <div class="quantityDiv">
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)" />
+                                    <label type="text" class="quantityLabel">{{el.quantity}}</label>
+                                    <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)"/>
+                                </div>
+                                <p class="priceFood">{{el.price}}</p>
                             </div>
-                            <p class="priceFood">{{priceFood}}</p>
                         </div>
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
-                            </div>
-                            <p class="priceFood">{{priceFood}}</p>
-                        </div>
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
-                            </div>
-                            <p class="priceFood">{{priceFood}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col"></div>
-                        <div class="col"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col"></div>
-                        <div class="col"></div>
                     </div>
                 </div>
-                <div class="moreSoup" [hidden]="isSoup == false">
+
+                <div class="moreAppetizer" [hidden]="isAr == false">
                     <div class="row">
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
+                        <div *ngFor="let el of ItemMenu">
+                            <div class="col" *ngIf="el.type_of_product === 'Appetizer'" >
+                                <p class="titleFood" *ngIf="el.type_of_product === 'Appetizer'">{{el.product_name}}</p>
+                                <div class="quantityDiv" *ngIf="el.type_of_product === 'Appetizer'">
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)"/>
+                                    <label type="text" class="quantityLabel">{{quantityValue}}</label>
+                                    <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)"/>
+                                </div>
+                                <p class="priceFood" *ngIf="el.type_of_product === 'Appetizer'">{{el.price}}</p>
                             </div>
-                            <p class="priceFood">{{priceFood}}</p>
                         </div>
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
-                            </div>
-                            <p class="priceFood">{{priceFood}}</p>
-                        </div>
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
-                            </div>
-                            <p class="priceFood">{{priceFood}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col"></div>
-                        <div class="col"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col"></div>
-                        <div class="col"></div>
                     </div>
                 </div>
-                <div class="moreMainDishes" [hidden]="isMainDishes == false">
+
+                <div class="moreSoup" [hidden]="isSp == false">
                     <div class="row">
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
+                        <div *ngFor="let el of ItemMenu">
+                            <div class="col" *ngIf="el.type_of_product === 'Soup'" >
+                                <p class="titleFood" *ngIf="el.type_of_product === 'Soup'">{{el.product_name}}</p>
+                                <div class="quantityDiv" *ngIf="el.type_of_product === 'Soup'">
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)"/>
+                                    <label type="text" class="quantityLabel">{{quantityValue}}</label>
+                                    <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)"/>
+                                </div>
+                                <p class="priceFood" *ngIf="el.type_of_product === 'Soup'">{{el.price}}</p>
                             </div>
-                            <p class="priceFood">{{priceFood}}</p>
                         </div>
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
-                            </div>
-                            <p class="priceFood">{{priceFood}}</p>
-                        </div>
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
-                            </div>
-                            <p class="priceFood">{{priceFood}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col"></div>
-                        <div class="col"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col"></div>
-                        <div class="col"></div>
                     </div>
                 </div>
-                <div class="moreDessert" [hidden]="isDessert == false">
+
+                <div class="moreMainDishes" [hidden]="isMD == false">
                     <div class="row">
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
+                        <div *ngFor="let el of ItemMenu">
+                            <div class="col" *ngIf="el.type_of_product === 'Main Dishes'" >
+                                <p class="titleFood" *ngIf="el.type_of_product === 'Main Dishes'">{{el.product_name}}</p>
+                                <div class="quantityDiv" *ngIf="el.type_of_product === 'Main Dishes'">
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)"/>
+                                    <label type="text" class="quantityLabel">{{el.quantity}}</label>
+                                    <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)"/>
+                                </div>
+                                <p class="priceFood" *ngIf="el.type_of_product === 'Main Dishes'">{{el.price}}</p>
                             </div>
-                            <p class="priceFood">{{priceFood}}</p>
                         </div>
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
-                            </div>
-                            <p class="priceFood">{{priceFood}}</p>
-                        </div>
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
-                            </div>
-                            <p class="priceFood">{{priceFood}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col"></div>
-                        <div class="col"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col"></div>
-                        <div class="col"></div>
                     </div>
                 </div>
-                <div class="moreOther" [hidden]="isOther == false">
+
+                <div class="moreDessert" [hidden]="isDt == false">
                     <div class="row">
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
+                        <div *ngFor="let el of ItemMenu">
+                            <div class="col" *ngIf="el.type_of_product === 'Dessert'">
+                                <p class="titleFood" *ngIf="el.type_of_product === 'Dessert'">{{el.product_name}}</p>
+                                <div class="quantityDiv" *ngIf="el.type_of_product === 'Dessert'">
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)"/>
+                                    <label type="text" class="quantityLabel">{{el.quantity}}</label>
+                                    <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)"/>
+                                </div>
+                                <p class="priceFood" *ngIf="el.type_of_product === 'Dessert'">{{el.price}}</p>
                             </div>
-                            <p class="priceFood">{{priceFood}}</p>
                         </div>
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
-                            </div>
-                            <p class="priceFood">{{priceFood}}</p>
-                        </div>
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
-                            </div>
-                            <p class="priceFood">{{priceFood}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col"></div>
-                        <div class="col"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col"></div>
-                        <div class="col"></div>
                     </div>
                 </div>
-                <div class="moreDrinks" [hidden]="isDrinks == false">
+
+                <div class="moreOther" [hidden]="isOr == false">
                     <div class="row">
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
+                        <div *ngFor="let el of ItemMenu">
+                            <div class="col" *ngIf="el.type_of_product === 'Other'">
+                                <p class="titleFood" *ngIf="el.type_of_product === 'Other'">{{el.product_name}}</p>
+                                <div class="quantityDiv" *ngIf="el.type_of_product === 'Other'">
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)"/>
+                                    <label type="text" class="quantityLabel">{{el.quantity}}</label>
+                                    <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)"/>
+                                </div>
+                                <p class="priceFood" *ngIf="el.type_of_product === 'Other'">{{el.price}}</p>
                             </div>
-                            <p class="priceFood">{{priceFood}}</p>
                         </div>
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
-                            </div>
-                            <p class="priceFood">{{priceFood}}</p>
-                        </div>
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
-                            </div>
-                            <p class="priceFood">{{priceFood}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col"></div>
-                        <div class="col"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col"></div>
-                        <div class="col"></div>
                     </div>
                 </div>
-                <div class="moreAlcohol" [hidden]="isAlcohol == false">
+
+                <div class="moreDrinks" [hidden]="isDs == false">
                     <div class="row">
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
+                        <div *ngFor="let el of ItemMenu">
+                            <div class="col" *ngIf="el.type_of_product === 'Drink'" >
+                                <p class="titleFood" *ngIf="el.type_of_product === 'Drink'">{{el.product_name}}</p>
+                                <div class="quantityDiv" *ngIf="el.type_of_product === 'Drink'">
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)"/>
+                                    <label type="text" class="quantityLabel">{{el.quantity}}</label>
+                                    <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)"/>
+                                </div>
+                                <p class="priceFood" *ngIf="el.type_of_product === 'Drink'">{{el.price}}</p>
                             </div>
-                            <p class="priceFood">{{priceFood}}</p>
-                        </div>
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
-                            </div>
-                            <p class="priceFood">{{priceFood}}</p>
-                        </div>
-                        <div class="col">
-                            <img src="assets/image/food.jpg" alt="food"/>
-                            <p class="titleFood">{{titleFood}}</p>
-                            <div class="quantityDiv">
-                                <input type="button" class="minusButton btn-dark" value="-" (click)="lessQunatity()"/>
-                                <label type="text" class="quantityLabel">{{quantityValue}}</label>
-                                <input type="button" class="plusButton btn-dark" value="+" (click)="moreQunatity()"/>
-                            </div>
-                            <p class="priceFood">{{priceFood}}</p>
                         </div>
                     </div>
+                </div>
+
+                <div class="moreAlcohol" [hidden]="isAl == false">
                     <div class="row">
-                        <div class="col"></div>
-                        <div class="col"></div>
-                        <div class="col"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col"></div>
-                        <div class="col"></div>
-                        <div class="col"></div>
+                        <div *ngFor="let el of ItemMenu">
+                            <div class="col" *ngIf="el.type_of_product === 'Alcohol'">
+                                <p class="titleFood" *ngIf="el.type_of_product === 'Alcohol'">{{el.product_name}}</p>
+                                <div class="quantityDiv" *ngIf="el.type_of_product === 'Alcohol'">
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)"/>
+                                    <label type="text" class="quantityLabel">{{el.quantity}}</label>
+                                    <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)"/>
+                                </div>
+                                <p class="priceFood" *ngIf="el.type_of_product === 'Alcohol'">{{el.price}}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
             <div class="payment col-3">
-                <div class="billOrder">
+                <div class="billOrder" >
                     <div class="row">
                         <div class="col-7 nameBill">Name</div>
                         <div class="col-2 quantityBill">Qty.</div>
                         <div class="col-3 valueBill">Value</div>
                     </div>
-                    <div class="row">
-                        <div class="col-7 titleFood">{{titleFood}}</div>
-                        <div class="col-2 quantityFood">x {{quantityValue}}</div>
-                        <div class="col-3 valueOrder">{{valueBill}}</div>
+                    <div >
+                        <div class="row" *ngFor="let el of ItemMenu">
+                            <div class="col-7 titleFood">{{el.product_name}}</div>
+                            <div class="col-2 quantityFood">x {{el.quantity}}</div>
+                            <div class="col-3 valueOrder"></div>
+                        </div>
                     </div>
-                    <div class="row">
-                        <div class="col-7 titleFood">{{titleFood}}</div>
-                        <div class="col-2 quantityFood">{{quantityValue}}</div>
-                        <div class="col-3 valueOrder">{{valueBill}}</div>
-                    </div>
+
                 </div>
                 <div class="amountOrder">
                     <p class="totalLabel">Total:</p>
-                    <p class="totalPrice">{{this.totalPrice}}</p>
+                    <p class="totalPrice"></p>
                 </div>
             </div>
         </div>

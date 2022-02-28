@@ -2,30 +2,31 @@
     <div class="viewMenu">
         <div class="masonry">
             <!-- Appetizer -->
-            <div class="cardDashboard col-4">
+            <div class="cardDashboard col-5" >
                 <div class="titleCard">
                     <h5 class="card-header">Appetizer</h5>
                 </div>
-                <div class="bodyCard "style="margin-left:1em;">
+                <div class="bodyCard "style="margin-left:1em; width:45em;">
 
-                    <div class="AppetizerMenu" *ngFor="let el of ItemMenu" >
-                        <div *ngIf="el.type_of_product == 'Appetizer'">
-                         <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='200' [bordered]='true' class="tableContent">
+                    <div class="AppetizerMenu">
+                        <div>
+                         <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='220' [bordered]='true' class="tableContent">
                              <thead>
                                  <tr>
                                      <th class="titleTable" *ngFor="let head of headElementsGramItem" >{{head}}</th>
                                  </tr>
                              </thead>
                              <tbody >
-                                 <tr>
-                                     <td >{{el.product_name}}</td>
-                                     <td >{{el.ingredients}}</td>
-                                     <td>{{el.product_price}}</td>
-                                     <td>{{el.product_weight}}</td>
-                                     <td>
-                                         <button type="submit" class="btn btn-sm btn-secondary" >Remove</button><!-- (click)="delete(el)"-->
-                                    </td>
-                                </tr>
+                             <tr *ngFor="let el of ItemMenu">
+                                 <td *ngIf="el.type_of_product === 'Appetizer'">{{el.product_name}}</td>
+                                 <td *ngIf="el.type_of_product === 'Appetizer'">{{el.ingredients}}</td>
+                                 <td *ngIf="el.type_of_product === 'Appetizer'">{{el.product_price}}</td>
+                                 <td *ngIf="el.type_of_product === 'Appetizer'">{{el.product_weight}}</td>
+                                 <td *ngIf="el.type_of_product === 'Appetizer'">{{el.quantity}}</td>
+                                 <td *ngIf="el.type_of_product === 'Appetizer'">
+                                     <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id,el)">Remove</button>
+                                 </td>
+                             </tr>
                             </tbody>
                         </table>
                         </div>
@@ -40,22 +41,23 @@
                 </div>
                 <div class="bodyCard "style="margin-left:1em;">
 
-                    <div class="SoupMenu" *ngFor="let el of ItemMenu">
-                        <div *ngIf="el.type_of_product == 'Soup'">
-                        <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='200' [bordered]='true' class="tableContent">
+                    <div class="SoupMenu" >
+                        <div>
+                        <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='220' [bordered]='true' class="tableContent">
                                <thead>
                                    <tr>
                                        <th class="titleTable" *ngFor="let head of headElementsMlItem" >{{head}}</th>
                                    </tr>
                                </thead>
                                <tbody>
-                                   <tr>
-                                       <td>{{el.product_name}}</td>
-                                       <td>{{el.ingredients}}</td>
-                                       <td>{{el.product_price}}</td>
-                                       <td>{{el.product_weight}}</td>
-                                       <td>
-                                           <button type="submit" class="btn btn-sm btn-secondary" >Remove</button>
+                                   <tr *ngFor="let el of ItemMenu">
+                                       <td *ngIf="el.type_of_product === 'Soup'">{{el.product_name}}</td>
+                                       <td *ngIf="el.type_of_product === 'Soup'">{{el.ingredients}}</td>
+                                       <td *ngIf="el.type_of_product === 'Soup'">{{el.product_price}}</td>
+                                       <td *ngIf="el.type_of_product === 'Soup'">{{el.product_weight}}</td>
+                                       <td *ngIf="el.type_of_product === 'Soup'">{{el.quantity}}</td>
+                                       <td *ngIf="el.type_of_product === 'Soup'">
+                                           <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id,el)">Remove</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -72,24 +74,25 @@
                 </div>
                 <div class="bodyCard "style="margin-left:1em;">
 
-                    <div class="DishesMenu" *ngFor="let el of ItemMenu">
-                        <div *ngIf="el.type_of_product == 'Main Dishes'">
-                           <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='200' [bordered]='true' class="tableContent">
+                    <div class="DishesMenu">
+                        <div>
+                           <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='220' [bordered]='true' class="tableContent">
                                <thead>
                                    <tr>
                                        <th class="titleTable" *ngFor="let head of headElementsGramItem" >{{head}}</th>
                                    </tr>
                                </thead>
                                <tbody>
-                                   <tr >
-                                       <td>{{el.product_name}}</td>
-                                       <td >{{el.ingredients}}</td>
-                                       <td>{{el.product_price}}</td>
-                                       <td>{{el.product_weight}}</td>
-                                       <td>
-                                           <button type="submit" class="btn btn-sm btn-secondary" >Remove</button>
-                                    </td>
-                                </tr>
+                               <tr *ngFor="let el of ItemMenu">
+                                   <td *ngIf="el.type_of_product === 'Main Dishes'">{{el.product_name}}</td>
+                                   <td *ngIf="el.type_of_product === 'Main Dishes'">{{el.ingredients}}</td>
+                                   <td *ngIf="el.type_of_product === 'Main Dishes'">{{el.product_price}}</td>
+                                   <td *ngIf="el.type_of_product === 'Main Dishes'">{{el.product_weight}}</td>
+                                   <td *ngIf="el.type_of_product === 'Main Dishes'">{{el.quantity}}</td>
+                                   <td *ngIf="el.type_of_product === 'Main Dishes'">
+                                       <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id,el)">Remove</button>
+                                   </td>
+                               </tr>
                             </tbody>
                         </table>
                         </div>
@@ -104,22 +107,23 @@
                 </div>
                 <div class="bodyCard "style="margin-left:1em;">
 
-                    <div class="DessertMenu" *ngFor="let el of ItemMenu">
-                        <div *ngIf="el.type_of_product == 'Dessert'">
-                            <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='200' [bordered]='true' class="tableContent">
+                    <div class="DessertMenu">
+                        <div>
+                            <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='220' [bordered]='true' class="tableContent">
                                 <thead>
                                     <tr>
                                         <th class="titleTable" *ngFor="let head of headElementsGramItem">{{head}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>{{el.product_name}}</td>
-                                        <td >{{el.ingredients}}</td>
-                                        <td>{{el.product_price}}</td>
-                                        <td>{{el.product_weight}}</td>
-                                        <td>
-                                            <button type="submit" class="btn btn-sm btn-secondary" >Remove</button>
+                                <tr *ngFor="let el of ItemMenu">
+                                    <td *ngIf="el.type_of_product === 'Dessert'">{{el.product_name}}</td>
+                                    <td *ngIf="el.type_of_product === 'Dessert'">{{el.ingredients}}</td>
+                                    <td *ngIf="el.type_of_product === 'Dessert'">{{el.product_price}}</td>
+                                    <td *ngIf="el.type_of_product === 'Dessert'">{{el.product_weight}}</td>
+                                    <td *ngIf="el.type_of_product === 'Dessert'">{{el.quantity}}</td>
+                                    <td *ngIf="el.type_of_product === 'Dessert'">
+                                        <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id,el)">Remove</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -136,22 +140,23 @@
                 </div>
                 <div class="bodyCard "style="margin-left:1em;">
 
-                    <div class="OtherMenu" *ngFor="let el of ItemMenu">
-                        <div *ngIf="el.type_of_product == 'Other'">
-                            <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='200' [bordered]='true' class="tableContent">
+                    <div class="OtherMenu">
+                        <div>
+                            <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='220' [bordered]='true' class="tableContent">
                                 <thead>
                                     <tr>
                                         <th class="titleTable" *ngFor="let head of headElementsGramItem">{{head}}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>{{el.product_name}}</td>
-                                            <td >{{el.ingredients}}</td>
-                                            <td>{{el.product_price}}</td>
-                                            <td>{{el.product_weight}}</td>
-                                            <td>
-                                                <button type="submit" class="btn btn-sm btn-secondary" >Remove</button>
+                                    <tr *ngFor="let el of ItemMenu">
+                                        <td *ngIf="el.type_of_product === 'Other'">{{el.product_name}}</td>
+                                        <td *ngIf="el.type_of_product === 'Other'">{{el.ingredients}}</td>
+                                        <td *ngIf="el.type_of_product === 'Other'">{{el.product_price}}</td>
+                                        <td *ngIf="el.type_of_product === 'Other'">{{el.product_weight}}</td>
+                                        <td *ngIf="el.type_of_product === 'Other'">{{el.quantity}}</td>
+                                        <td *ngIf="el.type_of_product === 'Other'">
+                                            <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id,el)">Remove</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -168,24 +173,25 @@
                 </div>
                 <div class="bodyCard "style="margin-left:1em;">
 
-                    <div class="DrinksMenu" *ngFor="let el of ItemMenu">
-                        <div *ngIf="el.type_of_product == 'Drink'">
-                          <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='200' [bordered]='true' class="tableContent">
+                    <div class="DrinksMenu">
+                        <div>
+                          <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='220' [bordered]='true' class="tableContent">
                               <thead>
                                   <tr>
                                       <th class="titleTable" *ngFor="let head of headElementsMlItem">{{head}}</th>
                                   </tr>
                               </thead>
                               <tbody>
-                                  <tr>
-                                      <td>{{el.product_name}}</td>
-                                      <td>{{el.ingredients}}</td>
-                                      <td>{{el.product_price}}</td>
-                                      <td>{{el.product_weight}}</td>
-                                      <td>
-                                          <button type="submit" class="btn btn-sm btn-secondary" >Remove</button>
-                                    </td>
-                                </tr>
+                              <tr *ngFor="let el of ItemMenu">
+                                  <td *ngIf="el.type_of_product === 'Drink'">{{el.product_name}}</td>
+                                  <td *ngIf="el.type_of_product === 'Drink'">{{el.ingredients}}</td>
+                                  <td *ngIf="el.type_of_product === 'Drink'">{{el.product_price}}</td>
+                                  <td *ngIf="el.type_of_product === 'Drink'">{{el.product_weight}}</td>
+                                  <td *ngIf="el.type_of_product === 'Drink'">{{el.quantity}}</td>
+                                  <td *ngIf="el.type_of_product === 'Drink'">
+                                      <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id,el)">Remove</button>
+                                  </td>
+                              </tr>
                             </tbody>
                         </table>
                         </div>
@@ -200,24 +206,25 @@
                 </div>
                 <div class="bodyCard "style="margin-left:1em;">
 
-                    <div class="AlcoholMenu" *ngFor="let el of ItemMenu">
-                        <div *ngIf="el.type_of_product == 'Alcohol'">
-                           <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='200' [bordered]='true' class="tableContent">
+                    <div class="AlcoholMenu">
+                        <div>
+                           <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='220' [bordered]='true' class="tableContent">
                                 <thead>
                                     <tr>
                                         <th class="titleTable" *ngFor="let head of headElementsClItem">{{head}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>{{el.product_name}}</td>
-                                    <td >{{el.ingredients}}</td>
-                                    <td>{{el.product_price}}</td>
-                                    <td>{{el.product_weight}}</td>
-                                    <td>
-                                        <button type="submit" class="btn btn-sm btn-secondary" >Remove</button>
-                                </td>
-                            </tr>
+                                <tr *ngFor="let el of ItemMenu">
+                                    <td *ngIf="el.type_of_product === 'Alcohol'">{{el.product_name}}</td>
+                                    <td *ngIf="el.type_of_product === 'Alcohol'">{{el.ingredients}}</td>
+                                    <td *ngIf="el.type_of_product === 'Alcohol'">{{el.product_price}}</td>
+                                    <td *ngIf="el.type_of_product === 'Alcohol'">{{el.product_weight}}</td>
+                                    <td *ngIf="el.type_of_product === 'Alcohol'">{{el.quantity}}</td>
+                                    <td *ngIf="el.type_of_product === 'Alcohol'">
+                                        <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id,el)">Remove</button>
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                         </div>
@@ -234,7 +241,7 @@
                 <h5 class="card-header">New item menu</h5>
             </div>
             <div class="formItemMenu">
-                <form >
+                <form>
                     <div class="row">
                         <div class="form-group col-md-6" >
                             <label for="inputProductName">Product name</label>
@@ -249,18 +256,18 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-3">
                             <label for="inputPrice">Price</label>
-                            <input type="text" class="form-control" id="inputPrice" placeholder="Price" required="true" [(ngModel)]="itemPrice" name="price">
+                            <input type="number" class="form-control" id="inputPrice" placeholder="Price" required="true" [(ngModel)]="itemPrice" name="price">
                             <small id="priceHelpBlock" class="form-text text-muted">
                                 Template input: 8.00
                             </small>
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-3">
                             <label for="inputWeight">Weight</label>
                             <input type="text" class="form-control" id="inputWeight" placeholder="Weight" required="true" [(ngModel)]="itemWeight" name="weight">
                         </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-3">
                             <label for="inputType">Type of product</label>
                             <select id="inputType" class="form-control" required="true" [(ngModel)]="itemType" name="type">
                                 <option selected>Choose...</option>
@@ -272,6 +279,10 @@
                                 <option>Drink</option>
                                 <option>Alcohol</option>
                             </select>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputQuantity">Quantity product</label>
+                            <input type="number" class="form-control" id="inputQuantity" placeholder="Quantity product" required="true" [(ngModel)]="itemQuantity" name="quantity" min="0" max="50">
                         </div>
                     </div>
 

@@ -6,6 +6,11 @@
 
   .viewMenu{
     margin: 1em;
+
+    .cardDashboard{
+       width: 46em;
+       height: auto;
+     }
   }
 
   .masonry {
@@ -28,10 +33,7 @@
     flex: 1 0 auto;
   }
 
-  .cardDashboard{
-    width: auto;
-    height: auto;
-  }
+
 
   .titleCard{
     width: 100%;

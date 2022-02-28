@@ -1,3 +1,4 @@
+<script src="../../app.component.ts"></script>
 <div class="reservationPage col-10">
    <!-- <div class="scheduler">
         <scheduler-component></scheduler-component>
@@ -18,18 +19,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let el of elementsCheckIn; let i = index">
-                            <th scope="row">{{el.firstName}}</th>
-                            <td>{{el.lastName}}</td>
-                            <td>{{el.checkIn}}</td>
-                            <td>{{el.checkOut}}</td>
+                        <tr *ngFor="let el of Reservations; let i = index">
+                            <th scope="row">{{el.first_name}}</th>
+                            <td>{{el.last_name}}</td>
+                            <td>{{el.check_in}}</td>
+                            <td>{{el.check_out}}</td>
                             <td>{{el.breakfast}}</td>
                             <td>{{el.parking}}</td>
-                            <td>{{el.carRegistration}}</td>
-                            <td>{{el.roomNumber}}</td>
-                            <td>{{el.bookingPrice}}</td>
+                            <td>{{el.car_registration}}</td>
+                            <td>{{el.room_number}}</td>
+                            <td>{{el.booking_price}}</td>
                             <td>
-                                <button type="submit" class="btn btn-secondary" (click)="delete(el)">Remove</button>
+                                <button type="submit" class="btn btn-secondary" (click)="delete(el._id,el)">Remove</button>
                             </td>
                         </tr>
                         </tbody>

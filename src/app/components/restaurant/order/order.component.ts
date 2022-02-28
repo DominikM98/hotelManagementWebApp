@@ -1,156 +1,151 @@
 import { Component, OnInit } from '@angular/core';
+import {ItemMenuService} from "../add-menu-item/add-menu-item.service";
 
 @Component({
   selector: 'order',
   templateUrl: './order.component.html',
+  providers: [ItemMenuService],
   styleUrls: ['./order.component.scss']
 })
 
-
 export class OrderComponent implements OnInit {
-  constructor() {
 
-  }
+  ItemMenu:any[] = [];
 
-  ngOnInit(): void {
-  }
-
-  isAppetizer= false;
-  isSoup = false;
-  isMainDishes = false;
-  isDessert = false;
-  isOther = false;
-  isDrinks = false;
-  isAlcohol = false;
+  isAr = false;
+  isSp = false;
+  isMD = false;
+  isDt = false;
+  isOr = false;
+  isDs = false;
+  isAl = false;
 
   quantityValue=0;
+  //valueBill = 0;
   minQunatityValue=0;
   maxQunatityValue=100;
 
-  titleFood = 'Chargrilled Mackerel With Sweet And Sour Beetroot';
-  priceFood = '100.00';
-  valueBill = 0;
-  totalPrice = 0;
+  constructor(private itemMenuService: ItemMenuService) {
+  }
 
-  lessQunatity(){
-    if (this.quantityValue <= this.minQunatityValue){
-      this.quantityValue = 0;
-    }else{
-      this.quantityValue = this.quantityValue - 1;
-    }
+  ngOnInit(): void {
+    this.getItemMenu();
+  }
 
-    this.valueBill = this.quantityValue * parseFloat(this.priceFood);
+
+ getItemMenu(): void {
+     this.itemMenuService.getItemMenu()
+        .subscribe((itemMenu) => {
+          this.ItemMenu = itemMenu;
+          console.log(this.ItemMenu);
+        });
+
 
   }
 
-  moreQunatity(){
-    if (this.quantityValue >= this.maxQunatityValue){
-      this.quantityValue = 100;
-    }else{
-      this.quantityValue=this.quantityValue+1;
-    }
+  changeValue(variable: any, val: number) {
+    console.log(variable);
 
-    this.valueBill = this.quantityValue * parseFloat(this.priceFood);
-
+    variable.quantity += val;
   }
 
 
 
   showMenuAppetizer(){
-    if (this.isAppetizer === false){
-      this.isAppetizer = true;
-      this.isSoup = false;
-      this.isMainDishes = false;
-      this.isDessert = false;
-      this.isOther = false;
-      this.isDrinks = false;
-      this.isAlcohol = false;
+    if (this.isAr === false){
+      this.isAr = true;
+      this.isSp = false;
+      this.isMD = false;
+      this.isDt = false;
+      this.isOr = false;
+      this.isDs = false;
+      this.isAl = false;
     }else{
-      this.isAppetizer = false;
+      this.isAr = false;
     }
   }
 
   showMenuSoup(){
-    if (this.isSoup === false){
-      this.isAppetizer = false;
-      this.isSoup = true;
-      this.isMainDishes = false;
-      this.isDessert = false;
-      this.isOther = false;
-      this.isDrinks = false;
-      this.isAlcohol = false;
+    if (this.isSp === false){
+      this.isAr = false;
+      this.isSp = true;
+      this.isMD = false;
+      this.isDt = false;
+      this.isOr = false;
+      this.isDs = false;
+      this.isAl = false;
     }else{
-      this.isSoup = false;
+      this.isSp = false;
     }
   }
 
   showMenuMainDishes(){
-    if (this.isMainDishes === false){
-      this.isAppetizer = false;
-      this.isSoup = false;
-      this.isMainDishes = true;
-      this.isDessert = false;
-      this.isOther = false;
-      this.isDrinks = false;
-      this.isAlcohol = false;
+    if (this.isMD === false){
+      this.isAr = false;
+      this.isSp = false;
+      this.isMD = true;
+      this.isDt = false;
+      this.isOr = false;
+      this.isDs = false;
+      this.isAl = false;
     }else{
-      this.isMainDishes = false;
+      this.isMD = false;
     }
   }
 
   showMenuDessert(){
-    if (this.isDessert === false){
-      this.isAppetizer = false;
-      this.isSoup = false;
-      this.isMainDishes = false;
-      this.isDessert = true;
-      this.isOther = false;
-      this.isDrinks = false;
-      this.isAlcohol = false;
+    if (this.isDt === false){
+      this.isAr = false;
+      this.isSp = false;
+      this.isMD = false;
+      this.isDt = true;
+      this.isOr = false;
+      this.isDs = false;
+      this.isAl = false;
     }else{
-      this.isDessert = false;
+      this.isDt = false;
     }
   }
 
   showMenuOther(){
-    if (this.isOther === false){
-      this.isAppetizer = false;
-      this.isSoup = false;
-      this.isMainDishes = false;
-      this.isDessert = false;
-      this.isOther = true;
-      this.isDrinks = false;
-      this.isAlcohol = false;
+    if (this.isOr === false){
+      this.isAr = false;
+      this.isSp = false;
+      this.isMD = false;
+      this.isDt = false;
+      this.isOr = true;
+      this.isDs = false;
+      this.isAl = false;
     }else{
-      this.isOther = false;
+      this.isOr = false;
     }
   }
 
   showMenuDrinks(){
-    if (this.isDrinks === false){
-      this.isAppetizer = false;
-      this.isSoup = false;
-      this.isMainDishes = false;
-      this.isDessert = false;
-      this.isOther = false;
-      this.isDrinks = true;
-      this.isAlcohol = false;
+    if (this.isDs === false){
+      this.isAr = false;
+      this.isSp = false;
+      this.isMD = false;
+      this.isDt = false;
+      this.isOr = false;
+      this.isDs = true;
+      this.isAl = false;
     }else{
-      this.isDrinks = false;
+      this.isDs = false;
     }
   }
 
   showMenuAlcohol(){
-    if (this.isAlcohol === false){
-      this.isAppetizer = false;
-      this.isSoup = false;
-      this.isMainDishes = false;
-      this.isDessert = false;
-      this.isOther = false;
-      this.isDrinks = false;
-      this.isAlcohol = true;
+    if (this.isAl === false){
+      this.isAr = false;
+      this.isSp = false;
+      this.isMD = false;
+      this.isDt = false;
+      this.isOr = false;
+      this.isDs = false;
+      this.isAl = true;
     }else{
-      this.isAlcohol = false;
+      this.isAl = false;
     }
   }
 

@@ -6,7 +6,7 @@ import {Injectable} from "@angular/core";
 export class ReservationService {
     reservationUrl = 'http://localhost:3000/reservation/showReservations';
     createResUrl = 'http://localhost:3000/reservation/createReservation';
-    deleteUrl = 'http://localhost:3000/reservation/deleteReservation'
+    deleteUrl = 'http://localhost:3000/reservation/deleteReservation?id=';
 
     constructor(private http: HttpClient) {
 
@@ -17,12 +17,12 @@ export class ReservationService {
     }
 
 
-    addReservation(reser: any): Observable<any> {
-        return this.http.post(this.createResUrl, reser);
+    addReservation(newData: any): Observable<any> {
+        return this.http.post(this.createResUrl, newData);
     }
 
-    deleteReservation(): Observable<any>{
-        return this.http.delete(this.deleteUrl);
+    deleteReservation(id: any): Observable<any>{
+        return this.http.delete(this.deleteUrl+id);
     }
 
 }
