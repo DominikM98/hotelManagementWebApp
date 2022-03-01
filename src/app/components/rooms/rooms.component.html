@@ -18,15 +18,23 @@
                                     </thead>
                                     <tbody >
                                     <tr *ngFor="let el of Rooms">
-                                        <td>{{el.floor_number}}</td>
-                                        <td>{{el.room_number}}</td>
-                                        <td>{{el.room_name}}</td>
-                                        <td>{{el.number_of_people}}</td>
-                                        <td>{{el.type_of_beds}}</td>
-                                        <td>{{el.smoking_room}}</td>
-                                        <td>{{el.room_price}}</td>
+                                        <td contenteditable="false">{{el.floor_number}}</td>
+                                        <td contenteditable="false">{{el.room_number}}</td>
+                                        <td contenteditable="false">{{el.room_name}}</td>
+                                        <td contenteditable="false">{{el.number_of_people}}</td>
+                                        <td contenteditable="false">{{el.type_of_beds}}</td>
+                                        <td contenteditable="false">{{el.smoking_room}}</td>
+                                        <td contenteditable="false">{{el.room_price}}</td>
                                         <td>
-                                            <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id, el)">Remove</button>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id, el)">X</button>
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-sm btn-secondary" (click)="update(el._id)">M</button>
                                         </td>
                                     </tr>
                                     </tbody>

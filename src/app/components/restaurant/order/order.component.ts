@@ -20,10 +20,8 @@ export class OrderComponent implements OnInit {
   isDs = false;
   isAl = false;
 
-  quantityValue=0;
-  //valueBill = 0;
-  minQunatityValue=0;
-  maxQunatityValue=100;
+  priceQuantity = 0;
+  totalPrice = 0;
 
   constructor(private itemMenuService: ItemMenuService) {
   }
@@ -39,14 +37,17 @@ export class OrderComponent implements OnInit {
           this.ItemMenu = itemMenu;
           console.log(this.ItemMenu);
         });
-
-
   }
 
   changeValue(variable: any, val: number) {
-    console.log(variable);
+    variable.min_quantity += val;
 
-    variable.quantity += val;
+    console.log("Min: ",typeof variable.min_quantity, variable.min_quantity);
+    console.log("Price: ",typeof variable.product_price, variable.product_price);
+    console.log("P: ",typeof this.priceQuantity);
+
+    this.priceQuantity = variable.min_quantity * variable.product_price;  //not working yet
+    this.totalPrice += this.priceQuantity;                                //not working yet
   }
 
 

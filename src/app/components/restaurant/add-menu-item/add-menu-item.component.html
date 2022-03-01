@@ -220,7 +220,7 @@
                                     <td *ngIf="el.type_of_product === 'Alcohol'">{{el.ingredients}}</td>
                                     <td *ngIf="el.type_of_product === 'Alcohol'">{{el.product_price}}</td>
                                     <td *ngIf="el.type_of_product === 'Alcohol'">{{el.product_weight}}</td>
-                                    <td *ngIf="el.type_of_product === 'Alcohol'">{{el.quantity}}</td>
+                                    <td *ngIf="el.type_of_product === 'Alcohol'">{{el.max_quantity}}</td>
                                     <td *ngIf="el.type_of_product === 'Alcohol'">
                                         <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id,el)">Remove</button>
                                     </td>

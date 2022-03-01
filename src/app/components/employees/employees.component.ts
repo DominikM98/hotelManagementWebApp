@@ -1,33 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import {EmployeeService} from "./employees.service";
 
 @Component({
   selector: 'app-employees',
   templateUrl: './employees.component.html',
+  providers: [EmployeeService],
   styleUrls: ['./employees.component.scss']
 })
 export class EmployeesComponent implements OnInit {
 
-  //First shift
-  elementsFirstShift: any = [
-    {firstName: 'Krzysztof', lastName: 'Guz', position: 'Manager reception'},
-    {firstName: 'Antoni', lastName: 'Pawlicki', position: 'Reception'},
-  ];
+  Employee:any[] = [];
 
-  headElementsFirstShift = ['First name', 'Last name', 'Position'];
 
-  //Second shift
-  elementsSecondShift: any = [
-    {firstName: 'Oliwia', lastName: 'Ramaga', position: 'Reception'},
-  ];
+  constructor(private employeeService: EmployeeService) { }
 
-  headElementsSecondShift = ['First name', 'Last name', 'Position'];
+  ngOnInit(): void {
+    this.getEmployee();
+  }
 
-  //Top services
-  elementsTopServices: any = [
-    {loginName: 'krzyguz', serviceOrders: '24', amount: '5000$'},
-  ];
+  getEmployee(): void{
+    this.employeeService.getEmployee()
+        .subscribe((employee) => {
+          this.Employee = employee;
+        });
+  }
 
-  headElementsTopServices = ['Login name', 'Service Orders', 'Amount'];
+  delete(id: String, key: String): void{
+    
+  }
+
 
   //Annual Leave
   elementsAnnualLeave: any = [
@@ -37,18 +38,7 @@ export class EmployeesComponent implements OnInit {
   headElementsAnnualLeave = ['First name', 'Last name', 'Position', 'From data', 'To data', 'Length of the days'];
 
   //View employees
-  elementsViewEmployees: any = [
-    {firstName: 'Krzystof', lastName: 'Guz', position: 'Manager reception', phoneNumber: '123456789', loginName: 'krzyguz'},
-    {firstName: 'Anotoni', lastName: 'Pawlicki', position: 'Reception', phoneNumber: '789456123', loginName: 'antopaw'},
-    {firstName: 'Oliwia', lastName: 'Ramaga', position: 'Reception', phoneNumber: '321654987', loginName: 'oliwram'},
-    {firstName: 'John', lastName: 'Depp', position: 'Intern', phoneNumber: '987654321', loginName: 'johndepp'},
-  ];
+  headElementsViewEmployees = ['First name', 'Last name', 'Position', 'Phone no.', 'Login name', 'Remove'];
 
-  headElementsViewEmployees = ['First name', 'Last name', 'Position', 'Phone no.', 'Login name'];
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

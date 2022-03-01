@@ -16,6 +16,7 @@ export class AddMenuItemComponent implements OnInit {
   itemWeight = '';
   itemType = '';
   itemQuantity = '';
+  itemMinQuantity = '0';
 
   constructor(private itemMenuService: ItemMenuService) { }
 
@@ -39,7 +40,8 @@ export class AddMenuItemComponent implements OnInit {
       product_weight: this.itemWeight,
       product_price: this.itemPrice,
       type_of_product: this.itemType,
-      quantity: this.itemQuantity
+      min_quantity: this.itemMinQuantity,
+      max_quantity: this.itemQuantity
     };
 
     this.itemMenuService.addItemMenu(newItemMenu)

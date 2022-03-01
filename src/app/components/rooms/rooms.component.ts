@@ -17,6 +17,9 @@ export class RoomsComponent implements OnInit {
   roomBeds = '';
   roomSmoking = '';
   roomPrice = '';
+  roomAvailable = true;
+
+  editTable = false;
 
   constructor(private roomService: RoomService) { }
 
@@ -32,7 +35,6 @@ export class RoomsComponent implements OnInit {
         })
   }
 
-
   add():void{
     const newRoom = {
       floor_number: this.roomFloor,
@@ -41,11 +43,11 @@ export class RoomsComponent implements OnInit {
       number_of_people: this.roomPeople,
       type_of_beds: this.roomBeds,
       smoking: this.roomSmoking,
-      price: this.roomPrice
-    }
+      price: this.roomPrice,
+      available: this.roomAvailable
+    };
 
-    this.roomService.addRoom(newRoom)
-        .subscribe();
+    this.roomService.addRoom(newRoom).subscribe();
 
     this.clearForm();
   }
@@ -60,6 +62,23 @@ export class RoomsComponent implements OnInit {
     }
   }
 
+  update(id: String):void{
+    const updateRoom = {
+      floor_number: this.roomFloor,
+      room_number: this.roomNumber,
+      room_name: this.roomName,
+      number_of_people: this.roomPeople,
+      type_of_beds: this.roomBeds,
+      smoking: this.roomSmoking,
+      price: this.roomPrice,
+      available: this.roomAvailable
+    };
+
+    this.roomService.updateRoom(id, updateRoom).subscribe();
+
+    this.editTable = true;
+  }
+
   clearForm(){
     this.roomFloor = '';
     this.roomNumber = '';
@@ -70,6 +89,6 @@ export class RoomsComponent implements OnInit {
     this.roomPrice = '';
   }
 
-  headElementsRoomItem = ['Floor','No. of room', 'Room name', 'No. of people', 'Type of beds', 'Smoking room', 'Room price', 'Remove room'];
+  headElementsRoomItem = ['Floor','No. of room', 'Room name', 'No. of people', 'Type of beds', 'Smoking room', 'Room price', 'Avaliable','Remove room','Modify room'];
 
 }
