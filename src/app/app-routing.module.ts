@@ -4,11 +4,9 @@ import {ReservationComponent} from "./components/reservation/reservation.compone
 import {HomeComponent} from "./components/home/home.component";
 import {EmployeesComponent} from "./components/employees/employees.component";
 import {AddEmployeeComponent} from "./components/employees/add-employee/add-employee.component";
-import {ModifyEmployeeComponent} from "./components/employees/modify-employee/modify-employee.component";
 import {RestaurantComponent} from "./components/restaurant/restaurant.component";
 import {RoomCleaningComponent} from "./components/room-cleaning/room-cleaning.component";
 import {RoomsComponent} from "./components/rooms/rooms.component";
-import {ModifyRoomsComponent} from "./components/rooms/modify-rooms/modify-rooms.component";
 import {OrderComponent} from "./components/restaurant/order/order.component";
 import {AddMenuItemComponent} from "./components/restaurant/add-menu-item/add-menu-item.component";
 
@@ -38,20 +36,12 @@ const routes: Routes = [
     component: RoomsComponent
   },
   {
-    path: 'modifyRooms',
-    component: ModifyRoomsComponent
-  },
-  {
     path: 'employees',
     component: EmployeesComponent
   },
   {
     path: 'addEmployee',
     component: AddEmployeeComponent
-  },
-  {
-    path: 'modifyEmployee',
-    component: ModifyEmployeeComponent
   },
   {
     path: 'addMenuItem',

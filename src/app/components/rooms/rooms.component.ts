@@ -89,6 +89,6 @@ export class RoomsComponent implements OnInit {
     this.roomPrice = '';
   }
 
-  headElementsRoomItem = ['Floor','No. of room', 'Room name', 'No. of people', 'Type of beds', 'Smoking room', 'Room price', 'Avaliable','Remove room','Modify room'];
+  headElementsRoomItem = ['Floor','No. of room', 'Room name', 'No. of people', 'Type of beds', 'Smoking room', 'Room price', 'Avaliable','Operation'];
 
 }

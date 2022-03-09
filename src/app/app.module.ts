@@ -13,12 +13,10 @@ import {ChartsModule, ChartSimpleModule, WavesModule, ButtonsModule, IconsModule
 import {TableModule } from 'ng-uikit-pro-standard';
 import { EmployeesComponent } from './components/employees/employees.component';
 import { AddEmployeeComponent } from './components/employees/add-employee/add-employee.component';
-import { ModifyEmployeeComponent } from './components/employees/modify-employee/modify-employee.component';
 import {SchedulerModule} from "./components/reservation/scheduler/scheduler.module";
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { RoomCleaningComponent } from './components/room-cleaning/room-cleaning.component';
 import { RoomsComponent } from './components/rooms/rooms.component';
-import { ModifyRoomsComponent } from './components/rooms/modify-rooms/modify-rooms.component';
 import { LoginComponent } from './components/login/login.component';
 import { OrderComponent } from './components/restaurant/order/order.component';
 import { AddMenuItemComponent } from './components/restaurant/add-menu-item/add-menu-item.component';
@@ -33,11 +31,9 @@ import { AddMenuItemComponent } from './components/restaurant/add-menu-item/add-
     MenuContextComponent,
     EmployeesComponent,
     AddEmployeeComponent,
-    ModifyEmployeeComponent,
     RestaurantComponent,
     RoomCleaningComponent,
     RoomsComponent,
-    ModifyRoomsComponent,
     LoginComponent,
     OrderComponent,
     AddMenuItemComponent,

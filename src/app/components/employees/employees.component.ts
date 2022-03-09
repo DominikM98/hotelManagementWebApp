@@ -10,12 +10,13 @@ import {EmployeeService} from "./employees.service";
 export class EmployeesComponent implements OnInit {
 
   Employee:any[] = [];
-
+  AnnualLeave:any[] = [];
 
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
     this.getEmployee();
+    this.getAnnualLeave();
   }
 
   getEmployee(): void{
@@ -25,20 +26,39 @@ export class EmployeesComponent implements OnInit {
         });
   }
 
-  delete(id: String, key: String): void{
-    
+  getAnnualLeave(): void{
+    this.employeeService.getAnnualLeave()
+        .subscribe((annualLeave)=>{
+          this.AnnualLeave = annualLeave;
+        });
   }
 
+  deleteEmployee(id: String, key: String):void{
+    this.employeeService.deleteEmployee(id)
+        .subscribe();
 
-  //Annual Leave
-  elementsAnnualLeave: any = [
-    {firstName: 'John', lastName: 'Depp', position: 'Reception', fromData: '12/12/2021', toData: '26/12/2021', lengthDays: '14'},
-  ];
+    const index = this.Employee.indexOf(key, 0);
+    if (index > -1) {
+      this.Employee.splice(index, 1);
+    }
+  }
 
-  headElementsAnnualLeave = ['First name', 'Last name', 'Position', 'From data', 'To data', 'Length of the days'];
+  deleteAnnualLeave(id: String, key: String):void{
+    this.employeeService.deleteAnnualLeave(id)
+        .subscribe();
+
+    const index = this.AnnualLeave.indexOf(key, 0);
+    if (index > -1) {
+      this.AnnualLeave.splice(index, 1);
+    }
+  }
+
+  headElementsAnnualLeave = ['First name', 'Last name', 'Position', 'From data', 'To data', 'Length of the days', 'Operation'];
 
   //View employees
-  headElementsViewEmployees = ['First name', 'Last name', 'Position', 'Phone no.', 'Login name', 'Remove'];
+  headElementsViewEmployees = ['First name', 'Last name', 'Position', 'Phone no.', 'Login name', 'Operation'];
+
+  headElementsViewExtraEmployees = ['Login name', 'Address', 'Email', 'Password', 'Name bank', 'Account number'];
 
 
 }

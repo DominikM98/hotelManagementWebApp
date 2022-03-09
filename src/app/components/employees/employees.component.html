@@ -14,13 +14,21 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr mdbTableCol *ngFor="let el of elementsAnnualLeave">
-                            <th scope="row" class="elementsTable">{{el.firstName}}</th>
-                            <td class="elementsTable">{{el.lastName}}</td>
+                        <tr mdbTableCol *ngFor="let el of AnnualLeave">
+                            <th scope="row" class="elementsTable">{{el.first_name}}</th>
+                            <td class="elementsTable">{{el.last_name}}</td>
                             <td class="elementsTable">{{el.position}}</td>
-                            <td class="elementsTable">{{el.fromData}}</td>
-                            <td class="elementsTable">{{el.toData}}</td>
-                            <td class="elementsTable">{{el.lengthDays}}</td>
+                            <td class="elementsTable">{{el.from_date}}</td>
+                            <td class="elementsTable">{{el.to_date}}</td>
+                            <td class="elementsTable">{{el.length_day}}</td>
+                            <td class="elementsTable">
+
+                                <button class="btn btn-sm btn-danger" (click)="deleteAnnualLeave(el._id,el)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                                <button class="btn btn-sm btn-warning editable" >
+                                    <i class="fa fa-pencil"></i>
+                                </button></td>
                         </tr>
                         </tbody>
                     </table>
@@ -28,27 +36,56 @@
             </div>
 
             <div class="cardDashboard col-6">
+            <div class="titleCard ">
+                <h5 class="card-header">Basic employee data</h5>
+            </div>
+            <div class="bodyCard "style="margin-left:1em;">
+                <table mdbTable  mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent">
+                    <thead>
+                    <tr>
+                        <th class="titleTable" *ngFor="let head of headElementsViewEmployees" >{{head}} </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr mdbTableCol *ngFor="let el of Employee">
+                        <td class="elementsTable">{{el.first_name}}</td>
+                        <td class="elementsTable">{{el.last_name}}</td>
+                        <td class="elementsTable">{{el.position}}</td>
+                        <td class="elementsTable">{{el.phone_number}}</td>
+                        <td class="elementsTable">{{el.login}}</td>
+                        <td class="elementsTable">
+                            <button class="btn btn-sm btn-danger" (click)="deleteEmployee(el._id,el)">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                            <button class="btn btn-sm btn-warning editable" >
+                                <i class="fa fa-pencil"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+            <div class="cardDashboard col-6">
                 <div class="titleCard ">
-                    <h5 class="card-header">Basic employee data</h5>
+                    <h5 class="card-header">Extend employee data</h5>
                 </div>
                 <div class="bodyCard "style="margin-left:1em;">
                     <table mdbTable  mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent">
                         <thead>
                         <tr>
-                            <th class="titleTable" *ngFor="let head of headElementsViewEmployees" >{{head}} </th>
+                            <th class="titleTable" *ngFor="let head of headElementsViewExtraEmployees" >{{head}} </th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr mdbTableCol *ngFor="let el of Employee">
-                            <td class="elementsTable">{{el.first_name}}</td>
-                            <td class="elementsTable">{{el.last_name}}</td>
-                            <td class="elementsTable">{{el.position}}</td>
-                            <td class="elementsTable">{{el.phone_number}}</td>
                             <td class="elementsTable">{{el.login}}</td>
-                            <td class="elementsTable">{{el.login}}</td>
-                            <td>
-                                <button type="submit" class="btn btn-secondary" (click)="delete(el._id,el)">Remove</button>
-                            </td>
+                            <td class="elementsTable">{{el.address}}</td>
+                            <td class="elementsTable">{{el.email}}</td>
+                            <td class="elementsTable">{{el.password}}</td>
+                            <td class="elementsTable">{{el.name_bank}}</td>
+                            <td class="elementsTable">{{el.account_number}}</td>
                         </tr>
                         </tbody>
                     </table>

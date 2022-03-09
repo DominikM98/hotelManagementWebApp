@@ -1,115 +1,118 @@
 <div class="addEmployeePage col-10">
-    <div class="container">
-        <form>
-            <div class="row">
 
-
-            <div class="personalData">
-                <h6 class="titleData">Personal data:</h6>
-                <div class="row">
-                    <div class="form-group col-md-2">
-                        <label for="inputSalutation">Salutation</label>
-                        <select id="inputSalutation" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>Mr.</option>
-                            <option>Ms.</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-5">
-                        <label for="inputFirstName">First Name</label>
-                        <input type="text" class="form-control" id="inputFirstName" placeholder="First name">
-                    </div>
-                    <div class="form-group col-md-5">
-                        <label for="inputLastName">Last Name</label>
-                        <input type="text" class="form-control" id="inputLastName" placeholder="Last Name">
-                    </div>
-                </div>
+    <div class="addNewEmployee">
+        <div class="cardDashboard">
+            <div class="titleCard ">
+                <h5 class="card-header">New employee</h5>
             </div>
+            <div class="formEmployee">
+                <form>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="inputFirstName">First name</label>
+                            <input type="text" class="form-control" id="inputFirstName" placeholder="First name" required="true" [(ngModel)]="employeeFirstName"  name="employeeFirstName">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputLastName">Last name</label>
+                            <input type="text" class="form-control" id="inputLastName" placeholder="Last name" required="true" [(ngModel)]="employeeLastName" name="employeeLastName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="inputPosition">Position</label>
+                            <input type="text" class="form-control" id="inputPosition" placeholder="Position" required="true" [(ngModel)]="employeePosition" name="employeePosition">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputEmail">Email</label>
+                            <input type="text" class="form-control" id="inputEmail" placeholder="Email" required="true" [(ngModel)]="employeeEmail" name="employeeEmail">
+                            <small id="emailHelpBlock" class="form-text text-muted">
+                                For example: jan@hotel.com
+                            </small>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputPhoneNumber">Phone number</label>
+                            <input type="number" class="form-control" id="inputPhoneNumber" placeholder="Phone number" required="true" [(ngModel)]="employeePhoneNumber" name="employeePhoneNumber">
+                            <small id="phoneNumberHelpBlock" class="form-text text-muted">
+                                Phone number with country code
+                            </small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="inputAddress">Address</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="Address" required="true" [(ngModel)]="employeeAddress" name="employeeAddress">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputNameBank">Name bank</label>
+                            <input type="text" class="form-control" id="inputNameBank" placeholder="Name bank" required="true" [(ngModel)]="employeeNameBank" name="employeeNameBank">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="inputAccountNo">Account number</label>
+                            <input type="text" class="form-control" id="inputAccountNo" placeholder="Account number" required="true" [(ngModel)]="employeeAccountNumber" name="employeeAccountNumber">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputLogin">Login</label>
+                            <input type="text" class="form-control" id="inputLogin" placeholder="Login" required="true" [(ngModel)]="employeeLogin" name="employeeLogin">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputPassword">Password</label>
+                            <input type="text" class="form-control" id="inputPassword" placeholder="Password" required="true" [(ngModel)]="employeePassword" name="employeePassword">
+                        </div>
+                    </div>
 
-            <div class="addressData">
-                <h6 class="titleData">Address data:</h6>
-                <div class="row">
-                    <div class="form-group col-md-8">
-                        <label for="inputAddress">Address</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St, apartament/studio/floor">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="inputHouseNo">House Number</label>
-                        <input type="text" class="form-control" id="inputHouseNo" placeholder="House Number">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="inputFlatNo">Flat Number</label>
-                        <input type="text" class="form-control" id="inputFlatNo" placeholder="Apartament/Flat No.">
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCity">City</label>
-                        <input type="text" class="form-control" id="inputCity" placeholder="City">
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputState">State</label>
-                        <input type="text" class="form-control" id="inputState" placeholder="State">
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="inputZip">Zip</label>
-                        <input type="text" class="form-control" id="inputZip" placeholder="Zip">
-                    </div>
-                </div>
+                    <button type="submit" class="btn btn-lg btn-primary" (click)="addEmployee()">Add new employee</button>
+                </form>
             </div>
-
-            <div class="otherData">
-                <h6 class="titleData">Other:</h6>
-                    <div class="form-group">
-                        <label for="inputEmail">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPhoneNumber">Phone Number</label>
-                        <input type="number" class="form-control" id="inputPhoneNumber" placeholder="Phone Number">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPosition">Position</label>
-                        <select id="inputPosition" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>Reception Manager</option>
-                            <option>Reception</option>
-                            <option>Trainee</option>
-                            <option>Intern</option>
-                        </select>
-                    </div>
-            </div>
-
-            <div class="paymentData col-md-6">
-                <h6 class="titleData">Payment:</h6>
-                    <div class="form-group">
-                        <label for="inputBankName">Bank name & address </label>
-                        <input type="text" class="form-control" id="inputBankName" placeholder="Bank name & address">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputBankNumber">Bank account number</label>
-                        <input type="number" class="form-control" id="inputBankNumber" placeholder="Bank account number">
-                    </div>
-            </div>
-
-            <div class="loginData col-md-5">
-                <h6 class="titleData">Other:</h6>
-
-                    <div class="form-group">
-                        <label for="inputLogin">Login</label>
-                        <input type="text" class="form-control" id="inputLogin" placeholder="Login">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword">Password</label>
-                        <input type="text" class="form-control" id="inputPassword" placeholder="Password">
-                    </div>
-
-            </div>
-
-            <button type="submit" class="btn btn-lg btn-primary">Add employee</button>
-
-            </div>
-        </form>
+        </div>
     </div>
+
+    <div class="addAnnualLeave">
+        <div class="cardDashboard">
+            <div class="titleCard ">
+                <h5 class="card-header">New annual leave</h5>
+            </div>
+            <div class="formAnnualLeave">
+                <form>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="inputFirstNameAL">First name</label>
+                            <input type="text" class="form-control" id="inputFirstNameAL" placeholder="First name" required="true" [(ngModel)]="employeeFirstNameAL"  name="employeeFirstNameAL">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputLastNameAL">Last name</label>
+                            <input type="text" class="form-control" id="inputLastNameAL" placeholder="Last name" required="true" [(ngModel)]="employeeLastNameAL" name="employeeLastNameAL">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputPositionAL">Position</label>
+                            <input type="text" class="form-control" id="inputPositionAL" placeholder="Position" required="true" [(ngModel)]="employeePositionAL" name="employeePositionAL">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="inputFromDate">From date</label>
+                            <input type="text" class="form-control" id="inputFromDate" placeholder="From date" required="true" [(ngModel)]="employeeFromDate" name="employeeFromDate">
+                            <small id="fromDatelHelpBlock" class="form-text text-muted">
+                                day-month-year
+                            </small>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputToDate">To date</label>
+                            <input type="text" class="form-control" id="inputToDate" placeholder="To date" required="true" [(ngModel)]="employeeToDate" name="employeeToDate">
+                            <small id="toDateHelpBlock" class="form-text text-muted">
+                                day-month-year
+                            </small>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputLength">Length of days</label>
+                            <input type="number" class="form-control" id="inputLength" placeholder="Length of days" required="true" [(ngModel)]="employeeLength" name="employeePhoneNumber">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-lg btn-primary" (click)="addAnnualLeave()">Add new annual leave</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 </div>

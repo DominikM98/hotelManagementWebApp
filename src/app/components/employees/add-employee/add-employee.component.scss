@@ -30,4 +30,43 @@
     }
   }
 
+  .addNewEmployee{
+    margin: 1em;
+    background-color: white;
+
+    .formEmployee {
+      margin: 1em ;
+      width: auto;
+
+      label {
+        font-weight: bold;
+      }
+
+      button {
+        margin: 1em 0 1em 0;
+        width: 100%;
+      }
+
+    }
+  }
+
+  .addAnnualLeave{
+    margin: 1em;
+    background-color: white;
+
+    .formAnnualLeave {
+      margin: 1em ;
+      width: auto;
+
+      label {
+        font-weight: bold;
+      }
+
+      button {
+        margin: 1em 0 1em 0;
+        width: 100%;
+      }
+
+    }
+  }
 }

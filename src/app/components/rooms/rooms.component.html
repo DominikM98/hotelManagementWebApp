@@ -23,19 +23,26 @@
                                         <td contenteditable="false">{{el.room_name}}</td>
                                         <td contenteditable="false">{{el.number_of_people}}</td>
                                         <td contenteditable="false">{{el.type_of_beds}}</td>
-                                        <td contenteditable="false">{{el.smoking_room}}</td>
-                                        <td contenteditable="false">{{el.room_price}}</td>
+                                        <td contenteditable="false">{{el.smoking}}</td>
+                                        <td contenteditable="false">{{el.price}}</td>
                                         <td>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
                                             </div>
                                         </td>
                                         <td>
-                                            <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id, el)">X</button>
+                                            <!-- <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id, el)">X</button>-->
+                                            <button class="btn btn-sm btn-danger" (click)="delete(el._id,el)">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-warning editable" >
+                                                <i class="fa fa-pencil"></i>
+                                            </button>
                                         </td>
-                                        <td>
-                                            <button type="submit" class="btn btn-sm btn-secondary" (click)="update(el._id)">M</button>
-                                        </td>
+                                        <!-- <td>
+                                             <button type="submit" class="btn btn-sm btn-secondary" (click)="update(el._id)">M</button>
+
+                                        </td>-->
                                     </tr>
                                     </tbody>
                                 </table>
