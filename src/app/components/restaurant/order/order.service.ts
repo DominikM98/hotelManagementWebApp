@@ -4,7 +4,8 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class OrderService {
-    itemMenuUrl = 'http://localhost:3000/restauration/showItems';
+    itemMenuUrl = 'http://localhost:3000/restaurant/showItems';
+    createBillUrl = 'http://localhost:3000/restaurant/createBill';
 
     constructor(private http: HttpClient) {
 
@@ -12,6 +13,10 @@ export class OrderService {
 
     getItemMenu(): Observable<any>{
         return this.http.get(this.itemMenuUrl)
+    }
+
+    addBill(newData: any): Observable<any> {
+        return this.http.post(this.createBillUrl, newData);
     }
 
 }

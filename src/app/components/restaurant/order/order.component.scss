@@ -78,8 +78,7 @@
     .priceFood{
       font-weight: bold;
       text-align: center;
-      margin-top: 0.5em;
-      font-size: large;
+      margin-top:-1em;
     }
 
   }
@@ -118,13 +117,42 @@
 
       .totalLabel{
         font-weight: bold;
-        font-size: large;
+        font-size: 1.5em;
       }
 
       .totalPrice{
-        position: fixed;
-        justify-content: right;
-        text-align: right;
+        font-size: 1.5em;
+        position: absolute;
+        right: 1em;
+      }
+
+      .discount{
+        .discountLabel{
+          font-weight: bold;
+        }
+
+
+      }
+
+
+      .paymentLabel{
+        font-weight: bold;
+        margin-top:1em;
+      }
+
+      .paymentMethod{
+        .cashMethodDiv, .cardMethodDiv, .voucherMethodDiv{
+          margin-left:1.5em;
+        }
+
+        small{
+          margin-top:2em;
+        }
+      }
+
+      .submitButton{
+        margin-left:1em;
+        width:90%
       }
     }
   }

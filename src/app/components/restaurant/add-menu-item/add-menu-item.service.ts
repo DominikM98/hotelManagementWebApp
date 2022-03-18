@@ -3,9 +3,9 @@ import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
 @Injectable()
 export class ItemMenuService {
-    itemMenuUrl = 'http://localhost:3000/restauration/showItems';
-    createItemMenuUrl = 'http://localhost:3000/restauration/createItemMenu';
-    deleteItemMenuUrl = 'http://localhost:3000/restauration/deleteItemMenu?id=';
+    itemMenuUrl = 'http://localhost:3000/restaurant/showItems';
+    createItemMenuUrl = 'http://localhost:3000/restaurant/createItemMenu';
+    deleteItemMenuUrl = 'http://localhost:3000/restaurant/deleteItemMenu?id=';
 
     constructor(private http: HttpClient) {
 

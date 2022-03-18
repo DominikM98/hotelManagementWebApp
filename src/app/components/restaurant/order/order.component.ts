@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import {ItemMenuService} from "../add-menu-item/add-menu-item.service";
+import {OrderService} from "./order.service";
 
 @Component({
   selector: 'order',
   templateUrl: './order.component.html',
-  providers: [ItemMenuService],
+  providers: [ItemMenuService, OrderService],
   styleUrls: ['./order.component.scss']
 })
 
 export class OrderComponent implements OnInit {
 
   ItemMenu:any[] = [];
+  BillProduct:any[] = [];
 
   isAr = false;
   isSp = false;
@@ -20,10 +22,20 @@ export class OrderComponent implements OnInit {
   isDs = false;
   isAl = false;
 
-  priceQuantity = 0;
-  totalPrice = 0;
+  isCashMethod = false;
+  isCardMethod = false;
+  isVoucherMethod = false;
 
-  constructor(private itemMenuService: ItemMenuService) {
+  cashMethod = 0;
+  cardMethod = 0;
+  voucherMethod = 0;
+  discountValue = 0;
+
+  totalPrice = 0;
+  priceQuantity = 0;
+  total = 0;
+
+  constructor(private itemMenuService: ItemMenuService, private orderService: OrderService) {
   }
 
   ngOnInit(): void {
@@ -39,18 +51,64 @@ export class OrderComponent implements OnInit {
         });
   }
 
+  addBill(): void{
+
+    const newBill = {
+      total_price: this.totalPrice,
+      discount_value: this.discountValue,
+      cash_method: this.cashMethod,
+      card_method: this.cardMethod,
+      voucher_method: this.voucherMethod
+    };
+
+    this.orderService.addBill(newBill)
+        .subscribe();
+  }
+
   changeValue(variable: any, val: number) {
     variable.min_quantity += val;
 
-    console.log("Min: ",typeof variable.min_quantity, variable.min_quantity);
-    console.log("Price: ",typeof variable.product_price, variable.product_price);
-    console.log("P: ",typeof this.priceQuantity);
+    const priceQuantity =  variable.product_price * variable.min_quantity;
 
-    this.priceQuantity = variable.min_quantity * variable.product_price;  //not working yet
-    this.totalPrice += this.priceQuantity;                                //not working yet
+    for (let i = 0; i < variable.product_name.length; i++){
+      if (variable.min_quantity != 0){
+        this.totalPrice += -this.totalPrice + priceQuantity;
+      }
+    }
+
+    console.log("Price Quanitity: ",priceQuantity);
+    console.log("total price: ",this.totalPrice);
+    console.log("total : ",this.total);
   }
 
+  refreshTotalPrice(){
+    const temp = this.totalPrice * (this.discountValue / 100);
+    this.totalPrice = this.totalPrice - temp;
+  }
 
+  showCashInput(){
+    if (this.isCashMethod === false){
+      this.isCashMethod = true;
+    }else{
+      this.isCashMethod = false;
+    }
+  }
+
+  showCardInput(){
+    if (this.isCardMethod === false){
+      this.isCardMethod = true;
+    }else{
+      this.isCardMethod = false;
+    }
+  }
+
+  showVoucherInput(){
+    if (this.isVoucherMethod === false){
+      this.isVoucherMethod = true;
+    }else{
+      this.isVoucherMethod = false;
+    }
+  }
 
   showMenuAppetizer(){
     if (this.isAr === false){
@@ -149,6 +207,5 @@ export class OrderComponent implements OnInit {
       this.isAl = false;
     }
   }
-
 
 }

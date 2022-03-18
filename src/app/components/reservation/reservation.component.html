@@ -1,6 +1,6 @@
 <script src="../../app.component.ts"></script>
 <div class="reservationPage col-10">
-   <!-- <div class="scheduler">
+   <!--<div class="scheduler">
         <scheduler-component></scheduler-component>
     </div>-->
     <div class="masonry" >
@@ -28,9 +28,15 @@
                             <td>{{el.parking}}</td>
                             <td>{{el.car_registration}}</td>
                             <td>{{el.room_number}}</td>
+                            <td>{{el.number_of_people}}</td>
                             <td>{{el.booking_price}}</td>
                             <td>
-                                <button type="submit" class="btn btn-secondary" (click)="delete(el._id,el)">Remove</button>
+                                <button class="btn btn-sm btn-danger" (click)="delete(el._id,el)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                                <!--<button class="btn btn-sm btn-warning editable" >
+                                    <i class="fa fa-pencil"></i>
+                                </button>-->
                             </td>
                         </tr>
                         </tbody>
@@ -73,54 +79,49 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-5">
+                        <div class="form-group col-md-4">
                             <input class="form-check-input" type="checkbox" value="false" id="checkParking" [(ngModel)]="checkParkingInput" name="checkPk">
                             <label class="form-check-label" for="checkParking">
                                 Parking
                             </label>
                         </div>
-
-                        <div class="form-group col-md-5">
+                        <div class="form-group col-md-4">
                             <input class="form-check-input" type="checkbox" value="false" id="checkBreakfast" [(ngModel)]="checkBreakfastInput" name="checkBf">
                             <label class="form-check-label" for="checkBreakfast">
                                  Breakfast
                             </label>
                         </div>
                     </div>
-
-                        <div class="row">
-                            <div class="form-group col-md-3">
-                                <label for="inputCarRegistration">Car registration</label>
-                                <input type="text" class="form-control" id="inputCarRegistration" placeholder="Car registration" required="true" [(ngModel)]="carRegist" name="carRs">
-                                <small id="carRegistrationHelpBlock" class="form-text text-muted">
-                                    Template input: WA98451
-                                </small>
-                            </div>
-
-                            <div class="form-group col-md-3">
-                                <label for="inputNumberRoom">Number Room</label>
-                                <select id="inputNumberRoom" class="form-control" required="true" [(ngModel)]="roomNumberSelect" name="numberOfRoom">
-                                    <option selected>Choose...</option>
-                                    <option>101</option>
-                                    <option>102</option>
-                                    <option>103</option>
-                                    <option>104</option>
-                                    <option>201</option>
-                                    <option>202</option>
-                                    <option>203</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="inputBookingPrice">Booking price</label>
-                                <input type="text" class="form-control" id="inputBookingPrice" placeholder="Price" required="true" [(ngModel)]="priceBookingInput" name="priceBooking">
-                                <small id="bookingHelpBlock" class="form-text text-muted">
-                                    Template input: 120.00$
-                                </small>
-                            </div>
-
+                    <div class="row">
+                        <div class="form-group col-md-2">
+                            <label for="inputCarRegistration">Car registration</label>
+                            <input type="text" class="form-control" id="inputCarRegistration" placeholder="Car registration" required="true" [(ngModel)]="carRegist" name="carRs">
+                            <small id="carRegistrationHelpBlock" class="form-text text-muted">
+                                Template input: WA98451
+                            </small>
                         </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputNumberRoom">Number Room</label>
+                            <select id="inputNumberRoom" class="form-control" required="true" [(ngModel)]="roomNumberSelect" name="numberOfRoom" >
+                                <option selected>Choose...</option>
+                                <option *ngFor="let rn of Rooms">{{rn.room_number}}</option>
+                                <option>200</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputNumberPeople">Number of People</label>
+                            <input type="number" class="form-control" id="inputNumberPeople" placeholder="Number of People" required="true" [(ngModel)]="numberOfPeople" name="numberOfPeople">
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label for="inputBookingPrice">Booking price</label>
+                            <input type="number" class="form-control" id="inputBookingPrice" placeholder="Price" required="true" [(ngModel)]="priceBookingInput" name="priceBooking">
+                            <small id="bookingHelpBlock" class="form-text text-muted">
+                                Template input: 120.00
+                            </small>
+                        </div>
+                    </div>
 
-                    <button type="submit" class="btn btn-lg btn-primary" (click)="add()">Add new reservation</button>
+                    <button type="submit" class="btn btn-lg btn-primary" (click)="add()" >Add new reservation</button>
                 </form>
             </div>
         </div>

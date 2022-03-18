@@ -1,7 +1,4 @@
 <div class="roomCleaningPage col-10">
-    <div class="shedulerDiv">
-        <scheduler-component></scheduler-component>
-    </div>
 
     <div class="masonry">
 
@@ -19,15 +16,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let el of elementsCheckIn; let i = index">
-                        <th scope="row">{{el.noOfRoom}}</th>
-                        <td>{{el.date}}</td>
-                        <td><div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                            <label class="form-check-label" for="flexCheckChecked">
-                                Cleaning
-                            </label>
-                        </div></td>
+                    <tr *ngFor="let el of Rooms; let i = index">
+                        <td>{{el.room_number}}</td>
+                        <td>{{el.check_out}}</td>
                     </tr>
                     </tbody>
                 </table>

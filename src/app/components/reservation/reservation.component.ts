@@ -10,6 +10,8 @@ import {ReservationService} from "./reservation.service";
 export class ReservationComponent implements OnInit {
 
   Reservations:any[] = [];
+  Rooms:any[] = [];
+
   personFirstName = '';
   personLastName = '';
   checkInDate = '';
@@ -18,12 +20,14 @@ export class ReservationComponent implements OnInit {
   checkBreakfastInput = false;
   carRegist = '';
   roomNumberSelect = '';
+  numberOfPeople = 0;
   priceBookingInput = '';
 
   constructor(private reservationService: ReservationService) { }
 
   ngOnInit(): void {
     this.getReservation();
+    this.getRooms();
  }
 
     getReservation(): void {
@@ -32,6 +36,13 @@ export class ReservationComponent implements OnInit {
                 this.Reservations = reservations;
                 console.log(this.Reservations);
             });
+    }
+
+    getRooms():void {
+      this.reservationService.getRooms()
+          .subscribe((rooms) =>{
+              this.Rooms = rooms;
+          })
     }
 
     add():void{
@@ -44,6 +55,7 @@ export class ReservationComponent implements OnInit {
             breakfast: this.checkBreakfastInput,
             car_registration: this.carRegist,
             room_number: this.roomNumberSelect,
+            number_of_people: this.numberOfPeople,
             booking_price: this.priceBookingInput
         };
 
@@ -51,6 +63,7 @@ export class ReservationComponent implements OnInit {
             .subscribe();
 
         this.clearForm();
+        window.location.reload();
     }
 
     delete(id: String, key: String):void{
@@ -75,6 +88,6 @@ export class ReservationComponent implements OnInit {
         this.priceBookingInput = '';
     }
 
-  headElementsCheckIn = ['First name', 'Last name', 'Check in', 'Check out', 'Breakfast', 'Parking', 'Car registration', 'No. of room', 'Booking price', 'Remove reservation'];
+  headElementsCheckIn = ['First name', 'Last name', 'Check in', 'Check out', 'Breakfast', 'Parking', 'Car registration', 'No. of room', 'No. of people','Booking price', 'Remove'];
 
 }
