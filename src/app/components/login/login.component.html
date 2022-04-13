@@ -1,17 +1,26 @@
+
 <div class="loginPage">
     <div class="loginPanel bg-dark">
-        <span class="material-icons"> account_circle </span>
+
+        <i class="fa fa-user-circle" aria-hidden="true"></i>
 
         <form>
             <div class="form-group">
                 <label for="inputLogin">Login: </label>
-                <input type="text" class="form-control" id="inputlogin" placeholder="Login">
+                <input type="text" class="form-control" id="inputlogin" placeholder="Login" [(ngModel)]="userLogin" name="Login">
+                <small id="loginHelpBlock" class="form-text text-muted" [hidden]="isLogin == false" style="color:red !important;">
+                    This user does not exist
+                </small>
             </div>
             <div class="form-group">
                 <label for="inputPassword">Password:</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Password" [(ngModel)]="userPassword" name="Password">
+                <small id="passwordHelpBlock" class="form-text text-muted" [hidden]="isPassword == false" style="color:red !important;">
+                    This password is wrong
+                </small>
             </div>
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary"  (click)="checkUser()">Login</button>
         </form>
+
     </div>
 </div>

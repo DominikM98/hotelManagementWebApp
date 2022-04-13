@@ -1,3 +1,5 @@
+<navbar></navbar>
+<menu-context></menu-context>
 <div class="employeePage col-10">
     <div class="information">
         <div class="masonry" >
@@ -22,13 +24,10 @@
                             <td class="elementsTable">{{el.to_date}}</td>
                             <td class="elementsTable">{{el.length_day}}</td>
                             <td class="elementsTable">
-
                                 <button class="btn btn-sm btn-danger" (click)="deleteAnnualLeave(el._id,el)">
                                     <i class="fa fa-trash"></i>
                                 </button>
-                                <button class="btn btn-sm btn-warning editable" >
-                                    <i class="fa fa-pencil"></i>
-                                </button></td>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -56,9 +55,6 @@
                         <td class="elementsTable">
                             <button class="btn btn-sm btn-danger" (click)="deleteEmployee(el._id,el)">
                                 <i class="fa fa-trash"></i>
-                            </button>
-                            <button class="btn btn-sm btn-warning editable" >
-                                <i class="fa fa-pencil"></i>
                             </button>
                         </td>
                     </tr>

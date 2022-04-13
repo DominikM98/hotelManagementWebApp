@@ -10,6 +10,7 @@ import {EmployeeService} from "../employees.service";
 export class AddEmployeeComponent implements OnInit {
 
   AnnualLeave:any[] = [];
+  Users:any[] = [];
 
   employeeFirstName = '';
   employeeLastName = '';
@@ -29,9 +30,14 @@ export class AddEmployeeComponent implements OnInit {
   employeeToDate = '';
   employeeLength = '';
 
+  userRole = '';
+  isExists = false;
+  isEmpty = false;
+
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
+    this.getUsers();
   }
 
 
@@ -66,6 +72,56 @@ export class AddEmployeeComponent implements OnInit {
     this.employeeService.addAnnualLeave(newAnnualLeave).subscribe();
     this.clearFormAL();
   }
+
+  addNewUser():void{
+    this.positionToRole();
+
+    const newUser = {
+      login: this.employeeLogin,
+      password: this.employeePassword,
+      role: this.userRole
+    };
+
+    const user = this.Users.find(u => u.login == newUser.login);
+
+    if(user){
+      this.isExists = true;
+    }else {
+      this.isExists = false;
+      this.employeeService.addUser(newUser).subscribe();
+      this.addEmployee();
+
+      console.log("e")
+    }
+
+  }
+
+  getUsers():void{
+    this.employeeService.getUser()
+        .subscribe((user) => {
+          this.Users = user;
+
+        })
+
+  }
+
+  positionToRole():void{
+    if (this.employeePosition === 'Hotel Manager'){
+      this.userRole = 'admin';
+    }else if (this.employeePosition === 'Reception Manager'){
+      this.userRole = 'reception_manager';
+    }else if (this.employeePosition === 'Restaurant Manager'){
+      this.userRole = 'restaurant_manager';
+    }else if (this.employeePosition === 'Receptionist'){
+      this.userRole = 'receptionist';
+    }else if (this.employeePosition === 'Waiter'){
+      this.userRole = 'waiter';
+    }else if (this.employeePosition === 'Cleaner'){
+      this.userRole = 'cleaner';
+    }
+  }
+
+  positionsHotel = ['Hotel Manager','Reception Manager', 'Restaurant Manager', 'Receptionist' , 'Waiter', 'Cleaner'];
 
   clearForm(){
     this.employeeFirstName = '';

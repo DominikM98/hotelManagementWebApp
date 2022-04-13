@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'navbar',
@@ -9,9 +10,13 @@ export class NavbarComponent implements OnInit {
 
   todayDate : Date = new Date();
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  logout():void{
+    this.router.navigate(['']);
   }
 
 }

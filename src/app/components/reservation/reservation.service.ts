@@ -9,6 +9,9 @@ export class ReservationService {
     deleteUrl = 'http://localhost:3000/reservation/deleteReservation?id=';
     roomUrl = 'http://localhost:3000/room/showRooms';
 
+    createClientUrl = 'http://localhost:3000/client/createClient';
+    clientUrl = 'http://localhost:3000/client/showClients';
+
     constructor(private http: HttpClient) {
 
     }
@@ -16,7 +19,6 @@ export class ReservationService {
     getReservations(): Observable<any>{
         return this.http.get(this.reservationUrl)
     }
-
 
     addReservation(newData: any): Observable<any> {
         return this.http.post(this.createResUrl, newData);
@@ -28,6 +30,14 @@ export class ReservationService {
 
     getRooms(): Observable<any>{
         return this.http.get(this.roomUrl)
+    }
+
+    getClients(): Observable<any>{
+        return this.http.get(this.clientUrl)
+    }
+
+    addClient(newData: any): Observable<any> {
+        return this.http.post(this.createClientUrl, newData);
     }
 
 }

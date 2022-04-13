@@ -1,8 +1,7 @@
 <script src="../../app.component.ts"></script>
+<navbar></navbar>
+<menu-context></menu-context>
 <div class="reservationPage col-10">
-   <!--<div class="scheduler">
-        <scheduler-component></scheduler-component>
-    </div>-->
     <div class="masonry" >
         <div class="cardDashboard col-6">
             <div class="titleCard ">
@@ -19,8 +18,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let el of Reservations; let i = index">
-                            <th scope="row">{{el.first_name}}</th>
+                        <tr *ngFor="let el of Reservations">
+                            <td>{{el.first_name}}</td>
                             <td>{{el.last_name}}</td>
                             <td>{{el.check_in}}</td>
                             <td>{{el.check_out}}</td>
@@ -34,9 +33,6 @@
                                 <button class="btn btn-sm btn-danger" (click)="delete(el._id,el)">
                                     <i class="fa fa-trash"></i>
                                 </button>
-                                <!--<button class="btn btn-sm btn-warning editable" >
-                                    <i class="fa fa-pencil"></i>
-                                </button>-->
                             </td>
                         </tr>
                         </tbody>
@@ -48,18 +44,70 @@
 
         <div class="cardDashboard col-6">
             <div class="titleCard ">
-                <h5 class="card-header">New reservation</h5>
+                <h5 class="card-header">New client</h5>
             </div>
             <div class="formReservation">
                 <form >
                     <div class="row">
                         <div class="form-group col-md-5" >
                             <label for="inputFirstName">First Name</label>
-                            <input type="text" class="form-control" id="inputFirstName" placeholder="First name" required="true" [(ngModel)]="personFirstName" name="firstName">
+                            <input type="text" class="form-control" id="inputFirstName" placeholder="First name" required="true" [(ngModel)]="clientFirstName" name="firstName">
                         </div>
                         <div class="form-group col-md-5">
                             <label for="inputLastName">Last Name</label>
-                            <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" required="true" [(ngModel)]="personLastName" name="lastName">
+                            <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" required="true" [(ngModel)]="clientLastName" name="lastName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="inputPesel2">PESEL/Passport Number</label>
+                            <input type="text" class="form-control" id="inputPesel2" placeholder="PESEL/Passport Number" required="true" [(ngModel)]="clientPesel" name="clientAddress">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <label for="inputEmail">Email</label>
+                            <input type="text" class="form-control" id="inputEmail" placeholder="Email" required="true" [(ngModel)]="clientEmail" name="clientEmail">
+                            <small id="emailHelpBlock" class="form-text text-muted">
+                                For example: jan@hotel.com
+                            </small>
+                        </div>
+                        <div class="form-group col-md-5">
+                            <label for="inputPhoneNo">Phone number</label>
+                            <input type="text" class="form-control" id="inputPhoneNo" placeholder="Phone number" required="true" [(ngModel)]="clientPhoneNo" name="clientPhoneNo">
+                            <small id="phoneNumberHelpBlock" class="form-text text-muted">
+                                Phone number with country code (without +)
+                            </small>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="inputAddress">Address</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="Address" required="true" [(ngModel)]="clientAddress" name="clientAddress">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-lg btn-primary" (click)="addClient()" >Add new client</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="cardDashboard col-6">
+            <div class="titleCard ">
+                <h5 class="card-header">New reservation</h5>
+            </div>
+            <div class="formReservation">
+                <form >
+                    <div class="row" >
+                        <div class="row">
+                            <div class="form-group col-md-5" >
+                                <label for="inputFirstName2">First Name</label>
+                                <input type="text" class="form-control" id="inputFirstName2" placeholder="First name" required="true" [(ngModel)]="personFirstName" name="firstName">
+                            </div>
+                            <div class="form-group col-md-5">
+                                <label for="inputLastName2">Last Name</label>
+                                <input type="text" class="form-control" id="inputLastName2" placeholder="Last Name" required="true" [(ngModel)]="personLastName" name="lastName">
+                            </div>
                         </div>
                     </div>
                     <div class="row">
@@ -105,12 +153,11 @@
                             <select id="inputNumberRoom" class="form-control" required="true" [(ngModel)]="roomNumberSelect" name="numberOfRoom" >
                                 <option selected>Choose...</option>
                                 <option *ngFor="let rn of Rooms">{{rn.room_number}}</option>
-                                <option>200</option>
                             </select>
                         </div>
                         <div class="form-group col-md-2">
                             <label for="inputNumberPeople">Number of People</label>
-                            <input type="number" class="form-control" id="inputNumberPeople" placeholder="Number of People" required="true" [(ngModel)]="numberOfPeople" name="numberOfPeople">
+                            <input type="number" class="form-control" id="inputNumberPeople" placeholder="Number of People" required="true" [(ngModel)]="numberOfPeople" name="numberOfPeople" min="0">
                         </div>
                         <div class="form-group col-md-2">
                             <label for="inputBookingPrice">Booking price</label>

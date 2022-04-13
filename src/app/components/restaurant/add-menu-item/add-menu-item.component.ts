@@ -48,6 +48,7 @@ export class AddMenuItemComponent implements OnInit {
         .subscribe();
 
     this.clearForm();
+    window.location.reload();
   }
 
   delete(id: String, key: String):void{

@@ -1,8 +1,9 @@
 .logoAndNameApp{
 
-  span{
+  i{
     margin: 0.5em;
     color:white;
+    width: scale(2);
   }
 
   .nameApp{
@@ -28,5 +29,10 @@
     color: white;
     font-size: 15px;
     display: inline;
+  }
+
+  .logoutSpan{
+    color:white;
+    margin-right: 1em;
   }
 }

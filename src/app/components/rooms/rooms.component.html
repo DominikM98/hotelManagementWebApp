@@ -1,3 +1,5 @@
+<navbar></navbar>
+<menu-context></menu-context>
 <div class="roomsPage col-10">
         <div class="viewRoom">
             <div class="masonry">
@@ -6,18 +8,18 @@
                     <div class="titleCard">
                         <h5 class="card-header">Rooms</h5>
                     </div>
-                    <div class="bodyCard "style="margin-left:1em;pocz">
+                    <div class="bodyCard "style="margin-left:1em;">
 
                         <div class="RoomMenu">
-                            <div>
-                                <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='220' [bordered]='true' class="tableContent">
+                            <div >
+                                <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent" >
                                     <thead>
                                     <tr>
                                         <th class="titleTable" *ngFor="let head of headElementsRoomItem" >{{head}}</th>
                                     </tr>
                                     </thead>
                                     <tbody >
-                                    <tr *ngFor="let el of Rooms">
+                                    <tr *ngFor="let el of Rooms" [hidden]="isEditable == true">
                                         <td contenteditable="false">{{el.floor_number}}</td>
                                         <td contenteditable="false">{{el.room_number}}</td>
                                         <td contenteditable="false">{{el.room_name}}</td>
@@ -26,16 +28,8 @@
                                         <td contenteditable="false">{{el.smoking}}</td>
                                         <td contenteditable="false">{{el.price}}</td>
                                         <td>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" >
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-sm btn-danger" (click)="delete(el._id,el)">
+                                            <button class="btn btn-sm btn-danger" (click)="delete(el._id)">
                                                 <i class="fa fa-trash"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-warning editable" >
-                                                <i class="fa fa-pencil"></i>
                                             </button>
                                         </td>
                                     </tr>
@@ -48,61 +42,4 @@
             </div>
         </div>
 
-        <div class="addNewRoom">
-            <div class="cardDashboard">
-                <div class="titleCard ">
-                    <h5 class="card-header">New room</h5>
-                </div>
-                <div class="formRoom">
-                    <form>
-                        <div class="row">
-                            <div class="form-group col-md-2" >
-                                <label for="inputFloorNo">Floor number</label>
-                                <select id="inputFloorNo" class="form-control" required="true" [(ngModel)]="roomFloor" name="type">
-                                    <option selected>Choose...</option>
-                                    <option>I</option>
-                                    <option>II</option>
-                                    <option>III</option>
-                                    <option>IV</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputRoomNo">Room number</label>
-                                <input type="text" class="form-control" id="inputRoomNo" placeholder="Room number" required="true" [(ngModel)]="roomNumber" name="roomNumber">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputRoomName">Room name</label>
-                                <input type="text" class="form-control" id="inputRoomName" placeholder="Room name" required="true" [(ngModel)]="roomName" name="roomName">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-md-3">
-                                <label for="inputPeopleNo">Number of people</label>
-                                <input type="number" class="form-control" id="inputPeopleNo" placeholder="Number of people" required="true" [(ngModel)]="roomPeople" name="roomPeople">
-                                <small id="priceHelpBlock" class="form-text text-muted">
-                                    Maximum of people in room
-                                </small>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="inputBeds">Type of beds</label>
-                                <input type="text" class="form-control" id="inputBeds" placeholder="Type of beds" required="true" [(ngModel)]="roomBeds" name="roomBeds">
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="inputSmoking">Smoking room</label>
-                                <select id="inputSmoking" class="form-control" required="true" [(ngModel)]="roomSmoking" name="type">
-                                    <option selected>false</option>
-                                    <option>true</option>
-                                </select>
-                            </div>
-                            <div class="form-group col-md-3">
-                                <label for="inputPrice">Price</label>
-                                <input type="text" class="form-control" id="inputPrice" placeholder="Price" required="true" [(ngModel)]="roomPrice" name="roomPrice">
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-lg btn-primary" (click)="add()">Add new item to menu</button>
-                    </form>
-                </div>
-            </div>
-        </div>
 </div>

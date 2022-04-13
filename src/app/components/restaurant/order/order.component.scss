@@ -2,6 +2,7 @@
   background-color: white;
   height: 100vw;
   position: absolute;
+  top:3.2em;
   right: 0;
 
   .orderPanel{
@@ -11,7 +12,6 @@
   }
 
   .menu{
-    border-style: solid;
     height: 90vh;
 
     input{
@@ -22,7 +22,6 @@
   }
 
   .dishes{
-    border-style: solid;
     height: 90vh;
 
     .row{
@@ -84,11 +83,10 @@
   }
 
   .payment{
-    border-style: solid;
     height: 90vh;
 
     .billOrder{
-      height: 50%;
+      height: 80%;
 
       .nameBill, .quantityBill {
         border-right: 3px solid black;
@@ -112,7 +110,6 @@
     }
 
     .amountOrder{
-      border-style: solid;
       height: 50%;
 
       .totalLabel{
@@ -130,10 +127,7 @@
         .discountLabel{
           font-weight: bold;
         }
-
-
       }
-
 
       .paymentLabel{
         font-weight: bold;

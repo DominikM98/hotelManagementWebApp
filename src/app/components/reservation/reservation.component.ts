@@ -11,7 +11,16 @@ export class ReservationComponent implements OnInit {
 
   Reservations:any[] = [];
   Rooms:any[] = [];
+  Clients:any[] = [];
 
+  clientFirstName = '';
+  clientLastName = '';
+  clientEmail = '';
+  clientPhoneNo = '';
+  clientAddress = '';
+  clientPesel = '';
+
+  personPesel = '';
   personFirstName = '';
   personLastName = '';
   checkInDate = '';
@@ -63,17 +72,34 @@ export class ReservationComponent implements OnInit {
             .subscribe();
 
         this.clearForm();
+
         window.location.reload();
+
+    }
+
+    addClient():void{
+        const newClient = {
+            first_name: this.clientFirstName,
+            last_name: this.clientLastName,
+            pesel_number: this.clientPesel,
+            email_address: this.clientEmail,
+            phone_number: this.clientPhoneNo,
+            address: this.clientAddress,
+        };
+
+        console.log(newClient);
+
+        this.reservationService.addClient(newClient)
+            .subscribe();
+
+        this.clearForm2();
     }
 
     delete(id: String, key: String):void{
         this.reservationService.deleteReservation(id)
             .subscribe();
 
-        const index = this.Reservations.indexOf(key, 0);
-        if (index > -1) {
-            this.Reservations.splice(index, 1);
-        }
+        window.location.reload();
     }
 
     clearForm(){
@@ -87,6 +113,14 @@ export class ReservationComponent implements OnInit {
         this.roomNumberSelect = '';
         this.priceBookingInput = '';
     }
+
+    clearForm2(){
+      this.clientFirstName = '';
+      this.clientLastName = '';
+      this.clientEmail = '';
+      this.clientPhoneNo = '';
+      this.clientAddress = '';
+  }
 
   headElementsCheckIn = ['First name', 'Last name', 'Check in', 'Check out', 'Breakfast', 'Parking', 'Car registration', 'No. of room', 'No. of people','Booking price', 'Remove'];
 

@@ -1,15 +1,13 @@
 <nav class="navbar navbar-dark bg-dark">
 
   <div class="logoAndNameApp">
-    <span class="material-icons"> hotel </span>
+    <i class="fa fa-bed" aria-hidden="true"></i>
     <p class="nameApp">Hotel Management</p>
   </div>
 
   <div class="dateAndLogin"> <!-- date with time, login/sign -->
     <p class="dateWithTime">{{todayDate|date:'fullDate'}}</p>
-    <select class="custom-select bg-dark">
-      <option selected>Admin</option>
-    </select>
+      <span class="logoutSpan" (click)="logout()">LOGOUT</span>
   </div>
 </nav>
 

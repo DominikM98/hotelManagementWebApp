@@ -21,6 +21,7 @@
     "@angular/router": "~12.0.4",
     "@fortawesome/angular-fontawesome": "latest",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "@types/lodash": "^4.14.180",
     "angular-admin-lte": "^4.0.0",
     "angular-bootstrap-md": "^12.1.0",
     "angular-sidebar-menu": "^1.5.0",
@@ -30,6 +31,10 @@
     "font-awesome": "^4.7.0",
     "html-to-pdfmake": "^2.3.10",
     "jspdf": "^2.5.1",
+    "lodash": "latest",
+    "lodash.chunk": "^4.2.0",
+    "lodash.differenceby": "^4.8.0",
+    "lodash.sumby": "^4.6.0",
     "mdb-angular-ui-kit": "^1.5.1",
     "ng-uikit-pro-standard": "^1.0.0",
     "ng2-charts": "^3.0.1",
@@ -53,6 +58,7 @@
     "karma-coverage": "~2.0.3",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
-    "typescript": "~4.2.3"
+    "typescript": "~4.2.3",
+    "lodash": "latest"
   }
 }

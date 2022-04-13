@@ -1,3 +1,5 @@
+<navbar></navbar>
+<menu-context></menu-context>
 <div class="orderPage col-10">
     <div class="orderPanel">
         <div class="row">
@@ -19,7 +21,7 @@
                                 <p class="titleFood">{{el.product_name}}</p>
                                 <p class="priceFood">{{el.product_price}}</p>
                                 <div class="quantityDiv">
-                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)" [disabled]="el.min_quantity <= 0"/>
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValueMinus(el,1)" [disabled]="el.min_quantity <= 0"/>
                                     <label type="text" class="quantityLabel">{{el.min_quantity}}</label>
                                     <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)" [disabled]="el.min_quantity >= el.max_quantity"/>
                                 </div>
@@ -35,7 +37,7 @@
                                 <p class="titleFood" *ngIf="el.type_of_product === 'Appetizer'">{{el.product_name}}</p>
                                 <p class="priceFood" *ngIf="el.type_of_product === 'Appetizer'">{{el.product_price}}</p>
                                 <div class="quantityDiv" *ngIf="el.type_of_product === 'Appetizer'">
-                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)" [disabled]="el.min_quantity <= 0"/>
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValueMinus(el,1)" [disabled]="el.min_quantity <= 0"/>
                                     <label type="text" class="quantityLabel">{{el.min_quantity}}</label>
                                     <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)" [disabled]="el.min_quantity >= el.max_quantity"/>
                                 </div>
@@ -51,7 +53,7 @@
                                 <p class="titleFood" *ngIf="el.type_of_product === 'Soup'">{{el.product_name}}</p>
                                 <p class="priceFood" *ngIf="el.type_of_product === 'Soup'">{{el.product_price}}</p>
                                 <div class="quantityDiv" *ngIf="el.type_of_product === 'Soup'">
-                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)" [disabled]="el.min_quantity <= 0"/>
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValueMinus(el,1)" [disabled]="el.min_quantity <= 0"/>
                                     <label type="text" class="quantityLabel">{{el.min_quantity}}</label>
                                     <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)" [disabled]="el.min_quantity >= el.max_quantity"/>
                                 </div>
@@ -67,7 +69,7 @@
                                 <p class="titleFood" *ngIf="el.type_of_product === 'Main Dishes'">{{el.product_name}}</p>
                                 <p class="priceFood" *ngIf="el.type_of_product === 'Main Dishes'">{{el.product_price}}</p>
                                 <div class="quantityDiv" *ngIf="el.type_of_product === 'Main Dishes'">
-                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)" [disabled]="el.min_quantity <= 0"/>
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValueMinus(el,1)" [disabled]="el.min_quantity <= 0"/>
                                     <label type="text" class="quantityLabel">{{el.min_quantity}}</label>
                                     <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)" [disabled]="el.min_quantity >= el.max_quantity"/>
                                 </div>
@@ -83,7 +85,7 @@
                                 <p class="titleFood" *ngIf="el.type_of_product === 'Dessert'">{{el.product_name}}</p>
                                 <p class="priceFood" *ngIf="el.type_of_product === 'Dessert'">{{el.product_price}}</p>
                                 <div class="quantityDiv" *ngIf="el.type_of_product === 'Dessert'">
-                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)" [disabled]="el.min_quantity <= 0"/>
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValueMinus(el,1)" [disabled]="el.min_quantity <= 0"/>
                                     <label type="text" class="quantityLabel">{{el.min_quantity}}</label>
                                     <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)" [disabled]="el.min_quantity >= el.max_quantity"/>
                                 </div>
@@ -99,7 +101,7 @@
                                 <p class="titleFood" *ngIf="el.type_of_product === 'Other'">{{el.product_name}}</p>
                                 <p class="priceFood" *ngIf="el.type_of_product === 'Other'">{{el.product_price}}</p>
                                 <div class="quantityDiv" *ngIf="el.type_of_product === 'Other'">
-                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)" [disabled]="el.min_quantity <= 0"/>
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValueMinus(el,1)" [disabled]="el.min_quantity <= 0"/>
                                     <label type="text" class="quantityLabel">{{el.min_quantity}}</label>
                                     <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)" [disabled]="el.min_quantity >= el.max_quantity"/>
                                 </div>
@@ -115,7 +117,7 @@
                                 <p class="titleFood" *ngIf="el.type_of_product === 'Drink'">{{el.product_name}}</p>
                                 <p class="priceFood" *ngIf="el.type_of_product === 'Drink'">{{el.product_price}}</p>
                                 <div class="quantityDiv" *ngIf="el.type_of_product === 'Drink'">
-                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)" [disabled]="el.min_quantity <= 0"/>
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValueMinus(el,1)" [disabled]="el.min_quantity <= 0"/>
                                     <label type="text" class="quantityLabel">{{el.min_quantity}}</label>
                                     <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)" [disabled]="el.min_quantity >= el.max_quantity"/>
                                 </div>
@@ -131,7 +133,7 @@
                                 <p class="titleFood" *ngIf="el.type_of_product === 'Alcohol'">{{el.product_name}}</p>
                                 <p class="priceFood" *ngIf="el.type_of_product === 'Alcohol'">{{el.product_price}}</p>
                                 <div class="quantityDiv" *ngIf="el.type_of_product === 'Alcohol'">
-                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValue(el,-1)" [disabled]="el.min_quantity <= 0"/>
+                                    <input type="button" class="minusButton btn-dark" value="-" (click)="changeValueMinus(el,1)" [disabled]="el.min_quantity <= 0"/>
                                     <label type="text" class="quantityLabel">{{el.min_quantity}}</label>
                                     <input type="button" class="plusButton btn-dark" value="+" (click)="changeValue(el,1)" [disabled]="el.min_quantity >= el.max_quantity"/>
                                 </div>
@@ -171,48 +173,6 @@
                     <div class="totalOrderPrice">
                         <span class="totalLabel">Total:</span>
                         <span class="totalPrice">{{this.totalPrice}}</span>
-                    </div>
-                    <div class="paymentMethod">
-                        <label type="text" class="paymentLabel">Choose payment method:</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="cashMethod" (click)="showCashInput()">
-                            <label class="form-check-label" for="cashMethod">
-                                Cash
-                            </label>
-                        </div>
-                        <div class="cashMethodDiv" [hidden]="isCashMethod == false" >
-                            <input type="number" class="cashMethodLabel" placeholder="Value of the cash"
-                                   [(ngModel)]="cashMethod" [disabled]="cashMethod >= this.totalPrice"> <br>
-                            <small id="cashMethodHelpText">
-                                Template: 12.00
-                            </small>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="cardMethod" (click)="showCardInput()" >
-                            <label class="form-check-label" for="cardMethod">
-                                Card/Credit card
-                            </label>
-                        </div>
-                        <div class="cardMethodDiv" [hidden]="isCardMethod == false" >
-                            <input type="number" class="cardMethodLabel" placeholder="Value of the card"
-                                   [(ngModel)]="cardMethod" [disabled]="cardMethod >= this.totalPrice"> <br>
-                            <small id="cardMethodHelpText">
-                                Template: 12.00
-                            </small>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="voucherMethod"  (click)="showVoucherInput()">
-                            <label class="form-check-label" for="voucherMethod">
-                                Voucher
-                            </label>
-                        </div>
-                        <div class="voucherMethodDiv" [hidden]="isVoucherMethod == false" >
-                            <input type="number" class="voucherMethodLabel" placeholder="Value of the voucher"
-                                   [(ngModel)]="voucherMethod" [disabled]="voucherMethod >= this.totalPrice"> <br>
-                            <small id="voucherMethodHelpText">
-                                Template: 12.00
-                            </small>
-                        </div>
                     </div>
                     <button class="btn btn-primary submitButton" (click)="addBill()">Submit</button>
                 </div>
