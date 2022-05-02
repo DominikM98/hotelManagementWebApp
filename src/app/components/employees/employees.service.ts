@@ -1,6 +1,7 @@
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Injectable} from "@angular/core";
+import * as _ from 'lodash';
 
 @Injectable()
 export class EmployeeService {
@@ -13,7 +14,7 @@ export class EmployeeService {
     deleteAnnualLeaveUrl = 'http://localhost:3000/employee/deleteAnnualLeave?id=';
     // new user
     createNewUserUrl = 'http://localhost:3000/auth/signup';
-    userUrl = 'http://localhost:3000/auth/users'
+    userUrl = 'http://localhost:3000/auth/users';
 
     constructor(private http: HttpClient) {
     }

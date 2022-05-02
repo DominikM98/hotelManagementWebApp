@@ -9,6 +9,8 @@ import {RoomService} from "../rooms.service";
 })
 export class AddRoomComponent implements OnInit {
 
+  Rooms:any[] = [];
+
   roomFloor = '';
   roomNumber = '';
   roomName = '';
@@ -16,26 +18,53 @@ export class AddRoomComponent implements OnInit {
   roomBeds = '';
   roomSmoking = '';
   roomPrice = '';
+  smoking = false;
+
+  isRoom = false;
 
   constructor(private roomService: RoomService) { }
 
   ngOnInit(): void {
+    this.getRooms();
+  }
+
+  getRooms(): void{
+    this.roomService.getRooms()
+        .subscribe(rooms => {
+          this.Rooms = rooms;
+        })
   }
 
   add():void{
+    this.isSmokingRoom();
+
     const newRoom = {
       floor_number: this.roomFloor,
       room_number: this.roomNumber,
       room_name: this.roomName,
       number_of_people: this.roomPeople,
       type_of_beds: this.roomBeds,
-      smoking: this.roomSmoking,
+      smoking: this.smoking,
       price: this.roomPrice
     };
 
-    this.roomService.addRoom(newRoom).subscribe();
+    const room = this.Rooms.find( r => r.room_number == newRoom.room_number);
 
-    this.clearForm();
+    if (room){
+      this.isRoom = true;
+    }else{
+      this.isRoom = false;
+      this.roomService.addRoom(newRoom).subscribe();
+      this.clearForm();
+    }
+  }
+
+  isSmokingRoom(): void{
+    if (this.roomSmoking === 'Yes'){
+      this.smoking = true;
+    }else if (this.roomSmoking === 'No'){
+      this.smoking = false;
+    }
   }
 
   clearForm(){

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EmployeeService} from "./employees.service";
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-employees',
@@ -11,6 +12,10 @@ export class EmployeesComponent implements OnInit {
 
   Employee:any[] = [];
   AnnualLeave:any[] = [];
+
+  existsEmployee = '';
+  isExistsEmployee = false;
+  choseEmployee: any;
 
   constructor(private employeeService: EmployeeService) { }
 
@@ -31,6 +36,25 @@ export class EmployeesComponent implements OnInit {
         .subscribe((annualLeave)=>{
           this.AnnualLeave = annualLeave;
         });
+  }
+
+  searchEmployee(): void{
+    const id = this.existsEmployee;
+
+    this.choseEmployee = _.filter(this.Employee, function (o) {
+      return (_.includes(id,o._id));
+    });
+
+    if (this.existsEmployee !== 'Choose...'){
+      this.isExistsEmployee = true;
+    }else{
+      this.isExistsEmployee = false;
+    }
+
+    if(this.choseEmployee.length > 1){
+      this.choseEmployee.shift();
+    }
+
   }
 
   deleteEmployee(id: String, key: String):void{

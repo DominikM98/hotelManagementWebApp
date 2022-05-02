@@ -1,3 +1,5 @@
+<navbar></navbar>
+<menu-context></menu-context>
 <div class="addEmployeePage col-10">
 
     <div class="addNewEmployee">
@@ -10,7 +12,7 @@
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="inputFirstName">First name</label>
-                            <input type="text" class="form-control" id="inputFirstName" placeholder="First name" required="true" [(ngModel)]="employeeFirstName"  name="employeeFirstName">
+                            <input type="text" class="form-control" id="inputFirstName" placeholder="First name" [(ngModel)]="employeeFirstName"  name="employeeFirstName" >
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputLastName">Last name</label>
@@ -20,11 +22,17 @@
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="inputPosition">Position</label>
-                            <input type="text" class="form-control" id="inputPosition" placeholder="Position" required="true" [(ngModel)]="employeePosition" name="employeePosition">
+                            <select id="inputPosition" class="form-control" required="true" [(ngModel)]="employeePosition" name="type">
+                                <option selected>Choose...</option>
+                                <option *ngFor="let el of positionsHotel">{{el}}</option>
+                            </select>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputEmail">Email</label>
                             <input type="text" class="form-control" id="inputEmail" placeholder="Email" required="true" [(ngModel)]="employeeEmail" name="employeeEmail">
+                            <small id="email2HelpText" class="form-text text-muted" [hidden]="isEmail == false" style="color: red !important">
+                                The employee with the given e-mail already exists!
+                            </small>
                             <small id="emailHelpBlock" class="form-text text-muted">
                                 For example: jan@hotel.com
                             </small>
@@ -33,36 +41,56 @@
                             <label for="inputPhoneNumber">Phone number</label>
                             <input type="number" class="form-control" id="inputPhoneNumber" placeholder="Phone number" required="true" [(ngModel)]="employeePhoneNumber" name="employeePhoneNumber">
                             <small id="phoneNumberHelpBlock" class="form-text text-muted">
-                                Phone number with country code
+                                Phone number with country code (without +) if needed
                             </small>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-5">
+                            <label for="inputPesel">PESEL</label>
+                            <input type="text" class="form-control" id="inputPesel" placeholder="Pesel" required="true" [(ngModel)]="employeePesel" name="employeePesel">
+                            <small id="peselHelpBlock" class="form-text text-muted">
+                                If no PESEL is available, enter the type and number of the document confirming your identity.
+                            </small>
+                        </div>
+                        <div class="form-group col-md-7">
                             <label for="inputAddress">Address</label>
                             <input type="text" class="form-control" id="inputAddress" placeholder="Address" required="true" [(ngModel)]="employeeAddress" name="employeeAddress">
                         </div>
+
+                    </div>
+                    <div class="row">
                         <div class="form-group col-md-6">
                             <label for="inputNameBank">Name bank</label>
                             <input type="text" class="form-control" id="inputNameBank" placeholder="Name bank" required="true" [(ngModel)]="employeeNameBank" name="employeeNameBank">
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="inputAccountNo">Account number</label>
                             <input type="text" class="form-control" id="inputAccountNo" placeholder="Account number" required="true" [(ngModel)]="employeeAccountNumber" name="employeeAccountNumber">
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="form-group col-md-4">
                             <label for="inputLogin">Login</label>
                             <input type="text" class="form-control" id="inputLogin" placeholder="Login" required="true" [(ngModel)]="employeeLogin" name="employeeLogin">
+                            <small id="loginHelpText" class="form-text text-muted" [hidden]="isExists == false">
+                                This user is already exists!
+                            </small>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputPassword">Password</label>
                             <input type="text" class="form-control" id="inputPassword" placeholder="Password" required="true" [(ngModel)]="employeePassword" name="employeePassword">
                         </div>
+                        <div class="form-group col-md-4">
+                            <label for="inputConfirmPassword">Confirm password</label>
+                            <input type="text" class="form-control" id="inputConfirmPassword" placeholder="Confirm password" required="true" [(ngModel)]="employeeConfirm" name="employeeConfirm">
+                            <small id="confirmHelpText" class="form-text text-muted" [hidden]="isConfirm == false" style="color: red !important">
+                                The password is not the same!
+                            </small>
+                        </div>
                     </div>
 
-                    <button type="submit" class="btn btn-lg btn-primary" (click)="addEmployee()">Add new employee</button>
+                    <button type="submit" class="btn btn-lg btn-primary" (click)="checkPassword()">Add new employee</button>
                 </form>
             </div>
         </div>
@@ -86,7 +114,10 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputPositionAL">Position</label>
-                            <input type="text" class="form-control" id="inputPositionAL" placeholder="Position" required="true" [(ngModel)]="employeePositionAL" name="employeePositionAL">
+                            <select id="inputPositionAL" class="form-control" required="true" [(ngModel)]="employeePositionAL" name="employeePositionAL">
+                                <option selected>Choose...</option>
+                                <option *ngFor="let el of positionsHotel">{{el}}</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row">

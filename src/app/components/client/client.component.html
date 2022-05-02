@@ -2,14 +2,14 @@
 <menu-context></menu-context>
 <div class="clientPage col-10">
     <div class="masonry" >
-        <div class="cardDashboard col-6">
+        <div class="cardDashboard ">
             <div class="titleCard ">
                 <h5 class="card-header">Clients</h5>
             </div>
             <div class="bodyCard "style="margin-left:1em;">
 
                 <div class="individualPeople">
-                    <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='900' [bordered]='true' class="tableContent">
+                    <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent">
                         <thead>
                         <tr>
                             <th class="titleTable" *ngFor="let head of headElementsClient; let i = index" scope="col">{{head}}</th>
@@ -17,6 +17,43 @@
                         </thead>
                         <tbody>
                         <tr *ngFor="let el of Clients; let i = index">
+                            <td>{{el.first_name}}</td>
+                            <td>{{el.last_name}}</td>
+                            <td>{{el.email_address}}</td>
+                            <td>{{el.phone_number}}</td>
+                            <td>{{el.address}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="cardDashboard">
+            <div class="titleCard ">
+                <h5 class="card-header">Delete client</h5>
+            </div>
+            <div class="bodyCard "style="margin-left:1em;">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmployee">Please select a client</label>
+                        <select id="inputEmployee" class="form-control" required="true" [(ngModel)]="existsClient" name="existsClient" (change)="searchClient()">
+                            <option selected>Choose...</option>
+                            <option  *ngFor="let el of Clients" [value]="el._id">{{el.email_address}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="individualPeople">
+                    <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent" [hidden]="isExistsClient === false">
+                        <thead>
+                        <tr>
+                            <th class="titleTable" *ngFor="let head of headElementsClients; let i = index" scope="col">{{head}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let el of choseClient">
                             <td>{{el.first_name}}</td>
                             <td>{{el.last_name}}</td>
                             <td>{{el.email_address}}</td>

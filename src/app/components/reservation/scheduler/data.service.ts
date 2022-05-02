@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 
 @Injectable()
 export class DataService {
+  roomNoUrl = 'http://localhost:3000/room/showRooms';
 
   constructor(private http: HttpClient) {
   }

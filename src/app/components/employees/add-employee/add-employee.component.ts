@@ -11,9 +11,11 @@ export class AddEmployeeComponent implements OnInit {
 
   AnnualLeave:any[] = [];
   Users:any[] = [];
+  Employees:any[] = [];
 
   employeeFirstName = '';
   employeeLastName = '';
+  employeePesel = '';
   employeePosition = '';
   employeeEmail = '';
   employeePhoneNumber = '';
@@ -22,6 +24,7 @@ export class AddEmployeeComponent implements OnInit {
   employeeAccountNumber = '';
   employeeLogin = '';
   employeePassword = '';
+  employeeConfirm = '';
 
   employeeFirstNameAL = '';
   employeeLastNameAL = '';
@@ -32,12 +35,21 @@ export class AddEmployeeComponent implements OnInit {
 
   userRole = '';
   isExists = false;
-  isEmpty = false;
+  isEmail = false;
+  isConfirm = false;
 
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
     this.getUsers();
+    this.getEmployees();
+  }
+
+  getEmployees(): void{
+    this.employeeService.getEmployee()
+        .subscribe( employee => {
+          this.Employees = employee;
+        })
   }
 
 
@@ -45,6 +57,7 @@ export class AddEmployeeComponent implements OnInit {
     const newEmployee = {
       first_name: this.employeeFirstName,
       last_name: this.employeeLastName,
+      pesel_number: this.employeePesel,
       address: this.employeeAddress,
       email: this.employeeEmail,
       phone_number: this.employeePhoneNumber,
@@ -55,8 +68,25 @@ export class AddEmployeeComponent implements OnInit {
       password: this.employeePassword
     };
 
-    this.employeeService.addEmployee(newEmployee).subscribe();
-    this.clearForm();
+    const employee = this.Employees.find(e => e.email == newEmployee.email);
+
+    if (employee){
+      this.isEmail = true;
+    }else{
+      this.isEmail = false;
+      this.employeeService.addEmployee(newEmployee).subscribe();
+      this.clearForm();
+    }
+
+  }
+
+  checkPassword(): void{
+    if (this.employeeConfirm !== this.employeePassword){
+      this.isConfirm = true;
+    }else{
+      this.isConfirm = false;
+      this.addNewUser();
+    }
   }
 
   addAnnualLeave():void{
@@ -90,8 +120,6 @@ export class AddEmployeeComponent implements OnInit {
       this.isExists = false;
       this.employeeService.addUser(newUser).subscribe();
       this.addEmployee();
-
-      console.log("e")
     }
 
   }

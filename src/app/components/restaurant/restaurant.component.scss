@@ -18,6 +18,12 @@
       height:100%;
 
       .tableLeft, .tableRight{
+
+      }
+
+      #table1,#table2,#table3,#table4,
+      #table5,#table6,#table7,#table8,
+      #table9,#table10,#table11,#table12{
         border-radius: 50%;
         text-underline: none;
         border-style: solid;
@@ -28,6 +34,17 @@
         margin-top: 1em;
       }
 
+      #table1:hover, #table2:hover, #table3:hover,
+      #table4:hover, #table5:hover, #table6:hover,
+      #table7:hover, #table8:hover, #table9:hover,
+      #table10:hover, #table11:hover, #table12:hover,{
+        border-color: red;
+      }
+
+      #table1:active{
+        background-color: red;
+
+      }
       .tableRight{
         margin-left:50%;
       }
@@ -38,6 +55,8 @@
         width: 100%;
         text-decoration: none;
       }
+
+
     }
 
 

@@ -22,11 +22,13 @@
                              <tr *ngFor="let el of ItemMenu">
                                  <td *ngIf="el.type_of_product === 'Appetizer'">{{el.product_name}}</td>
                                  <td *ngIf="el.type_of_product === 'Appetizer'">{{el.ingredients}}</td>
+                                 <td *ngIf="el.type_of_product === 'Appetizer'">{{el.allergens}}</td>
                                  <td *ngIf="el.type_of_product === 'Appetizer'">{{el.product_price}}</td>
                                  <td *ngIf="el.type_of_product === 'Appetizer'">{{el.product_weight}}</td>
-                                 <td *ngIf="el.type_of_product === 'Appetizer'">{{el.quantity}}</td>
                                  <td *ngIf="el.type_of_product === 'Appetizer'">
-                                     <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id,el)">Remove</button>
+                                     <button class="btn btn-sm btn-danger" (click)="delete(el._id)">
+                                         <i class="fa fa-trash"></i>
+                                     </button>
                                  </td>
                              </tr>
                             </tbody>
@@ -55,11 +57,13 @@
                                    <tr *ngFor="let el of ItemMenu">
                                        <td *ngIf="el.type_of_product === 'Soup'">{{el.product_name}}</td>
                                        <td *ngIf="el.type_of_product === 'Soup'">{{el.ingredients}}</td>
+                                       <td *ngIf="el.type_of_product === 'Soup'">{{el.allergens}}</td>
                                        <td *ngIf="el.type_of_product === 'Soup'">{{el.product_price}}</td>
                                        <td *ngIf="el.type_of_product === 'Soup'">{{el.product_weight}}</td>
-                                       <td *ngIf="el.type_of_product === 'Soup'">{{el.quantity}}</td>
                                        <td *ngIf="el.type_of_product === 'Soup'">
-                                           <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id,el)">Remove</button>
+                                           <button class="btn btn-sm btn-danger" (click)="delete(el._id)">
+                                               <i class="fa fa-trash"></i>
+                                           </button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -88,11 +92,13 @@
                                <tr *ngFor="let el of ItemMenu">
                                    <td *ngIf="el.type_of_product === 'Main Dishes'">{{el.product_name}}</td>
                                    <td *ngIf="el.type_of_product === 'Main Dishes'">{{el.ingredients}}</td>
+                                   <td *ngIf="el.type_of_product === 'Main Dishes'">{{el.allergens}}</td>
                                    <td *ngIf="el.type_of_product === 'Main Dishes'">{{el.product_price}}</td>
                                    <td *ngIf="el.type_of_product === 'Main Dishes'">{{el.product_weight}}</td>
-                                   <td *ngIf="el.type_of_product === 'Main Dishes'">{{el.quantity}}</td>
                                    <td *ngIf="el.type_of_product === 'Main Dishes'">
-                                       <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id,el)">Remove</button>
+                                       <button class="btn btn-sm btn-danger" (click)="delete(el._id)">
+                                           <i class="fa fa-trash"></i>
+                                       </button>
                                    </td>
                                </tr>
                             </tbody>
@@ -121,11 +127,13 @@
                                 <tr *ngFor="let el of ItemMenu">
                                     <td *ngIf="el.type_of_product === 'Dessert'">{{el.product_name}}</td>
                                     <td *ngIf="el.type_of_product === 'Dessert'">{{el.ingredients}}</td>
+                                    <td *ngIf="el.type_of_product === 'Dessert'">{{el.allergens}}</td>
                                     <td *ngIf="el.type_of_product === 'Dessert'">{{el.product_price}}</td>
                                     <td *ngIf="el.type_of_product === 'Dessert'">{{el.product_weight}}</td>
-                                    <td *ngIf="el.type_of_product === 'Dessert'">{{el.quantity}}</td>
                                     <td *ngIf="el.type_of_product === 'Dessert'">
-                                        <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id,el)">Remove</button>
+                                        <button class="btn btn-sm btn-danger" (click)="delete(el._id)">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -154,11 +162,13 @@
                                     <tr *ngFor="let el of ItemMenu">
                                         <td *ngIf="el.type_of_product === 'Other'">{{el.product_name}}</td>
                                         <td *ngIf="el.type_of_product === 'Other'">{{el.ingredients}}</td>
+                                        <td *ngIf="el.type_of_product === 'Other'">{{el.allergens}}</td>
                                         <td *ngIf="el.type_of_product === 'Other'">{{el.product_price}}</td>
                                         <td *ngIf="el.type_of_product === 'Other'">{{el.product_weight}}</td>
-                                        <td *ngIf="el.type_of_product === 'Other'">{{el.quantity}}</td>
                                         <td *ngIf="el.type_of_product === 'Other'">
-                                            <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id,el)">Remove</button>
+                                            <button class="btn btn-sm btn-danger" (click)="delete(el._id)">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -187,11 +197,13 @@
                               <tr *ngFor="let el of ItemMenu">
                                   <td *ngIf="el.type_of_product === 'Drink'">{{el.product_name}}</td>
                                   <td *ngIf="el.type_of_product === 'Drink'">{{el.ingredients}}</td>
+                                  <td *ngIf="el.type_of_product === 'Drink'">{{el.allergens}}</td>
                                   <td *ngIf="el.type_of_product === 'Drink'">{{el.product_price}}</td>
                                   <td *ngIf="el.type_of_product === 'Drink'">{{el.product_weight}}</td>
-                                  <td *ngIf="el.type_of_product === 'Drink'">{{el.quantity}}</td>
                                   <td *ngIf="el.type_of_product === 'Drink'">
-                                      <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id,el)">Remove</button>
+                                      <button class="btn btn-sm btn-danger" (click)="delete(el._id)">
+                                          <i class="fa fa-trash"></i>
+                                      </button>
                                   </td>
                               </tr>
                             </tbody>
@@ -220,11 +232,13 @@
                                 <tr *ngFor="let el of ItemMenu">
                                     <td *ngIf="el.type_of_product === 'Alcohol'">{{el.product_name}}</td>
                                     <td *ngIf="el.type_of_product === 'Alcohol'">{{el.ingredients}}</td>
+                                    <td *ngIf="el.type_of_product === 'Alcohol'">{{el.allergens}}</td>
                                     <td *ngIf="el.type_of_product === 'Alcohol'">{{el.product_price}}</td>
                                     <td *ngIf="el.type_of_product === 'Alcohol'">{{el.product_weight}}</td>
-                                    <td *ngIf="el.type_of_product === 'Alcohol'">{{el.max_quantity}}</td>
                                     <td *ngIf="el.type_of_product === 'Alcohol'">
-                                        <button type="submit" class="btn btn-sm btn-secondary" (click)="delete(el._id,el)">Remove</button>
+                                        <button class="btn btn-sm btn-danger" (click)="delete(el._id)">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -245,31 +259,7 @@
             <div class="formItemMenu">
                 <form>
                     <div class="row">
-                        <div class="form-group col-md-6" >
-                            <label for="inputProductName">Product name</label>
-                            <input type="text" class="form-control" id="inputProductName" placeholder="Product name" required="true" [(ngModel)]="itemProductName" name="productName">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="inputIngredients">Ingredients</label>
-                            <input type="text" class="form-control" id="inputIngredients" placeholder="Ingredients" required="true" [(ngModel)]="itemIngredients" name="ingredients">
-                            <small id="ingredientsHelpBlock" class="form-text text-muted">
-                                Separate words with commas
-                            </small>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-3">
-                            <label for="inputPrice">Price</label>
-                            <input type="number" class="form-control" id="inputPrice" placeholder="Price" required="true" [(ngModel)]="itemPrice" name="price">
-                            <small id="priceHelpBlock" class="form-text text-muted">
-                                Template input: 8.00
-                            </small>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label for="inputWeight">Weight</label>
-                            <input type="text" class="form-control" id="inputWeight" placeholder="Weight" required="true" [(ngModel)]="itemWeight" name="weight">
-                        </div>
-                        <div class="form-group col-md-3">
+                        <div class="form-group col-md-4">
                             <label for="inputType">Type of product</label>
                             <select id="inputType" class="form-control" required="true" [(ngModel)]="itemType" name="type">
                                 <option selected>Choose...</option>
@@ -282,9 +272,38 @@
                                 <option>Alcohol</option>
                             </select>
                         </div>
+                        <div class="form-group col-md-8" >
+                            <label for="inputProductName">Product name</label>
+                            <input type="text" class="form-control" id="inputProductName" placeholder="Product name" required="true" [(ngModel)]="itemProductName" name="productName">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="inputIngredients">Ingredients</label>
+                            <input type="text" class="form-control" id="inputIngredients" placeholder="Ingredients" required="true" [(ngModel)]="itemIngredients" name="ingredients">
+                            <small id="ingredientsHelpBlock" class="form-text text-muted">
+                                Separate words with commas
+                            </small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputAllergens">Allergens</label>
+                            <input type="text" class="form-control" id="inputAllergens" placeholder="Allergens" required="true" [(ngModel)]="itemAllergens" name="allergens">
+                            <small id="allergensHelpBlock" class="form-text text-muted">
+                                Separate words with commas
+                            </small>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="form-group col-md-3">
-                            <label for="inputQuantity">Quantity product</label>
-                            <input type="number" class="form-control" id="inputQuantity" placeholder="Quantity product" required="true" [(ngModel)]="itemQuantity" name="quantity" min="0" max="50">
+                            <label for="inputPrice">Price (PLN)</label>
+                            <input type="number" class="form-control" id="inputPrice" placeholder="Price" required="true" [(ngModel)]="itemPrice" name="price">
+                            <small id="priceHelpBlock" class="form-text text-muted">
+                                Template input: 8.00
+                            </small>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="inputWeight">Weight (g, ml)</label>
+                            <input type="text" class="form-control" id="inputWeight" placeholder="Weight" required="true" [(ngModel)]="itemWeight" name="weight">
                         </div>
                     </div>
 

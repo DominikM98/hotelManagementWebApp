@@ -34,6 +34,6 @@ export class RoomsComponent implements OnInit {
     window.location.reload()
   }
 
-  headElementsRoomItem = ['Floor','No. of room', 'Room name', 'No. of people', 'Type of beds', 'Smoking room', 'Room price','Operation'];
+  headElementsRoomItem = ['Floor','No. of room', 'Room name', 'No. of people', 'Type of beds', 'Smoking room', 'Room price (PLN)','Operation'];
 
 }

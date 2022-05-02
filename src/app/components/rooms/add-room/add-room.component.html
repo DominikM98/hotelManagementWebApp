@@ -22,6 +22,9 @@
                         <div class="form-group col-md-4">
                             <label for="inputRoomNo">Room number</label>
                             <input type="text" class="form-control" id="inputRoomNo" placeholder="Room number" required="true" [(ngModel)]="roomNumber" name="roomNumber">
+                            <small id="roomHelpBlock" class="form-text text-muted" [hidden]="isRoom === false" style="color:red !important;">
+                                This room already exist
+                            </small>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputRoomName">Room name</label>
@@ -43,12 +46,12 @@
                         <div class="form-group col-md-3">
                             <label for="inputSmoking">Smoking room</label>
                             <select id="inputSmoking" class="form-control" required="true" [(ngModel)]="roomSmoking" name="type">
-                                <option selected>false</option>
-                                <option>true</option>
+                                <option selected>No</option>
+                                <option>Yes</option>
                             </select>
                         </div>
                         <div class="form-group col-md-3">
-                            <label for="inputPrice">Price</label>
+                            <label for="inputPrice">Price (PLN)</label>
                             <input type="text" class="form-control" id="inputPrice" placeholder="Price" required="true" [(ngModel)]="roomPrice" name="roomPrice">
                         </div>
                     </div>

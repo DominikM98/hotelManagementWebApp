@@ -8,7 +8,7 @@
                 <div class="titleCard ">
                     <h5 class="card-header">Annual Leave</h5>
                 </div>
-                <div class="bodyCard "style="margin-left:1em;">
+                <div class="bodyCard " style="margin-left:1em;">
                     <table mdbTable  mdbTableScroll [scrollY]='true' maxHeight='200' [bordered]='true' class="tableContent">
                         <thead>
                         <tr>
@@ -68,23 +68,37 @@
                     <h5 class="card-header">Extend employee data</h5>
                 </div>
                 <div class="bodyCard "style="margin-left:1em;">
-                    <table mdbTable  mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent">
-                        <thead>
-                        <tr>
-                            <th class="titleTable" *ngFor="let head of headElementsViewExtraEmployees" >{{head}} </th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr mdbTableCol *ngFor="let el of Employee">
-                            <td class="elementsTable">{{el.login}}</td>
-                            <td class="elementsTable">{{el.address}}</td>
-                            <td class="elementsTable">{{el.email}}</td>
-                            <td class="elementsTable">{{el.password}}</td>
-                            <td class="elementsTable">{{el.name_bank}}</td>
-                            <td class="elementsTable">{{el.account_number}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="inputEmployee">Please select an employee</label>
+                            <select id="inputEmployee" class="form-control" required="true" [(ngModel)]="existsEmployee" name="existsEmployee" (change)="searchEmployee()">
+                                <option selected>Choose...</option>
+                                <option  *ngFor="let el of Employee" [value]="el._id">{{el.login}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div >
+                        <table mdbTable  mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent" [hidden]="isExistsEmployee == false">
+                            <thead>
+                            <tr>
+                                <th class="titleTable" *ngFor="let head of headElementsViewExtraEmployees" >{{head}} </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr mdbTableCol *ngFor="let el of choseEmployee">
+                                <td class="elementsTable">{{el.login}}</td>
+                                <td class="elementsTable">{{el.address}}</td>
+                                <td class="elementsTable">{{el.email}}</td>
+                                <td class="elementsTable">{{el.password}}</td>
+                                <td class="elementsTable">{{el.name_bank}}</td>
+                                <td class="elementsTable">{{el.account_number}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
             </div>
 

@@ -11,16 +11,14 @@ export class ReservationComponent implements OnInit {
 
   Reservations:any[] = [];
   Rooms:any[] = [];
-  Clients:any[] = [];
+  Clients:any [] = [];
 
   clientFirstName = '';
   clientLastName = '';
   clientEmail = '';
   clientPhoneNo = '';
   clientAddress = '';
-  clientPesel = '';
 
-  personPesel = '';
   personFirstName = '';
   personLastName = '';
   checkInDate = '';
@@ -32,11 +30,14 @@ export class ReservationComponent implements OnInit {
   numberOfPeople = 0;
   priceBookingInput = '';
 
+  isEmail = false;
+
   constructor(private reservationService: ReservationService) { }
 
   ngOnInit(): void {
     this.getReservation();
     this.getRooms();
+    this.getClients();
  }
 
     getReservation(): void {
@@ -54,6 +55,13 @@ export class ReservationComponent implements OnInit {
           })
     }
 
+    getClients():void{
+      this.reservationService.getClients()
+          .subscribe(clients => {
+              this.Clients = clients;
+          })
+    }
+
     add():void{
         const newReservation = {
             first_name: this.personFirstName,
@@ -68,8 +76,8 @@ export class ReservationComponent implements OnInit {
             booking_price: this.priceBookingInput
         };
 
-        this.reservationService.addReservation(newReservation)
-            .subscribe();
+
+        this.reservationService.addReservation(newReservation).subscribe();
 
         this.clearForm();
 
@@ -81,18 +89,21 @@ export class ReservationComponent implements OnInit {
         const newClient = {
             first_name: this.clientFirstName,
             last_name: this.clientLastName,
-            pesel_number: this.clientPesel,
             email_address: this.clientEmail,
             phone_number: this.clientPhoneNo,
             address: this.clientAddress,
         };
 
-        console.log(newClient);
+        const client = this.Clients.find(u => u.email_address == newClient.email_address);
 
-        this.reservationService.addClient(newClient)
-            .subscribe();
+        if(client){
+            this.isEmail = true;
+        }else {
+            this.isEmail = false;
+            this.reservationService.addClient(newClient).subscribe();
+            this.clearForm2();
+        }
 
-        this.clearForm2();
     }
 
     delete(id: String, key: String):void{

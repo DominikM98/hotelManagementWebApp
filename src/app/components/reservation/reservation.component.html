@@ -2,6 +2,9 @@
 <navbar></navbar>
 <menu-context></menu-context>
 <div class="reservationPage col-10">
+
+    <scheduler-component></scheduler-component>
+
     <div class="masonry" >
         <div class="cardDashboard col-6">
             <div class="titleCard ">
@@ -59,15 +62,12 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="inputPesel2">PESEL/Passport Number</label>
-                            <input type="text" class="form-control" id="inputPesel2" placeholder="PESEL/Passport Number" required="true" [(ngModel)]="clientPesel" name="clientAddress">
-                        </div>
-                    </div>
-                    <div class="row">
                         <div class="form-group col-md-5">
                             <label for="inputEmail">Email</label>
                             <input type="text" class="form-control" id="inputEmail" placeholder="Email" required="true" [(ngModel)]="clientEmail" name="clientEmail">
+                            <small id="email2HelpText" class="form-text text-muted" [hidden]="isEmail == false" style="color: red !important">
+                                The employee with the given e-mail already exists!
+                            </small>
                             <small id="emailHelpBlock" class="form-text text-muted">
                                 For example: jan@hotel.com
                             </small>

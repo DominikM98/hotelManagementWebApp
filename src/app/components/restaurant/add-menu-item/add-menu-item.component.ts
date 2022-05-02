@@ -17,6 +17,7 @@ export class AddMenuItemComponent implements OnInit {
   itemType = '';
   itemQuantity = '';
   itemMinQuantity = '0';
+  itemAllergens = '';
 
   constructor(private itemMenuService: ItemMenuService) { }
 
@@ -37,6 +38,7 @@ export class AddMenuItemComponent implements OnInit {
     const newItemMenu = {
       product_name: this.itemProductName,
       ingredients: this.itemIngredients,
+      allergens: this.itemAllergens,
       product_weight: this.itemWeight,
       product_price: this.itemPrice,
       type_of_product: this.itemType,
@@ -51,19 +53,15 @@ export class AddMenuItemComponent implements OnInit {
     window.location.reload();
   }
 
-  delete(id: String, key: String):void{
+  delete(id: String):void{
     this.itemMenuService.deleteItemMenu(id)
         .subscribe();
-
-    const index = this.ItemMenu.indexOf(key, 0);
-    if (index > -1) {
-      this.ItemMenu.splice(index, 1);
-    }
   }
 
   clearForm(){
     this.itemProductName = '';
     this.itemIngredients = '';
+    this.itemAllergens = '';
     this.itemWeight = '';
     this.itemPrice = '';
     this.itemType = '';
@@ -71,13 +69,13 @@ export class AddMenuItemComponent implements OnInit {
 
 
   //Grams menu
-  headElementsGramItem = ['Product name', 'Ingredients', 'Product price ($)', 'Product weight (g)', 'Quantity product','Remove item'];
+  headElementsGramItem = ['Product name', 'Ingredients', 'Allergens', 'Product price (PLN)', 'Product weight (g)','Operations'];
 
     //Mililiters menu
-    headElementsMlItem = ['Product name', 'Ingredients', 'Product price ($)', 'Product weight (ml)','Quantity product', 'Remove item'];
+    headElementsMlItem = ['Product name', 'Ingredients', 'Allergens', 'Product price (PLN)', 'Product weight (ml)', 'Operations'];
 
     //Centiliter menu
-    headElementsClItem = ['Product name', 'Ingredients', 'Product price ($)', 'Product weight (cl)','Quantity product', 'Remove item'];
+    headElementsClItem = ['Product name', 'Ingredients', 'Allergens', 'Product price (PLN)', 'Product weight (cl)', 'Operations'];
 
 }
 
