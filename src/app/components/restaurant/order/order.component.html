@@ -143,23 +143,16 @@
                 </div>
             </div>
 
-            <div class="payment col-3">
+            <div   class="payment col-3">
                 <div class="billOrder" >
                     <div class="row">
                         <div class="col-7 nameBill">Name</div>
                         <div class="col-2 quantityBill">Qty.</div>
                         <div class="col-3 valueBill">Value (PLN)</div>
                     </div>
-                    <!--<div *ngFor="let el of ItemMenu">
-                        <div class="row" *ngIf="el.min_quantity > 0">
-                            <div class="col-7 titleFood2" #title>{{el.product_name}}</div>
-                            <div class="col-2 quantityFood">x {{el.min_quantity}}</div>
-                            <div class="col-3 valueOrder">{{el.product_price * el.min_quantity}}</div>
-                        </div>
-                    </div>-->
                     <div *ngFor="let el of Order">
                         <div class="row" *ngIf="el.min_quantity > 0">
-                            <div class="col-7 titleFood2" #title>{{el.product_name}}</div>
+                            <div class="col-7 titleFood2">{{el.product_name}}</div>
                             <div class="col-2 quantityFood">x {{el.min_quantity}}</div>
                             <div class="col-3 valueOrder">{{el.product_price * el.min_quantity}}</div>
                         </div>
@@ -179,11 +172,14 @@
                     </div>
                     <div class="totalOrderPrice">
                         <span class="totalLabel">Total:</span>
-                        <span class="totalPrice">{{this.totalPrice2}} PLN</span>
+                        <span class="totalPrice" >{{this.totalPrice2}} PLN</span>
+
                     </div>
                     <button class="btn btn-primary submitButton" (click)="addBill()">Submit</button>
                 </div>
             </div>
+
+
         </div>
 
     </div>

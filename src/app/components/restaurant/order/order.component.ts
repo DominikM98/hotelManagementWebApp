@@ -16,7 +16,6 @@ export class OrderComponent implements OnInit {
   BillProduct:any[] = [];
   Order:any[] = [];
   Order2:any[] = [];
-  Order3:any[] = [];
 
   isAr = false;
   isSp = false;
@@ -30,16 +29,10 @@ export class OrderComponent implements OnInit {
   totalPrice = 0;
   totalPrice2 = 0;
 
-  a:any;
-  b:any;
-  c:any;
-  d:any;
+  tableOne = false;
+  tableTwo = false;
+  table = false;
 
-  l = 0;
-  q :any;
-
-    // @ts-ignore
-    @ViewChild('title') el: ElementRef;
 
   constructor(private itemMenuService: ItemMenuService, private orderService: OrderService) {
   }
@@ -47,18 +40,30 @@ export class OrderComponent implements OnInit {
   ngOnInit(): void {
     this.getItemMenu();
 
-    if (this.totalPrice === 0){
-        localStorage.setItem("busy_table", 'FREE');
+    if(localStorage.getItem('Total_price') === null){
+        localStorage.setItem('busy_table','FREE')
     }
+      console.log('LS:', localStorage.getItem('busy_table'));
+    this.getLS();
 
-   this.Order2 = JSON.parse(<string>localStorage.getItem('Order'));
-    console.log(this.Order2);
+      console.log('Order:', localStorage.getItem('Order'))
+      console.log('Total:', JSON.parse(<string>localStorage.getItem('Total_price')))
+  }
 
-    this.totalPrice2 = JSON.parse(<string>localStorage.getItem('Total_price'));
-    JSON.parse(<string>localStorage.getItem('Discount_value'));
+  getLS(){
+      this.Order2 = JSON.parse(<string>localStorage.getItem('Order'));
+      for (let i =0; i < this.Order2.length;i++){
+          this.Order.push(this.Order2[i]);
+      }
 
-    //console.log('Order[]:', JSON.parse(<string>localStorage.getItem('Order')))
-    console.log('Total:', JSON.parse(<string>localStorage.getItem('Total_price')))
+      this.totalPrice2 = JSON.parse(<string>localStorage.getItem('Total_price'));
+
+      if (this.totalPrice2 === 0){
+          this.totalPrice2 = this.totalPrice;
+      }
+
+      JSON.parse(<string>localStorage.getItem('Discount_value'));
+
 
   }
 
@@ -69,17 +74,18 @@ export class OrderComponent implements OnInit {
         .subscribe((itemMenu) => {
           this.ItemMenu = itemMenu;
         });
+
   }
 
   addBill(): void{
 
     const newBill = {
         order: this.Order,
-        total_price: this.totalPrice,
+        total_price: this.totalPrice2,
         discount_value: this.discountValue
     };
 
-    //this.orderService.addBill(newBill).subscribe();
+    this.orderService.addBill(newBill).subscribe();
 
     localStorage.removeItem('Order');
     localStorage.removeItem('Total_price');
@@ -94,7 +100,7 @@ export class OrderComponent implements OnInit {
     variable.min_quantity += val;
 
     if (variable.min_quantity > 0){
-        if (!this.Order.includes(variable)){
+         if (!this.Order.includes(variable)){
             this.Order.push(variable);
             console.log('Push:',this.Order)
         }
@@ -102,17 +108,28 @@ export class OrderComponent implements OnInit {
         if (this.Order.includes(variable)){
             const index = this.Order.indexOf(variable);
             this.Order.splice(index,1);
-            console.log('Pop:',this.Order)
         }
     }
 
     this.BillProduct.push(variable);
 
-    this.totalPrice = _.sumBy(this.BillProduct, amount => {
-      return amount.product_price;
-    });
+    this.totalPrice = _.sumBy(this.Order, amount => {
+        console.log('amount',amount.product_price)
+        console.log('quan',amount.min_quantity)
+        if (amount.min_quantity > 1){
+            return amount.product_price * amount.min_quantity;
+        }else {
+            return amount.product_price;
+        }
 
-      if (this.totalPrice > 0){
+    });
+    this.totalPrice2 = this.totalPrice;
+
+    console.log('TP:',this.totalPrice)
+    console.log('TP2:',this.totalPrice2)
+    console.log('price:',this.Order)
+
+      if (this.totalPrice2 > 0){
           localStorage.setItem("busy_table", 'BUSY');
       }else{
           localStorage.setItem("busy_table", 'FREE');
@@ -142,8 +159,9 @@ export class OrderComponent implements OnInit {
     this.BillProduct.pop();
 
     this.totalPrice = _.subtract(this.totalPrice, variable.product_price);
+    this.totalPrice2 = this.totalPrice;
 
-      if (this.totalPrice > 0){
+      if (this.totalPrice2 > 0){
           localStorage.setItem("busy_table", 'BUSY');
       }else{
           localStorage.setItem("busy_table", 'FREE');
@@ -152,6 +170,8 @@ export class OrderComponent implements OnInit {
       for(let i = 0; i < this.Order.length; i++){
           this.Order2.pop();
       }
+
+      console.log(this.Order2)
     this.saveInstance();
   }
 
@@ -161,93 +181,19 @@ export class OrderComponent implements OnInit {
     this.saveInstance();
   }
 
-  saveInstance(){
 
-      /*if (this.Order2 === null){
-          localStorage.setItem('Order', JSON.stringify(this.Order));
-      }else if (this.Order2 !== null){
-         // this.getValue(this.Order, this.Order2,this.Order3);
-          localStorage.setItem('Order', JSON.stringify(this.Order2));
-      }*/
+  saveInstance(){
 
    localStorage.setItem('Order', JSON.stringify(this.Order));
       console.log('ORDER', this.Order)
+      console.log('ORDER2', this.Order2)
+
       localStorage.setItem('Total_price', JSON.stringify(this.totalPrice));
 
       localStorage.setItem('Discount_value', JSON.stringify(this.discountValue));
-
-
-      console.log('ORDER2', this.Order2)
-      console.log('ORDER3', this.Order3)
   }
 
-    getValue(o:any, o2:any, o3:any){
 
-        for (let i = 0; i < o.length; i++){
-            o2.push(o[i]);
-
-
-        }
-
-        console.log("getValue(o2):",o2)
-        for (let j = 0; j < o2.length;j++){
-            console.log("i:",j)
-            console.log("o2:",o2[j]._id)
-            console.log("i:",j+1)
-            console.log("o2:",o2[j+1]._id)
-            if (o2[j]._id === o2[j+1]._id){
-                o2.pop();
-            }
-        }
-        console.log("getValue(o2-1):",o2)
-
-
-        /*      for (let j = 0; j < o.length; j++){
-                // console.log('Order(for):',o[j]);
-                console.log('l:',o.length)
-                console.log('q:',o[j].min_quantity)
-
-                console.log('o[',j,']',o[j].product_name)
-                console.log('o2[',j,']',o2[j].product_name)
-                o2.push(o[j]);
-                //console.log('Order2:',o2)
-            }
-
-       for (let i = 0; i < o2.length; i++){
-            //console.log('Order2: ', o2);
-            o3.push(o2[i]);
-           // console.log('Order3(o2): ',o3)
-        }
-
-
-        if (o2.length > 2){
-
-                o3.push(o)
-
-        }
-
-
-
-
-
-  o3 = o2;
-  console.log('Order3(o2): ',o3)
-
-   }
-
-
-      for (let i = 0; i < o2.length; i++){
-            console.log('Order: ',o2[i]);
-            if (o2[i] === o[i]){
-                o3[i].min_quantity += 1;
-            }
-            o3.push(o2[i]);
-            this.totalPrice += this.totalPrice2;
-            console.log('Order 3: ',o3)
-        }*/
-
-
-    }
 
   showMenuAppetizer(){
     if (this.isAr === false){
