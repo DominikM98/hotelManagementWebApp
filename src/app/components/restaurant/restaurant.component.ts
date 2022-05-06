@@ -7,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RestaurantComponent implements OnInit {
 
+  ls: string | null = '';
   constructor() { }
 
   ngOnInit(): void {
-    this.getTable()
+    //this.getTable()
+    this.ls = localStorage.getItem('busy_table')
+    console.log(this.ls)
   }
 
   getTable(){
@@ -26,7 +29,10 @@ export class RestaurantComponent implements OnInit {
     const table10 = document.getElementById('table10');
     const table11 = document.getElementById('table11');
     const table12 = document.getElementById('table12');
+
+
     if (localStorage.getItem('busy_table') === 'BUSY'){
+     // a.style.backgroundColor = 'red';
       // @ts-ignore
       table1.style.backgroundColor = 'red';
       // @ts-ignore

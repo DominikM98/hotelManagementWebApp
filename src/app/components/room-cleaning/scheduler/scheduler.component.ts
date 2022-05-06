@@ -42,10 +42,7 @@ export class SchedulerComponent implements AfterViewInit {
     eventMoveHandling: "Disabled",
     eventResizeHandling: "Disabled",
     eventDeleteHandling: "Disabled",
-    eventClickHandling: "Enabled",
-    onEventClicked: (args) => {
-      args.control.message("Event clicked: " + args.e.text());
-    },
+    eventClickHandling: "Disabled",
     eventHoverHandling: "Bubble",
     bubble: new DayPilot.Bubble({
       onLoad: (args) => {
@@ -125,7 +122,7 @@ export class SchedulerComponent implements AfterViewInit {
         end: variable[i].check_out,
         id: DayPilot.guid(),
         resource: 'R'+variable[i].room_number,
-        text: variable[i].first_name + ' ' + variable[i].last_name + ' ('+variable[i].number_of_people+' people)',
+        text:''+variable[i].number_of_people+' people',
         barColor: "#38761d"
       });
 

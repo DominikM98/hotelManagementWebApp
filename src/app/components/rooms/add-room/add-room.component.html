@@ -7,7 +7,7 @@
                 <h5 class="card-header">New room</h5>
             </div>
             <div class="formRoom">
-                <form>
+                <form class="was-validated">
                     <div class="row">
                         <div class="form-group col-md-2" >
                             <label for="inputFloorNo">Floor number</label>
@@ -18,10 +18,12 @@
                                 <option>III</option>
                                 <option>IV</option>
                             </select>
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputRoomNo">Room number</label>
                             <input type="text" class="form-control" id="inputRoomNo" placeholder="Room number" required="true" [(ngModel)]="roomNumber" name="roomNumber">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                             <small id="roomHelpBlock" class="form-text text-muted" [hidden]="isRoom === false" style="color:red !important;">
                                 This room already exist
                             </small>
@@ -29,12 +31,14 @@
                         <div class="form-group col-md-6">
                             <label for="inputRoomName">Room name</label>
                             <input type="text" class="form-control" id="inputRoomName" placeholder="Room name" required="true" [(ngModel)]="roomName" name="roomName">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-3">
                             <label for="inputPeopleNo">Number of people</label>
                             <input type="number" class="form-control" id="inputPeopleNo" placeholder="Number of people" required="true" [(ngModel)]="roomPeople" name="roomPeople" min="1">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                             <small id="priceHelpBlock" class="form-text text-muted">
                                 Maximum of people in room
                             </small>
@@ -42,6 +46,7 @@
                         <div class="form-group col-md-3">
                             <label for="inputBeds">Type of beds</label>
                             <input type="text" class="form-control" id="inputBeds" placeholder="Type of beds" required="true" [(ngModel)]="roomBeds" name="roomBeds">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                         <div class="form-group col-md-3">
                             <label for="inputSmoking">Smoking room</label>
@@ -52,11 +57,12 @@
                         </div>
                         <div class="form-group col-md-3">
                             <label for="inputPrice">Price (PLN)</label>
-                            <input type="text" class="form-control" id="inputPrice" placeholder="Price" required="true" [(ngModel)]="roomPrice" name="roomPrice">
+                            <input type="number" class="form-control" id="inputPrice" placeholder="Price" required="true" [(ngModel)]="roomPrice" name="roomPrice">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-lg btn-primary" (click)="add()">Add new item to menu</button>
+                    <button type="submit" class="btn btn-lg btn-primary" (click)="checkEmptyInput()">Add new item to menu</button>
                 </form>
             </div>
         </div>

@@ -24,7 +24,7 @@ export class RoleGuardGuard implements CanActivate {
         console.log(expectedRoles)
         return true
     }else{
-        window.alert('You don\'t have access to the resource');
+        //window.alert('You don\'t have access to the resource');
         return false;
     }
 

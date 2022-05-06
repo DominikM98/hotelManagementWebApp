@@ -5,6 +5,7 @@
   top:3.2em;
   right: 0;
 
+
   form{
     margin:1em;
 
@@ -28,6 +29,15 @@
 
     button{
       margin:1em auto;
+    }
+
+    .invalid-feedback{
+      color: red;
+    }
+
+    .notValid{
+      color:red;
+      font-weight: bold;
     }
   }
 

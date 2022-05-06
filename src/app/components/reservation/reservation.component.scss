@@ -48,7 +48,9 @@
   }
 
   .scheduler{
-    margin:1em;
+    margin-left:1em;
+    margin-right:1em;
+    margin-top: -1em;
   }
 
   .formReservation{
@@ -63,12 +65,25 @@
     }
 
     button{
-      margin-left: 25%;
-      width: 50%;
+      margin-left: 10%;
+      width: 75%;
     }
 
     span{
       margin-top:2em;
+    }
+
+    .inputFirstName2{
+      margin-right: 1em;
+    }
+
+    .notValid{
+      color:red;
+      font-weight: bold;
+    }
+
+    .invalid-feedback{
+      color: red;
     }
   }
 

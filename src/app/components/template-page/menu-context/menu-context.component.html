@@ -2,21 +2,39 @@
   <div class="list-group">
 
     <ul class="list-group">
-        <li class="list-group-item"><a routerLink="/reservation" routerLinkActive="active-link" class="list-group-item list-group-item-action">Reservations</a></li>
-      <li class="list-group-item"><a routerLink="/restaurant" routerLinkActive="active-link" class="list-group-item list-group-item-action">Restaurant</a></li>
+        <li class="list-group-item" *ngIf="ls == 'admin' || ls == 'reception_manager' || ls == 'receptionist'">
+          <a routerLink="/reservation" routerLinkActive="active-link" class="list-group-item list-group-item-action">Reservations</a>
+        </li>
+      <li class="list-group-item" *ngIf="ls == 'admin' || ls == 'restaurant_manager' || ls == 'waiter'">
+        <a routerLink="/restaurant" routerLinkActive="active-link" class="list-group-item list-group-item-action">Restaurant</a>
+      </li>
         <ul>
-          <li class="list-group-item"><a routerLink="/addMenuItem" routerLinkActive="active-link" class="list-group-item list-group-item-action">Add menu item</a></li>
+          <li class="list-group-item" *ngIf="ls == 'admin'">
+            <a routerLink="/addMenuItem" routerLinkActive="active-link" class="list-group-item list-group-item-action">Add menu item</a>
+          </li>
         </ul>
-      <li class="list-group-item"><a routerLink="/roomCleaning" routerLinkActive="active-link" class="list-group-item list-group-item-action">Room cleaning</a></li>
-      <li class="list-group-item"><a routerLink="/rooms" routerLinkActive="active-link" class="list-group-item list-group-item-action">Rooms</a></li>
+      <li class="list-group-item" *ngIf="ls == 'admin' || ls == 'cleaner'">
+        <a routerLink="/roomCleaning" routerLinkActive="active-link" class="list-group-item list-group-item-action">Room cleaning</a>
+      </li>
+      <li class="list-group-item" *ngIf="ls == 'admin' || ls == 'reception_manager' || ls == 'receptionist'">
+        <a routerLink="/rooms" routerLinkActive="active-link" class="list-group-item list-group-item-action">Rooms</a>
+      </li>
       <ul>
-        <li class="list-group-item"><a routerLink="/addRoom" routerLinkActive="active-link" class="list-group-item list-group-item-action">Add new room</a></li>
+        <li class="list-group-item" *ngIf="ls == 'admin'">
+          <a routerLink="/addRoom" routerLinkActive="active-link" class="list-group-item list-group-item-action">Add new room</a>
+        </li>
       </ul>
-      <li class="list-group-item"><a routerLink="/employees" routerLinkActive="active-link" class="list-group-item list-group-item-action">Employees</a></li>
+      <li class="list-group-item" *ngIf="ls == 'admin'">
+        <a routerLink="/employees" routerLinkActive="active-link" class="list-group-item list-group-item-action">Employees</a>
+      </li>
         <ul>
-          <li class="list-group-item"><a routerLink="/addEmployee" routerLinkActive="active-link" class="list-group-item list-group-item-action">Add data</a></li>
+          <li class="list-group-item" *ngIf="ls == 'admin'">
+            <a routerLink="/addEmployee" routerLinkActive="active-link" class="list-group-item list-group-item-action">Add data</a>
+          </li>
         </ul>
-      <li class="list-group-item"><a routerLink="/client" routerLinkActive="active-link" class="list-group-item list-group-item-action">Clients</a></li>
+      <li class="list-group-item" *ngIf="ls == 'admin' || ls == 'restaurant_manager'">
+        <a routerLink="/client" routerLinkActive="active-link" class="list-group-item list-group-item-action">Clients</a>
+      </li>
     </ul>
 
   </div>

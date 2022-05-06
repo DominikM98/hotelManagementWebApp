@@ -257,7 +257,7 @@
                 <h5 class="card-header">New item menu</h5>
             </div>
             <div class="formItemMenu">
-                <form>
+                <form class="was-validated">
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="inputType">Type of product</label>
@@ -271,16 +271,19 @@
                                 <option>Drink</option>
                                 <option>Alcohol</option>
                             </select>
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                         <div class="form-group col-md-8" >
                             <label for="inputProductName">Product name</label>
                             <input type="text" class="form-control" id="inputProductName" placeholder="Product name" required="true" [(ngModel)]="itemProductName" name="productName">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="inputIngredients">Ingredients</label>
                             <input type="text" class="form-control" id="inputIngredients" placeholder="Ingredients" required="true" [(ngModel)]="itemIngredients" name="ingredients">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                             <small id="ingredientsHelpBlock" class="form-text text-muted">
                                 Separate words with commas
                             </small>
@@ -288,6 +291,7 @@
                         <div class="form-group col-md-6">
                             <label for="inputAllergens">Allergens</label>
                             <input type="text" class="form-control" id="inputAllergens" placeholder="Allergens" required="true" [(ngModel)]="itemAllergens" name="allergens">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                             <small id="allergensHelpBlock" class="form-text text-muted">
                                 Separate words with commas
                             </small>
@@ -297,6 +301,7 @@
                         <div class="form-group col-md-3">
                             <label for="inputPrice">Price (PLN)</label>
                             <input type="number" class="form-control" id="inputPrice" placeholder="Price" required="true" [(ngModel)]="itemPrice" name="price">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                             <small id="priceHelpBlock" class="form-text text-muted">
                                 Template input: 8.00
                             </small>
@@ -304,10 +309,11 @@
                         <div class="form-group col-md-3">
                             <label for="inputWeight">Weight (g, ml)</label>
                             <input type="text" class="form-control" id="inputWeight" placeholder="Weight" required="true" [(ngModel)]="itemWeight" name="weight">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-lg btn-primary" (click)="add()">Add new item to menu</button>
+                    <button type="submit" class="btn btn-lg btn-primary" (click)="checkEmptyInput()">Add new item to menu</button>
                 </form>
             </div>
         </div>

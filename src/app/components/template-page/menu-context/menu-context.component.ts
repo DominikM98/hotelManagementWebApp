@@ -7,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuContextComponent implements OnInit {
 
+  ls: string | null = '';
   constructor() { }
 
   ngOnInit(): void {
 
+    this.ls = localStorage.getItem('user_role')
   }
 
 }

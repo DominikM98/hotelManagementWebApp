@@ -12,7 +12,7 @@ export class AddMenuItemComponent implements OnInit {
   ItemMenu:any[] = [];
   itemProductName = '';
   itemIngredients = '';
-  itemPrice = '';
+  itemPrice = 0.00;
   itemWeight = '';
   itemType = '';
   itemQuantity = '';
@@ -46,16 +46,26 @@ export class AddMenuItemComponent implements OnInit {
       max_quantity: this.itemQuantity
     };
 
-    this.itemMenuService.addItemMenu(newItemMenu)
-        .subscribe();
+    console.log(newItemMenu);
+
+    this.itemMenuService.addItemMenu(newItemMenu).subscribe();
 
     this.clearForm();
     window.location.reload();
   }
 
+  checkEmptyInput(){
+    if (this.itemProductName == '' || this.itemIngredients == '' || this.itemAllergens == ''
+        || this.itemWeight == '' || this.itemPrice <= 0 || this.itemType == ''){
+      window.alert('You must fill red border!');
+    }else{
+      this.add();
+    }
+  }
+
   delete(id: String):void{
-    this.itemMenuService.deleteItemMenu(id)
-        .subscribe();
+    this.itemMenuService.deleteItemMenu(id).subscribe();
+    window.location.reload();
   }
 
   clearForm(){
@@ -63,7 +73,7 @@ export class AddMenuItemComponent implements OnInit {
     this.itemIngredients = '';
     this.itemAllergens = '';
     this.itemWeight = '';
-    this.itemPrice = '';
+    this.itemPrice = 0;
     this.itemType = '';
   }
 

@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
 
   logout():void{
     this.router.navigate(['']);
+    localStorage.setItem('user_role','');
   }
 
 }

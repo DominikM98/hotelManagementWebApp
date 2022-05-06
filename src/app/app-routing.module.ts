@@ -92,7 +92,7 @@ const routes: Routes = [
     component: ClientComponent,
     canActivate: [AuthGuardGuard, RoleGuardGuard],
    data:{
-      expectedRoles: ['admin']
+      expectedRoles: ['admin', 'reception_manager']
     }
   },
   {

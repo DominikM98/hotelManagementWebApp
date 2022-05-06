@@ -43,17 +43,49 @@ export class LoginComponent implements OnInit {
           password: this.userPassword
       };
 
-      this.loginService.checkLogin(userSystem)
-          .subscribe(u => {
-            this.user = u;
-            localStorage.setItem('user_role', this.user.role);
-            console.log(u)
-          });
+      const user = this.LoginUser.find(u => u.login == userSystem.login);
 
-      for (let i = 0; i < this.LoginUser.length; i++) {
+
+
+
+
+
+
+      console.log('U:',this.LoginUser)
+      console.log('u:',user)
+      console.log('UL:',this.userLogin)
+      console.log('ul:',user.login)
+      console.log('UP:',this.userPassword)
+      console.log('up:',user.password)
+
+
+      if(this.userLogin !== user.login){
+          this.isLogin = true;
+          this.isPassword = false;
+      }else {
+          this.isLogin = false;
+          if (this.userPassword !== user.password){
+              this.isPassword = true;
+          }else{
+              this.loginService.checkLogin(userSystem)
+                  .subscribe(u => {
+                      this.user = u;
+                      localStorage.setItem('user_role', this.user.role);
+                      console.log(u)
+                  });
+              this.isLogin = false;
+              this.isPassword = false;
+              this.clear();
+              this.router.navigate(['/startPage']);
+              //this.clear();
+          }
+
+      }
+
+      /*for (let i = 0; i < this.LoginUser.length; i++) {
           let temp = this.userLogin !== this.LoginUser[i].login;
 
-          if (temp === true){
+          if (temp){
             this.isLogin = true;
             this.isPassword = false;
           } else{
@@ -63,16 +95,13 @@ export class LoginComponent implements OnInit {
               this.isPassword = true;
             } else{
               temp = false;
-              this.isLogin = false;
-              this.router.navigate(['/startPage']);
-              this.clear();
+
             }
           }
-      }
+      }*/
   }
 
   clear(): void {
-    this.userLogin = '';
     this.userPassword = '';
   }
 

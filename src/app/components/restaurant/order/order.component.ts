@@ -32,6 +32,7 @@ export class OrderComponent implements OnInit {
   tableOne = false;
   tableTwo = false;
   table = false;
+  temp = 0;
 
 
   constructor(private itemMenuService: ItemMenuService, private orderService: OrderService) {
@@ -62,12 +63,12 @@ export class OrderComponent implements OnInit {
           this.totalPrice2 = this.totalPrice;
       }
 
-      JSON.parse(<string>localStorage.getItem('Discount_value'));
+      this.discountValue =  JSON.parse(<string>localStorage.getItem('Discount_value'))
 
+      console.log('Temp', this.temp);
+      console.log('Temp2', JSON.parse(<string>localStorage.getItem('Discount_value')));
 
   }
-
-
 
  getItemMenu(): void {
      this.itemMenuService.getItemMenu()
@@ -176,8 +177,10 @@ export class OrderComponent implements OnInit {
   }
 
   refreshTotalPrice(){
-    const temp = this.totalPrice * (this.discountValue / 100);
-    this.totalPrice = this.totalPrice - temp;
+      this.temp = this.totalPrice * (this.discountValue / 100);
+      localStorage.setItem('Discount_value',JSON.stringify(this.discountValue));
+    this.totalPrice = this.totalPrice - this.temp;
+    window.location.reload();
     this.saveInstance();
   }
 
@@ -190,7 +193,6 @@ export class OrderComponent implements OnInit {
 
       localStorage.setItem('Total_price', JSON.stringify(this.totalPrice));
 
-      localStorage.setItem('Discount_value', JSON.stringify(this.discountValue));
   }
 
 

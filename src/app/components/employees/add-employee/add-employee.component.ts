@@ -31,7 +31,7 @@ export class AddEmployeeComponent implements OnInit {
   employeePositionAL = '';
   employeeFromDate = '';
   employeeToDate = '';
-  employeeLength = '';
+  employeeLength = 0;
 
   userRole = '';
   isExists = false;
@@ -80,6 +80,16 @@ export class AddEmployeeComponent implements OnInit {
 
   }
 
+  checkEmptyInput(){
+    if (this.employeeFirstName == '' || this.employeeLastName == '' || this.employeePesel == ''
+        || this.employeeAddress == '' || this.employeeEmail == '' || this.employeePhoneNumber == ''
+        || this.employeePosition == '' || this.employeeLogin == ''|| this.employeePassword == '' || this.employeeConfirm == ''){
+      window.alert('You must fill red border!');
+    }else{
+      this.checkPassword();
+    }
+  }
+
   checkPassword(): void{
     if (this.employeeConfirm !== this.employeePassword){
       this.isConfirm = true;
@@ -101,6 +111,15 @@ export class AddEmployeeComponent implements OnInit {
 
     this.employeeService.addAnnualLeave(newAnnualLeave).subscribe();
     this.clearFormAL();
+  }
+
+  checkEmptyInput2(){
+    if (this.employeeFirstNameAL == '' || this.employeeLastNameAL == '' || this.employeePositionAL == ''
+        || this.employeeFromDate == '' || this.employeeToDate == '' || this.employeeLength <= 0){
+      window.alert('You must fill red border!');
+    }else{
+      this.addAnnualLeave();
+    }
   }
 
   addNewUser():void{
@@ -170,6 +189,6 @@ export class AddEmployeeComponent implements OnInit {
     this.employeePositionAL = '';
     this.employeeFromDate = '';
     this.employeeToDate = '';
-    this.employeeLength = '';
+    this.employeeLength = 0;
   }
 }

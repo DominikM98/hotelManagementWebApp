@@ -8,15 +8,17 @@
                 <h5 class="card-header">New employee</h5>
             </div>
             <div class="formEmployee">
-                <form>
+                <form class="was-validated">
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="inputFirstName">First name</label>
-                            <input type="text" class="form-control" id="inputFirstName" placeholder="First name" [(ngModel)]="employeeFirstName"  name="employeeFirstName" >
+                            <input type="text" class="form-control" id="inputFirstName" placeholder="First name" [(ngModel)]="employeeFirstName"  name="employeeFirstName" required>
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputLastName">Last name</label>
                             <input type="text" class="form-control" id="inputLastName" placeholder="Last name" required="true" [(ngModel)]="employeeLastName" name="employeeLastName">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                     </div>
                     <div class="row">
@@ -26,10 +28,12 @@
                                 <option selected>Choose...</option>
                                 <option *ngFor="let el of positionsHotel">{{el}}</option>
                             </select>
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputEmail">Email</label>
-                            <input type="text" class="form-control" id="inputEmail" placeholder="Email" required="true" [(ngModel)]="employeeEmail" name="employeeEmail">
+                            <input type="text" class="form-control" id="inputEmail" placeholder="Email" required="true" [(ngModel)]="employeeEmail" name="employeeEmail" email="true" #prmEmail="ngModel">
+                            <small *ngIf="prmEmail.errors?.email" class="notValid">This email is not valid</small>
                             <small id="email2HelpText" class="form-text text-muted" [hidden]="isEmail == false" style="color: red !important">
                                 The employee with the given e-mail already exists!
                             </small>
@@ -40,6 +44,7 @@
                         <div class="form-group col-md-4">
                             <label for="inputPhoneNumber">Phone number</label>
                             <input type="number" class="form-control" id="inputPhoneNumber" placeholder="Phone number" required="true" [(ngModel)]="employeePhoneNumber" name="employeePhoneNumber">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                             <small id="phoneNumberHelpBlock" class="form-text text-muted">
                                 Phone number with country code (without +) if needed
                             </small>
@@ -49,6 +54,7 @@
                         <div class="form-group col-md-5">
                             <label for="inputPesel">PESEL</label>
                             <input type="text" class="form-control" id="inputPesel" placeholder="Pesel" required="true" [(ngModel)]="employeePesel" name="employeePesel">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                             <small id="peselHelpBlock" class="form-text text-muted">
                                 If no PESEL is available, enter the type and number of the document confirming your identity.
                             </small>
@@ -56,23 +62,24 @@
                         <div class="form-group col-md-7">
                             <label for="inputAddress">Address</label>
                             <input type="text" class="form-control" id="inputAddress" placeholder="Address" required="true" [(ngModel)]="employeeAddress" name="employeeAddress">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
-
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="inputNameBank">Name bank</label>
-                            <input type="text" class="form-control" id="inputNameBank" placeholder="Name bank" required="true" [(ngModel)]="employeeNameBank" name="employeeNameBank">
+                            <input type="text" class="form-control" id="inputNameBank" placeholder="Name bank" [(ngModel)]="employeeNameBank" name="employeeNameBank">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="inputAccountNo">Account number</label>
-                            <input type="text" class="form-control" id="inputAccountNo" placeholder="Account number" required="true" [(ngModel)]="employeeAccountNumber" name="employeeAccountNumber">
+                            <input type="text" class="form-control" id="inputAccountNo" placeholder="Account number"  [(ngModel)]="employeeAccountNumber" name="employeeAccountNumber">
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="inputLogin">Login</label>
                             <input type="text" class="form-control" id="inputLogin" placeholder="Login" required="true" [(ngModel)]="employeeLogin" name="employeeLogin">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                             <small id="loginHelpText" class="form-text text-muted" [hidden]="isExists == false">
                                 This user is already exists!
                             </small>
@@ -80,17 +87,19 @@
                         <div class="form-group col-md-4">
                             <label for="inputPassword">Password</label>
                             <input type="text" class="form-control" id="inputPassword" placeholder="Password" required="true" [(ngModel)]="employeePassword" name="employeePassword">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputConfirmPassword">Confirm password</label>
                             <input type="text" class="form-control" id="inputConfirmPassword" placeholder="Confirm password" required="true" [(ngModel)]="employeeConfirm" name="employeeConfirm">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                             <small id="confirmHelpText" class="form-text text-muted" [hidden]="isConfirm == false" style="color: red !important">
                                 The password is not the same!
                             </small>
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-lg btn-primary" (click)="checkPassword()">Add new employee</button>
+                    <button type="submit" class="btn btn-lg btn-primary" (click)="checkEmptyInput()">Add new employee</button>
                 </form>
             </div>
         </div>
@@ -102,15 +111,17 @@
                 <h5 class="card-header">New annual leave</h5>
             </div>
             <div class="formAnnualLeave">
-                <form>
+                <form class="was-validated">
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="inputFirstNameAL">First name</label>
                             <input type="text" class="form-control" id="inputFirstNameAL" placeholder="First name" required="true" [(ngModel)]="employeeFirstNameAL"  name="employeeFirstNameAL">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputLastNameAL">Last name</label>
                             <input type="text" class="form-control" id="inputLastNameAL" placeholder="Last name" required="true" [(ngModel)]="employeeLastNameAL" name="employeeLastNameAL">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputPositionAL">Position</label>
@@ -118,29 +129,33 @@
                                 <option selected>Choose...</option>
                                 <option *ngFor="let el of positionsHotel">{{el}}</option>
                             </select>
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                     </div>
                     <div class="row">
                         <div class="form-group col-md-4">
                             <label for="inputFromDate">From date</label>
-                            <input type="text" class="form-control" id="inputFromDate" placeholder="From date" required="true" [(ngModel)]="employeeFromDate" name="employeeFromDate">
+                            <input type="date" class="form-control" id="inputFromDate" placeholder="Year-month-day" required="true" [(ngModel)]="employeeFromDate" name="employeeFromDate">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                             <small id="fromDatelHelpBlock" class="form-text text-muted">
-                                day-month-year
+                                Template input: 2022-01-01
                             </small>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputToDate">To date</label>
-                            <input type="text" class="form-control" id="inputToDate" placeholder="To date" required="true" [(ngModel)]="employeeToDate" name="employeeToDate">
-                            <small id="toDateHelpBlock" class="form-text text-muted">
-                                day-month-year
+                            <input type="date" class="form-control" id="inputToDate" placeholder="Year-month-day" required="true" [(ngModel)]="employeeToDate" name="employeeToDate">
+                            <small class="invalid-feedback">Please fill out this field.</small>
+                            <small id="checkInHelpBlock" class="form-text text-muted">
+                                Template input: 2022-01-01
                             </small>
                         </div>
                         <div class="form-group col-md-4">
                             <label for="inputLength">Length of days</label>
                             <input type="number" class="form-control" id="inputLength" placeholder="Length of days" required="true" [(ngModel)]="employeeLength" name="employeePhoneNumber">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-lg btn-primary" (click)="addAnnualLeave()">Add new annual leave</button>
+                    <button type="submit" class="btn btn-lg btn-primary" (click)="checkEmptyInput2()">Add new annual leave</button>
                 </form>
             </div>
         </div>

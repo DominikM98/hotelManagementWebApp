@@ -14,10 +14,10 @@ export class AddRoomComponent implements OnInit {
   roomFloor = '';
   roomNumber = '';
   roomName = '';
-  roomPeople = '';
+  roomPeople = 0;
   roomBeds = '';
   roomSmoking = '';
-  roomPrice = '';
+  roomPrice = 0;
   smoking = false;
 
   isRoom = false;
@@ -36,7 +36,6 @@ export class AddRoomComponent implements OnInit {
   }
 
   add():void{
-    this.isSmokingRoom();
 
     const newRoom = {
       floor_number: this.roomFloor,
@@ -44,7 +43,7 @@ export class AddRoomComponent implements OnInit {
       room_name: this.roomName,
       number_of_people: this.roomPeople,
       type_of_beds: this.roomBeds,
-      smoking: this.smoking,
+      smoking: this.roomSmoking,
       price: this.roomPrice
     };
 
@@ -59,22 +58,25 @@ export class AddRoomComponent implements OnInit {
     }
   }
 
-  isSmokingRoom(): void{
-    if (this.roomSmoking === 'Yes'){
-      this.smoking = true;
-    }else if (this.roomSmoking === 'No'){
-      this.smoking = false;
+  checkEmptyInput(){
+    if (this.roomFloor == '' || this.roomNumber == '' || this.roomName == ''
+        || this.roomPeople <= 0 || this.roomBeds == '' || this.roomPrice <= 0){
+      window.alert('You must fill red border!');
+    }else{
+      this.add();
     }
   }
+
+
 
   clearForm(){
     this.roomFloor = '';
     this.roomNumber = '';
     this.roomName = '';
-    this.roomPeople = '';
+    this.roomPeople = 0;
     this.roomBeds = '';
     this.roomSmoking = '';
-    this.roomPrice = '';
+    this.roomPrice = 0;
   }
 }
 
