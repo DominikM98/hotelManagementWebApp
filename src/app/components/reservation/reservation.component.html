@@ -9,35 +9,47 @@
 
     <div class="masonry" >
 
-        <div class="cardDashboard col-6">
+        <div class="cardDashboard">
             <div class="titleCard ">
                 <h5 class="card-header">New reservation</h5>
             </div>
             <div class="formReservation">
                 <form class="was-validated">
                     <div class="row" >
-                        <div class="form-group col-md-5" >
+                        <div class="form-group col-md-3" >
                             <label for="inputFirstName2">First Name</label>
                             <input type="text" class="form-control" id="inputFirstName2" placeholder="First name" required [(ngModel)]="personFirstName" name="firstName">
                             <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
-                        <div class="form-group col-md-5">
+                        <div class="form-group col-md-4">
                             <label for="inputLastName2">Last Name</label>
                             <input type="text" class="form-control" id="inputLastName2" placeholder="Last Name" required="true" [(ngModel)]="personLastName" name="lastName">
                             <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
+                        <div class="form-group col-md-2 mobileCheckbox" *ngIf="checkMobileInput == false">
+                            <input class="form-check-input" type="checkbox" value="false" id="checkMobile" [(ngModel)]="checkMobileInput" name="checkMb" (change)="checkMobileInput = true">
+                            <label class="form-check-label" for="checkMobile">
+                                 Mobile reservation
+                            </label>
+                        </div>
+                        <div class="form-group col-md-2 mobileCheckbox" *ngIf="checkMobileInput == true">
+                            <input class="form-check-input" type="checkbox" value="false" id="checkMobile2" [(ngModel)]="checkMobileInput" name="checkMb" (change)="checkMobileInput = false">
+                            <label class="form-check-label" for="checkMobile2">
+                                 Mobile reservation
+                            </label>
+                        </div>
+
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-5">
+                        <div class="form-group col-md-2">
                             <label for="inputCheckIn">Check-in</label>
                             <input type="date" class="form-control" id="inputCheckIn" placeholder="Year-month-day" required="true" [(ngModel)]="checkInDate" name="checkIn">
                             <small class="invalid-feedback">Please fill out this field.</small>
                             <small id="checkInHelpBlock" class="form-text text-muted">
                                 Template input: 2022-01-01
                             </small>
-
                         </div>
-                        <div class="form-group col-md-5">
+                        <div class="form-group col-md-2">
                             <label for="inputCheckOut">Check-out</label>
                             <input type="date" class="form-control" id="inputCheckOut" placeholder="Year-month-day" required="true" [(ngModel)]="checkOutDate" name="checkOut">
                             <small class="invalid-feedback">Please fill out this field.</small>
@@ -45,35 +57,13 @@
                                 Template input: 2022-01-01
                             </small>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-4" *ngIf="checkParkingInput == false">
-                            <input class="form-check-input" type="checkbox" value="false" id="checkParking" [(ngModel)]="checkParkingInput" name="checkPk" (change)="checkParkingInput = true">
-                            <label class="form-check-label" for="checkParking">
-                                Parking
-                            </label>
-                        </div>
-                        <div class="form-group col-md-4" *ngIf="checkParkingInput == true">
-                            <input class="form-check-input" type="checkbox" value="false" id="checkParking2" [(ngModel)]="checkParkingInput" name="checkPk" (change)="checkParkingInput = false">
-                            <label class="form-check-label" for="checkParking2">
-                                Parking
-                            </label>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <input class="form-check-input" type="checkbox" value="false" id="checkBreakfast" [(ngModel)]="checkBreakfastInput" name="checkBf">
-                            <label class="form-check-label" for="checkBreakfast">
-                                 Breakfast
-                            </label>
+                        <div class="form-group col-md-6">
+                            <label for="inputAddress">Address</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="Address" required="true" [(ngModel)]="clientAddress" name="clientAddress">
+                            <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-2" >
-                            <label for="inputCarRegistration">Car registration</label>
-                            <input type="text" class="form-control" id="inputCarRegistration" placeholder="Car registration" [(ngModel)]="carRegist" name="carRs" [hidden]="checkParkingInput == false">
-                            <small id="carRegistrationHelpBlock" class="form-text text-muted" [hidden]="checkParkingInput == false">
-                                Template input: WA98451
-                            </small>
-                        </div>
                         <div class="form-group col-md-2">
                             <label for="inputNumberRoom">Number Room</label>
                             <select id="inputNumberRoom" class="form-control" required="true" [(ngModel)]="roomNumberSelect" name="numberOfRoom" >
@@ -86,6 +76,65 @@
                             <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                         <div class="form-group col-md-2">
+                            <label for="inputBookingPrice">More information</label>
+                            <textarea type="text" class="form-control" id="inputMoreInformation" placeholder="More information" [(ngModel)]="moreInformationInput" rows="1" name="moreInformation"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-2" *ngIf="checkParkingInput == false">
+                            <input class="form-check-input" type="checkbox" value="false" id="checkParking" [(ngModel)]="checkParkingInput" name="checkPk" (change)="checkParkingInput = true">
+                            <label class="form-check-label" for="checkParking">
+                                Parking
+                            </label>
+                        </div>
+                        <div class="form-group col-md-2" *ngIf="checkParkingInput == true">
+                            <input class="form-check-input" type="checkbox" value="false" id="checkParking2" [(ngModel)]="checkParkingInput" name="checkPk" (change)="checkParkingInput = false">
+                            <label class="form-check-label" for="checkParking2">
+                                Parking
+                            </label>
+                        </div>
+                        <div class="form-group col-md-2" >
+                            <label for="inputCarRegistration">Car registration</label>
+                            <input type="text" class="form-control" id="inputCarRegistration" placeholder="Car registration" [(ngModel)]="carRegist" name="carRs" [hidden]="checkParkingInput == false">
+                            <small id="carRegistrationHelpBlock" class="form-text text-muted" [hidden]="checkParkingInput == false">
+                                Template input: WA98451
+                            </small>
+                        </div>
+
+                        <div class="form-group col-md-2" *ngIf="checkBreakfastInput == false">
+                            <input class="form-check-input" type="checkbox" value="false" id="checkBreakfast" [(ngModel)]="checkBreakfastInput" name="checkBf" (change)="checkBreakfastInput = true">
+                            <label class="form-check-label" for="checkBreakfast">
+                                Breakfast
+                            </label>
+                        </div>
+                        <div class="form-group col-md-2" *ngIf="checkBreakfastInput == true">
+                            <input class="form-check-input" type="checkbox" value="false" id="checkBreakfast2" [(ngModel)]="checkBreakfastInput" name="checkBf" (change)="checkBreakfastInput = false">
+                            <label class="form-check-label" for="checkBreakfast2">
+                                Breakfast
+                            </label>
+                        </div>
+                        <div class="form-group col-md-2" >
+                            <label for="inputBreakfastQuantity">Quantity breakfast</label>
+                            <input type="number" class="form-control" id="inputBreakfastQuantity" placeholder="{{numberOfPeople}}" [(ngModel)]="quantityBreakfast" name="quanBreakfast" [hidden]="checkBreakfastInput == false">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-5" [hidden]="checkMobileInput == true">
+                            <label for="inputEmail">Email</label>
+                            <input type="text" class="form-control" id="inputEmail" placeholder="Email" required="true" [(ngModel)]="clientEmail" name="clientEmail" email="true" #prmEmail="ngModel">
+                            <small *ngIf="prmEmail.errors?.email" class="notValid">This email is not valid</small>
+                            <small id="email2HelpText" class="form-text text-muted" [hidden]="isEmail == false" style="color: red !important">
+                                The client with the given e-mail already exists!
+                            </small>
+                            <small id="emailHelpBlock" class="form-text text-muted">
+                                For example: jan@hotel.com
+                            </small>
+                        </div>
+                        <div class="form-group col-md-4" [hidden]="checkMobileInput == false">
+                            <label for="inputCarRegistration">Phone number</label>
+                            <input type="text" class="form-control" id="inputMobileReservation" placeholder="Phone number" [(ngModel)]="phoneNumber" name="carRs">
+                        </div>
+                        <div class="form-group col-md-5">
                             <label for="inputBookingPrice">Booking price (PLN)</label>
                             <input type="number" class="form-control" id="inputBookingPrice" placeholder="Price" required="true" [(ngModel)]="priceBookingInput" name="priceBooking">
                             <small class="invalid-feedback">Please fill out this field.</small>
@@ -100,55 +149,44 @@
             </div>
         </div>
 
-        <div class="cardDashboard col-4">
-            <div class="titleCard ">
-                <h5 class="card-header">New client</h5>
-            </div>
-            <div class="formReservation">
-                <form class="was-validated">
-                    <div class="row">
-                        <div class="form-group col-md-5" >
-                            <label for="inputFirstName">First Name</label>
-                            <input type="text" class="form-control" id="inputFirstName" placeholder="First name" required="true" [(ngModel)]="clientFirstName" name="firstName">
-                            <small class="invalid-feedback">Please fill out this field.</small>
-                        </div>
-                        <div class="form-group col-md-5">
-                            <label for="inputLastName">Last Name</label>
-                            <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" required="true" [(ngModel)]="clientLastName" name="lastName">
-                            <small class="invalid-feedback">Please fill out this field.</small>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-5">
-                            <label for="inputEmail">Email</label>
-                            <input type="text" class="form-control" id="inputEmail" placeholder="Email" required="true" [(ngModel)]="clientEmail" name="clientEmail" email="true" #prmEmail="ngModel">
-                            <small *ngIf="prmEmail.errors?.email" class="notValid">This email is not valid</small>
-                            <small id="email2HelpText" class="form-text text-muted" [hidden]="isEmail == false" style="color: red !important">
-                                The client with the given e-mail already exists!
-                            </small>
-                            <small id="emailHelpBlock" class="form-text text-muted">
-                                For example: jan@hotel.com
-                            </small>
-                        </div>
-                        <div class="form-group col-md-5">
-                            <label for="inputPhoneNo">Phone number</label>
-                            <input type="text" class="form-control" id="inputPhoneNo" placeholder="Phone number" required="true" [(ngModel)]="clientPhoneNo" name="clientPhoneNo">
-                            <small class="invalid-feedback">Please fill out this field.</small>
-                            <small id="phoneNumberHelpBlock" class="form-text text-muted">
-                                Phone number with country code (without +)
-                            </small>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label for="inputAddress">Address</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="Address" required="true" [(ngModel)]="clientAddress" name="clientAddress">
-                            <small class="invalid-feedback">Please fill out this field.</small>
-                        </div>
-                    </div>
 
-                    <button type="submit" class="btn btn-lg btn-primary" (click)="checkEmptyInput2()" >Add new client</button>
-                </form>
+
+        <div class="cardDashboard col-6">
+            <div class="titleCard ">
+                <h5 class="card-header">Reservation from mobile app</h5>
+            </div>
+            <div class="bodyCard " style="margin-left:1em;">
+                <div class="individualPeople">
+                    <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent" >
+                        <thead>
+                        <tr>
+                            <th class="titleTable" *ngFor="let head of headElementsMobileApp; let i = index" scope="col">{{head}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let el of MobileReservations">
+                            <td>{{el.first_name}}</td>
+                            <td>{{el.last_name}}</td>
+                            <td>{{el.check_in}}</td>
+                            <td>{{el.check_out}}</td>
+                            <td>{{el.breakfast}}</td>
+                            <td>{{el.quantity_breakfast}}</td>
+                            <td>{{el.parking}}</td>
+                            <td>{{el.car_registration}}</td>
+                            <td>{{el.number_of_rooms}}</td>
+                            <td>{{el.number_of_people}}</td>
+                            <td>{{el.phone_number}}</td>
+                            <td>{{el.more_information}}</td>
+                            <td>
+                                <button class="btn btn-sm btn-danger" (click)="deleteMobileReservation(el._id)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
 
@@ -157,13 +195,12 @@
                 <h5 class="card-header">More data about reservation</h5>
             </div>
             <div class="bodyCard "style="margin-left:1em;">
-
                 <div class="row">
                     <div class="form-group col-md-6">
                         <label for="inputEmployee">Please select a reservation</label>
                         <select id="inputEmployee" class="form-control" required="true" [(ngModel)]="existsReservation" name="existsEmployee" (change)="searchReservation()">
                             <option selected>Choose...</option>
-                            <option  *ngFor="let el of Reservations" [value]="el._id">
+                            <option  *ngFor="let el of Reservations" [value]="el._id" >
                                 {{el.first_name + ' ' + el.last_name + ' ( '+ el._id + ' )'}}
                             </option>
                         </select>
@@ -171,10 +208,11 @@
                 </div>
 
                 <div class="individualPeople">
-                    <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent" [hidden]="isExistsReservation == false">
+                    <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent" [hidden]="isExistsReservation == false" *ngIf="!isMobile">
                         <thead>
+                        {{isMobile}}
                         <tr>
-                            <th class="titleTable" *ngFor="let head of headElementsCheckIn; let i = index" scope="col">{{head}}</th>
+                            <th class="titleTable" *ngFor="let head of headElementsReservation" scope="col">{{head}}</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -183,14 +221,51 @@
                             <td>{{el.last_name}}</td>
                             <td>{{el.check_in}}</td>
                             <td>{{el.check_out}}</td>
+                            <td>{{el.mobile_reservation}}</td>
+                            <td>{{el.phone_number}}</td>
+                            <td>{{el.room_number}}</td>
+                            <td>{{el.booking_price}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent" [hidden]="isExistsReservation == false"  *ngIf="isMobile">
+                        <thead>
+                        {{isMobile}}
+                        <tr>
+                            <th class="titleTable" *ngFor="let head of headElementsReservation_2" scope="col">{{head}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let el of choseReservation">
+                            <td>{{el.first_name}}</td>
+                            <td>{{el.last_name}}</td>
+                            <td>{{el.check_in}}</td>
+                            <td>{{el.check_out}}</td>
+                            <td>{{el.mobile_reservation}}</td>
+                            <td>{{el.address_mail}}</td>
+                            <td>{{el.room_number}}</td>
+                            <td>{{el.booking_price}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent" [hidden]="isExistsReservation == false">
+                        <thead>
+                        <tr>
+                            <th class="titleTable" *ngFor="let head of headElementsReservation2" scope="col">{{head}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let el of choseReservation">
                             <td>{{el.breakfast}}</td>
+                            <td>{{el.quantity_breakfast}}</td>
                             <td>{{el.parking}}</td>
                             <td>{{el.car_registration}}</td>
-                            <td>{{el.room_number}}</td>
                             <td>{{el.number_of_people}}</td>
-                            <td>{{el.booking_price}}</td>
+                            <td>{{el.more_information}}</td>
                             <td>
-                                <button class="btn btn-sm btn-danger" (click)="delete(el._id,el)">
+                                <button class="btn btn-sm btn-danger" (click)="delete(el._id)">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </td>

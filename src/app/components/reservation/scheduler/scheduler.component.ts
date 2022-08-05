@@ -1,6 +1,5 @@
 import {Component, ViewChild, AfterViewInit, ChangeDetectorRef} from "@angular/core";
 import {DayPilot, DayPilotSchedulerComponent} from "daypilot-pro-angular";
-import {DataService} from "./data.service";
 import EventData = DayPilot.EventData;
 import SchedulerConfig = DayPilot.SchedulerConfig;
 import {ReservationService} from "../reservation.service";
@@ -24,11 +23,6 @@ export class SchedulerComponent implements AfterViewInit {
 
   events: EventData[] = [];
 
-  Res = {
-    name: '',
-    id: ''
-  };
-
   Resources: any[] = [];
   Event: any[] = [];
 
@@ -44,7 +38,7 @@ export class SchedulerComponent implements AfterViewInit {
     eventDeleteHandling: "Disabled",
     eventClickHandling: "Enabled",
     onEventClicked: (args) => {
-      args.control.message("Event clicked: " + args.e.text());
+      args.control.message(args.e.text());
     },
     eventHoverHandling: "Bubble",
     bubble: new DayPilot.Bubble({
@@ -58,7 +52,6 @@ export class SchedulerComponent implements AfterViewInit {
    onTimeRangeSelected: async (args) => {
       const dp = args.control;
       dp.clearSelection();
-      //dodawanie zdarzeń do Schedulera
       dp.events.add({
         start: args.start,
         end: args.end,
@@ -71,7 +64,7 @@ export class SchedulerComponent implements AfterViewInit {
 
   };
 
-  constructor(private ds: DataService, private rs: ReservationService) {}
+  constructor(private rs: ReservationService) {}
 
   ngAfterViewInit(): void {
 
@@ -105,9 +98,7 @@ export class SchedulerComponent implements AfterViewInit {
           name: variable[i].room_number,
           id: 'R'+variable[i].room_number
       })
-
     }
-
   }
 
   getReservation(){
@@ -119,15 +110,28 @@ export class SchedulerComponent implements AfterViewInit {
 
   setReservations(variable: any){
     for (let i = 0; i < variable.length;i++){
-      // @ts-ignore
-      this.events.push({
-        start: variable[i].check_in,
-        end: variable[i].check_out,
-        id: DayPilot.guid(),
-        resource: 'R'+variable[i].room_number,
-        text: variable[i].first_name + ' ' + variable[i].last_name + ' ('+variable[i].number_of_people+' people)',
-        barColor: "#38761d"
-      });
+      if (variable[i].mobile_reservation === 'No'){
+        // @ts-ignore
+        this.events.push({
+          start: variable[i].check_in,
+          end: variable[i].check_out,
+          id: DayPilot.guid(),
+          resource: 'R'+variable[i].room_number,
+          text: 'Reservation: '+variable[i].first_name + ' ' + variable[i].last_name + ' ('+variable[i].number_of_people+' people)',
+          barColor: "#38761D"
+        });
+      }else if (variable[i].mobile_reservation === 'Yes'){
+        // @ts-ignore
+        this.events.push({
+          start: variable[i].check_in,
+          end: variable[i].check_out,
+          id: DayPilot.guid(),
+          resource: 'R'+variable[i].room_number,
+          text: 'Mobile reservation: '+variable[i].first_name + ' ' + variable[i].last_name + ' ('+variable[i].number_of_people+' people)',
+          barColor: "#E35F02"
+        });
+      }
+
 
     }
 
@@ -135,7 +139,6 @@ export class SchedulerComponent implements AfterViewInit {
 
   original: any;
 
-  // scheduler tylko do odczytu
   changed():void {
     let properties = [
       "eventClickHandling",

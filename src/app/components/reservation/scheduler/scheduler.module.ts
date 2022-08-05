@@ -1,4 +1,4 @@
-import {DataService} from './data.service';
+
 import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
@@ -17,6 +17,6 @@ import {HttpClientModule} from '@angular/common/http';
     SchedulerComponent
   ],
   exports:      [ SchedulerComponent ],
-  providers:    [ DataService ]
+  providers:    [  ]
 })
 export class SchedulerModule { }

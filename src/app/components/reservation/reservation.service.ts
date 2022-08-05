@@ -5,12 +5,16 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class ReservationService {
     reservationUrl = 'http://localhost:3000/reservation/showReservations';
-    createResUrl = 'http://localhost:3000/reservation/createReservation';
-    deleteUrl = 'http://localhost:3000/reservation/deleteReservation?id=';
+    createReservationUrl = 'http://localhost:3000/reservation/createReservation';
+    deleteReservationUrl = 'http://localhost:3000/reservation/deleteReservation?id=';
+
     roomUrl = 'http://localhost:3000/room/showRooms';
 
     createClientUrl = 'http://localhost:3000/client/createClient';
     clientUrl = 'http://localhost:3000/client/showClients';
+
+    mobileReservationUrl = 'http://localhost:3000/mobileReservation/showReservations';
+    deleteMobileReservationUrl = 'http://localhost:3000/mobileReservation/deleteReservation?id=';
 
     constructor(private http: HttpClient) {
 
@@ -21,11 +25,11 @@ export class ReservationService {
     }
 
     addReservation(newData: any): Observable<any> {
-        return this.http.post(this.createResUrl, newData);
+        return this.http.post(this.createReservationUrl, newData);
     }
 
     deleteReservation(id: any): Observable<any>{
-        return this.http.delete(this.deleteUrl+id);
+        return this.http.delete(this.deleteReservationUrl+id);
     }
 
     getRooms(): Observable<any>{
@@ -38,6 +42,14 @@ export class ReservationService {
 
     addClient(newData: any): Observable<any> {
         return this.http.post(this.createClientUrl, newData);
+    }
+
+    getMobileReservations(): Observable<any>{
+        return this.http.get(this.mobileReservationUrl)
+    }
+
+    deleteMobileReservation(id: any): Observable<any>{
+        return this.http.delete(this.deleteMobileReservationUrl+id);
     }
 
 }

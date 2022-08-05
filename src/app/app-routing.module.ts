@@ -13,6 +13,9 @@ import {TemplatePageComponent} from "./components/template-page/template-page.co
 import {AuthGuardGuard} from "./core/guards/auth-guard.guard";
 import {RoleGuardGuard} from "./core/guards/role-guard.guard";
 import {AddRoomComponent} from "./components/rooms/add-room/add-room.component";
+import {MobileSectionComponent} from "./components/mobile-section/mobile-section.component";
+import {MobileClientsComponent} from "./components/mobile-section/mobile-clients/mobile-clients.component";
+import {MobileRatingsComponent} from "./components/mobile-section/mobile-ratings/mobile-ratings.component";
 
 const routes: Routes = [
   {
@@ -101,6 +104,30 @@ const routes: Routes = [
     canActivate: [AuthGuardGuard, RoleGuardGuard],
     data:{
       expectedRoles: ['admin','reception_manager','receptionist','restaurant_manager','waiter','cleaner']
+    }
+  },
+  {
+    path: 'mobileData',
+    component: MobileSectionComponent,
+    canActivate: [AuthGuardGuard, RoleGuardGuard],
+    data:{
+      expectedRoles: ['admin']
+    }
+  },
+  {
+    path: 'mobileClients',
+    component: MobileClientsComponent,
+    canActivate: [AuthGuardGuard, RoleGuardGuard],
+    data:{
+      expectedRoles: ['admin']
+    }
+  },
+  {
+    path: 'mobileRatings',
+    component: MobileRatingsComponent,
+    canActivate: [AuthGuardGuard, RoleGuardGuard],
+    data:{
+      expectedRoles: ['admin']
     }
   }
 ];

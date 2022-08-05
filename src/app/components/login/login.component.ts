@@ -45,12 +45,6 @@ export class LoginComponent implements OnInit {
 
       const user = this.LoginUser.find(u => u.login == userSystem.login);
 
-
-
-
-
-
-
       console.log('U:',this.LoginUser)
       console.log('u:',user)
       console.log('UL:',this.userLogin)

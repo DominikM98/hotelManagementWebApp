@@ -13,6 +13,7 @@ import {EmployeesModule} from "./components/employees/employees.module";
 import {RestaurantModule} from "./components/restaurant/restaurant.module";
 import {TemplatePageModule} from "./components/template-page/template-page.module";
 import {RoomsModule} from "./components/rooms/rooms.module";
+import {MobileSectionModule} from "./components/mobile-section/mobile-section.module";
 
 //Component
 import { AppComponent } from './app.component';
@@ -40,7 +41,8 @@ import { ClientComponent } from './components/client/client.component';
         EmployeesModule,
         RestaurantModule,
         TemplatePageModule,
-        RoomsModule
+        RoomsModule,
+        MobileSectionModule
     ],
     providers:[],
     bootstrap: [AppComponent]
