@@ -1,0 +1,45 @@
+<navbar></navbar>
+<menu-context></menu-context>
+<div class="mobileClientPage col-10">
+    <div class="masonry" >
+        <div class="cardDashboard">
+            <div class="titleCard ">
+                <h5 class="card-header">Mobile users</h5>
+            </div>
+            <div class="bodyCard "style="margin-left:1em;">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmployee">Please select a client</label>
+                        <select id="inputEmployee" class="form-control" required="true" [(ngModel)]="existsMobileClient" name="existsMobileClient" (change)="searchMobileClient()">
+                            <option selected>Choose...</option>
+                            <option  *ngFor="let el of MobileClients" [value]="el._id">{{el.phone_number}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="individualPeople">
+                    <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent" [hidden]="isExistsMobileClient === false">
+                        <thead>
+                        <tr>
+                            <th class="titleTable" *ngFor="let head of headElementsMobileClient; let i = index" scope="col">{{head}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let el of choseMobileClient">
+                            <td>{{el.phone_number}}</td>
+                            <td>{{el.password}}</td>
+                            <td>{{el.security_code}}</td>
+                            <td>
+                                <button class="btn btn-sm btn-danger" (click)="delete(el._id)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

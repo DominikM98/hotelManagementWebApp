@@ -1,0 +1,68 @@
+<navbar></navbar>
+<menu-context></menu-context>
+<div class="mobileRatingPage col-10">
+    <div class="masonry" >
+        <div class="cardDashboard">
+            <div class="titleCard ">
+                <h5 class="card-header">Mobile ratings</h5>
+            </div>
+            <div class="bodyCard "style="margin-left:1em;">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label for="inputEmployee">Please select a client</label>
+                        <select id="inputEmployee" class="form-control" required="true" [(ngModel)]="existsMobileRatings" name="existsMobileRatings" (change)="searchMobileRating()">
+                            <option selected>Choose...</option>
+                            <option  *ngFor="let el of Ratings" [value]="el._id">{{el.phone_number}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="individualPeople">
+                    <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent" [hidden]="isExistsMobileRating === false">
+                        <thead>
+                        <tr>
+                            <th class="titleTable" *ngFor="let head of headElementsMobileRatings; let i = index" scope="col">{{head}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let el of choseMobileRating">
+                            <td>{{el.number_booking}}</td>
+                            <td>{{el.about_hotel}}</td>
+                            <td>{{el.good_things}}</td>
+                            <td>{{el.bad_things}}</td>
+                            <td>{{el.recommend}}</td>
+                            <td>{{el.more_data}}</td>
+                            <td>
+                                <button class="btn btn-sm btn-danger" (click)="delete(el._id)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <table mdbTable mdbTableScroll [scrollY]='true' maxHeight='500' [bordered]='true' class="tableContent" [hidden]="isExistsMobileRating === false">
+                        <thead>
+                        <tr>
+                            <th class="titleTable" *ngFor="let head of headElementsMobileRatings2; let i = index" scope="col">{{head}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let el of choseMobileRating">
+                            <td>{{el.reception_service}}</td>
+                            <td>{{el.restaurtant_service}}</td>
+                            <td>{{el.room_service}}</td>
+                            <td>{{el.interior_service}}</td>
+                            <td>{{el.equipment_service}}</td>
+                            <td>
+                                <button class="btn btn-sm btn-danger" (click)="delete(el._id)">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
