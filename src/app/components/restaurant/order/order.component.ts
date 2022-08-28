@@ -29,8 +29,6 @@ export class OrderComponent implements OnInit {
   totalPrice = 0;
   totalPrice2 = 0;
 
-  tableOne = false;
-  tableTwo = false;
   table = false;
   temp = 0;
 
@@ -44,15 +42,16 @@ export class OrderComponent implements OnInit {
     if(localStorage.getItem('Total_price') === null){
         localStorage.setItem('busy_table','FREE')
     }
-      console.log('LS:', localStorage.getItem('busy_table'));
     this.getLS();
-
-      console.log('Order:', localStorage.getItem('Order'))
-      console.log('Total:', JSON.parse(<string>localStorage.getItem('Total_price')))
   }
 
   getLS(){
       this.Order2 = JSON.parse(<string>localStorage.getItem('Order'));
+
+      if(this.Order2 === null){
+          this.Order2 = [];
+      }
+
       for (let i =0; i < this.Order2.length;i++){
           this.Order.push(this.Order2[i]);
       }
@@ -64,10 +63,6 @@ export class OrderComponent implements OnInit {
       }
 
       this.discountValue =  JSON.parse(<string>localStorage.getItem('Discount_value'))
-
-      console.log('Temp', this.temp);
-      console.log('Temp2', JSON.parse(<string>localStorage.getItem('Discount_value')));
-
   }
 
  getItemMenu(): void {
@@ -103,7 +98,6 @@ export class OrderComponent implements OnInit {
     if (variable.min_quantity > 0){
          if (!this.Order.includes(variable)){
             this.Order.push(variable);
-            console.log('Push:',this.Order)
         }
     }else{
         if (this.Order.includes(variable)){
@@ -115,8 +109,6 @@ export class OrderComponent implements OnInit {
     this.BillProduct.push(variable);
 
     this.totalPrice = _.sumBy(this.Order, amount => {
-        console.log('amount',amount.product_price)
-        console.log('quan',amount.min_quantity)
         if (amount.min_quantity > 1){
             return amount.product_price * amount.min_quantity;
         }else {
@@ -126,21 +118,17 @@ export class OrderComponent implements OnInit {
     });
     this.totalPrice2 = this.totalPrice;
 
-    console.log('TP:',this.totalPrice)
-    console.log('TP2:',this.totalPrice2)
-    console.log('price:',this.Order)
+    if (this.totalPrice2 > 0){
+        localStorage.setItem("busy_table", 'BUSY');
+    }else{
+        localStorage.setItem("busy_table", 'FREE');
+    }
 
-      if (this.totalPrice2 > 0){
-          localStorage.setItem("busy_table", 'BUSY');
-      }else{
-          localStorage.setItem("busy_table", 'FREE');
-      }
+    if (variable.min_quantity === variable.max_quantity){
+        window.alert('No more product can be added!')
+    }
 
-      if (variable.min_quantity === variable.max_quantity){
-          window.alert('No more product can be added!')
-      }
-
-      this.saveInstance();
+    this.saveInstance();
   }
 
   changeValueMinus(variable:any, val: number){
@@ -172,27 +160,21 @@ export class OrderComponent implements OnInit {
           this.Order2.pop();
       }
 
-      console.log(this.Order2)
     this.saveInstance();
   }
 
   refreshTotalPrice(){
       this.temp = this.totalPrice * (this.discountValue / 100);
       localStorage.setItem('Discount_value',JSON.stringify(this.discountValue));
-    this.totalPrice = this.totalPrice - this.temp;
-    window.location.reload();
-    this.saveInstance();
+      this.totalPrice = this.totalPrice - this.temp;
+      window.location.reload();
+      this.saveInstance();
   }
 
 
   saveInstance(){
-
    localStorage.setItem('Order', JSON.stringify(this.Order));
-      console.log('ORDER', this.Order)
-      console.log('ORDER2', this.Order2)
-
-      localStorage.setItem('Total_price', JSON.stringify(this.totalPrice));
-
+   localStorage.setItem('Total_price', JSON.stringify(this.totalPrice));
   }
 
 

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {MobileSectionService} from "../mobile-section.service";
-import {Sort} from '@angular/material/sort'
 import * as _ from "lodash";
 
 @Component({
@@ -51,11 +50,6 @@ export class MobileRatingsComponent implements OnInit {
     if(this.choseMobileRating.length > 1){
       this.choseMobileRating.shift();
     }
-  }
-
-  delete(id:String){
-    this.mobileSectionService.deleteMobileUsers(id).subscribe();
-    window.location.reload();
   }
 
   headElementsMobileRatings=["Number booking", "About hotel", "Good things", "Bad things", "Recommend", "More data"];

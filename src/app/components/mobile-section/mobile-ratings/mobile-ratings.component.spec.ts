@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MobileRatingsComponent } from './mobile-ratings.component';
+import {HttpClientModule} from "@angular/common/http";
 
 describe('MobileRatingsComponent', () => {
   let component: MobileRatingsComponent;
@@ -8,6 +9,7 @@ describe('MobileRatingsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule],
       declarations: [ MobileRatingsComponent ]
     })
     .compileComponents();

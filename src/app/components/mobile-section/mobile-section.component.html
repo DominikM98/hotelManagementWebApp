@@ -11,7 +11,8 @@
                     <div class="row" >
                         <div class="form-group col-md-5" >
                             <label for="inputDescription">Description</label>
-                            <textarea type="text" class="form-control" id="inputDescription" placeholder="Description" required [(ngModel)]="description" rows="4" name="dataDescription"></textarea>
+                            <textarea type="text" class="form-control" id="inputDescription" placeholder="Description" required
+                                      [(ngModel)]="description" rows="4" name="dataDescription"></textarea>
                             <small class="invalid-feedback">Please fill out this field.</small>
                         </div>
                     </div>
@@ -51,15 +52,17 @@
                             <label for="departament">Choose departament</label>
                             <div class="d-flex">
                                 <select id="departament" class="form-control" required="true" [(ngModel)]="departaments" name="departaments" (change)="chooseDept()">
-                                    <option *ngFor="let el of Departaments" [value]="el.$dept_name">{{el.$dept_name}}</option>
+                                    <option *ngFor="let el of Departaments" [value]="el.$dept_name" >{{el.$dept_name}}</option>
                                 </select>
 
                                 <button class="btn btn-md btn-success deptButton" (click)="addMoreInfo()" *ngIf="disabledAdd === true"><i class="fa fa-plus" aria-hidden="true"></i></button>
                                 <button class="btn btn-md btn-success deptButton" (click)="addMoreInfo()" *ngIf="disabledAdd === false" disabled><i class="fa fa-plus" aria-hidden="true"></i></button>
                                 <button class="btn btn-md btn-danger deptButton" (click)="deleteMoreInfo()" *ngIf="disabledDelete === true"><i class="fa fa-minus" aria-hidden="true"></i></button>
-                                <button class="btn btn-md btn-danger deptButton" (click)="deleteMoreInfo()" *ngIf="disabledDelete === false" disabled><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                <button class="btn btn-md btn-danger deptButton" (click)="deleteMoreInfo()" *ngIf="disabledDelete === false" disabled><i class="fa fa-minus" aria-hidden="true"></i>
+                                </button>
                                 <button class="btn btn-md btn-danger deptButton" (click)="deleteDepartament()" *ngIf="disabledAdd === true"><i class="fa fa-trash" aria-hidden="true"></i></button>
-                                <button class="btn btn-md btn-danger deptButton" (click)="deleteDepartament()" *ngIf="disabledAdd === false" disabled><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                <button class="btn btn-md btn-danger deptButton" (click)="deleteDepartament()" *ngIf="disabledAdd === false" disabled><i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
                             </div>
                             <div class="deptData row">
                                 <div class="form-group col-md-3 d" *ngFor="let el of MoreInfoDept; let i = index; ">
@@ -71,9 +74,7 @@
                                     <input type="text" class="form-control" id="personEmail" placeholder="Email address" required [(ngModel)]="el.$email_address" name="personEmail+{{i}}">
                                     <button class="btn btn-md btn-primary" style="width:100%; margin-top: 0.5em" (click)="deleteNewMoreInfo(i)" >Delete</button>
                                 </div>
-
                             </div>
-
                         </div>
                         <div class="form-group col-md-2" >
                             <label for="departament2">Add departament</label>
@@ -91,7 +92,6 @@
                                     <input type="text" class="form-control" id="personEmail2" placeholder="Email address" required [(ngModel)]="newPersonEmail" name="newPersonEmail" >
                                     <button class="btn btn-md btn-primary" style="width:93%; margin-top:0.5em;" (click)="addNewMoreInfo()" *ngIf="isNewData === true">Save</button>
                                 </div>
-
                             </div>
                         </div>
                     </div>

@@ -104,6 +104,14 @@ export class MobileSectionComponent implements OnInit {
 
     checkExistsDept(){
         let dept = this.Departaments.find(d => d.$dept_name == this.departaments);
+
+        if(dept === undefined){
+            dept = {
+                $dept_name: 'none',
+                $more_info: []
+            }
+        }
+
         if (this.departaments === null){
             this.disabledAdd = false;
             this.disabledDelete = false;

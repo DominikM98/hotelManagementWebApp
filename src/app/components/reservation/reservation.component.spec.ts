@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ReservationComponent } from './reservation.component';
+import {HttpClientModule} from "@angular/common/http";
+import {ReservationComponent} from "./reservation.component";
+import {FormsModule} from "@angular/forms";
 
 describe('ReservationComponent', () => {
   let component: ReservationComponent;
@@ -8,9 +10,10 @@ describe('ReservationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule, FormsModule],
       declarations: [ ReservationComponent ]
     })
-    .compileComponents();
+        .compileComponents();
   });
 
   beforeEach(() => {

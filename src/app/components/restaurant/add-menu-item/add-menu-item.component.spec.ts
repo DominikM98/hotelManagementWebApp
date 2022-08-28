@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddMenuItemComponent } from './add-menu-item.component';
+import {HttpClientModule} from "@angular/common/http";
 
 describe('AddMenuItemComponent', () => {
   let component: AddMenuItemComponent;
@@ -8,6 +9,7 @@ describe('AddMenuItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [HttpClientModule],
       declarations: [ AddMenuItemComponent ]
     })
     .compileComponents();

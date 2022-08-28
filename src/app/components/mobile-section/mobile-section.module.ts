@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {TableModule } from 'ng-uikit-pro-standard';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule} from "@angular/forms";
 import {TemplatePageModule} from "../template-page/template-page.module";
 
 import {MobileSectionComponent} from "./mobile-section.component";
@@ -14,7 +14,6 @@ import { MobileRatingsComponent } from './mobile-ratings/mobile-ratings.componen
         TableModule,
         FormsModule,
         TemplatePageModule,
-        ReactiveFormsModule,
     ],
     declarations: [
         MobileSectionComponent,

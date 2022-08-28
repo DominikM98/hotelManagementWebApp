@@ -15,7 +15,6 @@ export class ItemMenuService {
         return this.http.get(this.itemMenuUrl)
     }
 
-
     addItemMenu(newData: any): Observable<any> {
         return this.http.post(this.createItemMenuUrl, newData);
     }

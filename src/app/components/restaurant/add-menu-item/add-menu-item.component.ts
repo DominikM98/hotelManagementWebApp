@@ -46,8 +46,6 @@ export class AddMenuItemComponent implements OnInit {
       max_quantity: this.itemQuantity
     };
 
-    console.log(newItemMenu);
-
     this.itemMenuService.addItemMenu(newItemMenu).subscribe();
 
     this.clearForm();

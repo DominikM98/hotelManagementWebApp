@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ReservationService} from "./reservation.service";
 import * as _ from "lodash";
 
-
 @Component({
   selector: 'reservation',
   templateUrl: './reservation.component.html',
@@ -112,9 +111,8 @@ export class ReservationComponent implements OnInit {
     }
 
     add():void{
-        console.log('before convert')
         this.convertBooleanType();
-        console.log('before newReservation')
+
         const newReservation = {
             first_name: this.personFirstName,
             last_name: this.personLastName,
@@ -133,14 +131,11 @@ export class ReservationComponent implements OnInit {
             address_mail: this.clientEmail
         };
 
-        console.log('before reservation')
         let reservation = this.Reservations.find(r => r.check_in == newReservation.check_in);
 
         if (reservation === undefined){
             reservation = newReservation.check_in
         }
-
-        console.log(newReservation, 'undef:', reservation)
 
         if (this.checkInDate === reservation.check_in){
             if (this.roomNumberSelect === reservation.room_number){
